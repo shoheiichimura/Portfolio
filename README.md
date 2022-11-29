@@ -1,5 +1,3 @@
-# README
-
 # Traning_friend
 
 ## サイト概要
