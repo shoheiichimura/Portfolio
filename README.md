@@ -22,6 +22,8 @@ https://docs.google.com/document/d/1pMqNlvcEvw0LRuZYFGfgefTyVb55hjxHL02BMGSN9Ek/
 https://app.diagrams.net/#G1jZzZXCMLVesHGhafBMUNhGSSxC8YN3fL
 - テーブル定義書
 https://docs.google.com/spreadsheets/d/1SsqIOloXBQR3Di074NLZOGKAOzHPsG9DV_eA5NF6g-w/edit#gid=1373217982
+- アプリケーション詳細設計書
+https://docs.google.com/spreadsheets/d/1uKX6BaEG50YO0CYHs1ii7PrjhZF9AwjG7nyfMzMVrHM/edit#gid=1381632135
 
 ## 開発環境
 - OS：Linux(CentOS)
