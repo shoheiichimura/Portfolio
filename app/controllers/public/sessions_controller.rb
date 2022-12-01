@@ -2,6 +2,10 @@
 
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  
+  def after_customer_sign_out_path_for
+    public_about_path
+  end
 
   # GET /resource/sign_in
   # def new

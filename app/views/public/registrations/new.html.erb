@@ -1,0 +1,73 @@
+<div class="container py-5">
+ <div class="row">
+   <h3 class="col m-2 text-left font-weight-bold">新規会員登録</h3>
+ </div>
+
+　
+<%= form_with model: @customer, url: customer_registration_path  do |f| %>
+  <%= render "public/shared/error_messages", resource: resource %>
+  <div class="row mt-5">
+    <div class="form-group col-12">
+      <%= f.label :"ユーザーネーム",class: "col-sm-2 control-label mr-5" %>
+      <%= f.text_field :last_name, autofocus: true, :placeholder => "ユーザーネーム" %>
+    </div>
+
+    <div class="form-group col-12">
+      <%= f.label :"性別", class:"col-sm-2 control-label mr-5" %>
+      <%= f.text_field :last_name_kana, :placeholder => "レイワ"  %>
+    </div>
+
+     <div class="form-group col-12">
+      <%= f.label :"メールアドレス", class: "col-sm-2 control-label mr-5" %>
+      <%= f.email_field :email, :placeholder => "sample@example.com" %>
+    </div>
+
+    <div class="form-group col-12">
+      <%= f.label :"活動拠点", class: "col-sm-2 control-label mr-5" %>
+      <%= f.text_field :active_area, :placeholder => "東京都渋谷区代々木神園町0-0", class: "col-5" %>
+    </div>
+
+    <div class="form-group col-12 text-nowrap">
+      <%= f.label :"筋トレ目的",class: "col-sm-2 control-label mr-5" %>
+      <%= f.text_field :objective, :placeholder => "0000000000",class: "col-sm-2 control-label mr-5" %>
+    </div>
+    
+    <div class="form-group col-12 text-nowrap">
+      <%= f.label :"筋トレ頻度",class: "col-sm-2 control-label mr-5" %>
+      <%= f.text_field :frequency, :placeholder => "0000000000",class: "col-sm-2 control-label mr-5" %>
+    </div>
+    
+    <div class="form-group col-12 text-nowrap">
+      <%= f.label :"筋トレの熱意",class: "col-sm-2 control-label mr-5" %>
+      <%= f.text_field :heart, :placeholder => "0000000000",class: "col-sm-2 control-label mr-5" %>
+    </div>
+    
+    <div class="form-group col-12 text-nowrap">
+      <%= f.label :"筋トレスタイル",class: "col-sm-2 control-label mr-5" %>
+      <%= f.text_field :traning_style, :placeholder => "0000000000",class: "col-sm-2 control-label mr-5" %>
+    </div>
+
+    <div class="form-group col-12 text-nowrap">
+      <%= f.label :"パスワード６文字以上",class: "col-sm-2 control-label mr-5" %>
+      <% if @minimum_password_length %>
+      <em><% @minimum_password_length %></em>
+      <% end %>
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+
+    <div class="form-group col-12">
+      <%= f.label :"パスワード(確認用)",class: "col-sm-2 control-label mr-5" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+    <div class="actions col-7 text-center">
+      <%= f.submit "新規会員登録", class: 'btn btn-sm btn-success control-submit mr-5' %>
+    </div>
+  </div>
+<% end %>
+
+   <h5 class="col text-left font-weight-bold">既に登録済みの方</h5>
+   <div class="col offset-1 font-weight-bold">
+       <%= link_to "こちら", new_customer_session_path %> からログインしてください。
+       </div>
+    </div>
+ 
