@@ -6,6 +6,7 @@ class Public::SessionsController < Devise::SessionsController
   def after_customer_sign_out_path_for
     public_about_path
   end
+  
 
   # GET /resource/sign_in
   # def new

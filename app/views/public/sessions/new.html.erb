@@ -1,26 +1,52 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container py-5">
+  <div class="row">
+    <h3 class="col-md-6 text-center font-weight-bold">ログイン</h3>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+　<%= form_with model: @customer, url: customer_session_path do |f| %>
+   <%= render "public/shared/error_messages", resource: resource %>
+    <div class="mt-5">
+      <div class="form-group">
+         <div class="row">
+           <div class="col-md-3 text-left text-md-center">
+             <%= f.label :email, 'メールアドレス', class: "control-label" %>
+           </div>
+           <div class="col-md-9">
+             <%= f.text_field :email, autofocus: true, :placeholder => "sample@example.com", class: 'form-control col-5' %>
+           </div>
+         </div>
+       </div>
+      </div>
+      <div class="form-group">
+         <div class="row">
+           <div class="col-md-3 text-left text-md-center">
+            <%= f.label :password, "パスワード", class: "control-label" %>
+           </div>
+           <div class="col-md-9">
+            <%= f.password_field :password, autocomplete: "current-password", class: 'form-control col-5' %>
+          </div>
+        </div>
+       </div>
+       <div class="form-group">
+         <div class="row">
+           <div class="col-md-9 offset-3">
+            <% if devise_mapping.rememberable? %>
+             <%= f.check_box :remember_me %>
+             <%= f.label :remember_me %>
+            </div>
+           <% end %>
+           </div>
+          </div>
+        <div class="actions col-7 text-center">
+           <%= f.submit "ログイン", class: 'btn btn-sm btn-success control-submit mr-5 mb-3' %>
+        </div>
+      <% end %>
+      <div class="row">
+          <div class="col-md-4 pr-0 text-right text-md-center font-weight-bold">新規登録は
+           <%= link_to "こちら", new_customer_registration_path %>
+          </div>
+          
   </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
 
-<%= render "public/shared/links" %>
