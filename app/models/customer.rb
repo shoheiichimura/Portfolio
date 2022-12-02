@@ -3,7 +3,21 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         
+  has_many :posts, dependent: :destroy
+  
+  has_one_attached :profile_image
+  
+  def get_profile_image(width, height)
+   unless profile_image.attached?
+    file_path = Rails.root.join('app/assets/images/parts3.png')
+    profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+   end
+   profile_image.variant(resize_to_limit: [width, height]).processed
+  end
+  
   enum sex: { man: 0, woman: 1 }
+  
   enum ride_area:{
      "---":0,
      北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,

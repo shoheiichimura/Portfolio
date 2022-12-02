@@ -1,2 +1,46 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<div class="contaner">
+  <div class="row  justify-content-center">
+     <div class="col-sm-3 text-center">
+        <div class=""><%= image_tag @customer.get_profile_image(80,80) %></div>
+        <div class=""><%= @customer.name %></div>
+         <div class=""><%= link_to "プロフィール編集", edit_public_customer_path(@customer) %></div>
+         <div class="">投稿○件</div>
+         <div class="">フォロワー〇〇人</div>
+         <div class="">フォロー中〇〇人</div>
+     </div>
+     <div class="col-sm-4 text-left ">
+         <table class="table table-sm text-center">
+           <tbody>
+             <tr>
+              <th>性別</th>
+              <td><%= @customer.sex %></td>
+            </tr>
+            <tr>
+              <th>活動拠点</th>
+              <td><%= @customer.active_area %></td>
+            </tr>
+            <tr>
+              <th>筋トレ目的</th>
+              <td><%= @customer.objective %></td>
+            </tr>
+            <tr>
+              <th>筋トレ頻度</th>
+              <td><%= @customer.frequency %></td>
+            </tr>
+            <tr>
+              <th>筋トレスタイル</th>
+              <td><%= @customer.traning_style %></td>
+            </tr>
+            <tr>
+              <th>筋トレの熱意</th>
+              <td><%= @customer.heart %></td>
+            </tr>
+            <tr>
+              <th>ひと言</th>
+              <td><%= @customer.introduction %></td>
+            </tr>
+          </tbody>
+      </div>
+  </div>
+</div>
+
