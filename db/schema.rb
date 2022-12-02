@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2022_12_01_074706) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "name", default: "", null: false
-    t.string "sex", default: "", null: false
+    t.integer "sex", null: false
     t.string "active_area", default: "", null: false
     t.string "objective", default: "", null: false
     t.string "frequency", default: "", null: false

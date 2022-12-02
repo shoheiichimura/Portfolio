@@ -1,73 +1,138 @@
 <div class="container py-5">
- <div class="row">
-   <h3 class="col m-2 text-left font-weight-bold">新規会員登録</h3>
- </div>
-
-　
-<%= form_with model: @customer, url: customer_registration_path  do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-  <div class="row mt-5">
-    <div class="form-group col-12">
-      <%= f.label :"ユーザーネーム",class: "col-sm-2 control-label mr-5" %>
-      <%= f.text_field :last_name, autofocus: true, :placeholder => "ユーザーネーム" %>
-    </div>
-
-    <div class="form-group col-12">
-      <%= f.label :"性別", class:"col-sm-2 control-label mr-5" %>
-      <%= f.text_field :last_name_kana, :placeholder => "レイワ"  %>
-    </div>
-
-     <div class="form-group col-12">
-      <%= f.label :"メールアドレス", class: "col-sm-2 control-label mr-5" %>
-      <%= f.email_field :email, :placeholder => "sample@example.com" %>
-    </div>
-
-    <div class="form-group col-12">
-      <%= f.label :"活動拠点", class: "col-sm-2 control-label mr-5" %>
-      <%= f.text_field :active_area, :placeholder => "東京都渋谷区代々木神園町0-0", class: "col-5" %>
-    </div>
-
-    <div class="form-group col-12 text-nowrap">
-      <%= f.label :"筋トレ目的",class: "col-sm-2 control-label mr-5" %>
-      <%= f.text_field :objective, :placeholder => "0000000000",class: "col-sm-2 control-label mr-5" %>
-    </div>
-    
-    <div class="form-group col-12 text-nowrap">
-      <%= f.label :"筋トレ頻度",class: "col-sm-2 control-label mr-5" %>
-      <%= f.text_field :frequency, :placeholder => "0000000000",class: "col-sm-2 control-label mr-5" %>
-    </div>
-    
-    <div class="form-group col-12 text-nowrap">
-      <%= f.label :"筋トレの熱意",class: "col-sm-2 control-label mr-5" %>
-      <%= f.text_field :heart, :placeholder => "0000000000",class: "col-sm-2 control-label mr-5" %>
-    </div>
-    
-    <div class="form-group col-12 text-nowrap">
-      <%= f.label :"筋トレスタイル",class: "col-sm-2 control-label mr-5" %>
-      <%= f.text_field :traning_style, :placeholder => "0000000000",class: "col-sm-2 control-label mr-5" %>
-    </div>
-
-    <div class="form-group col-12 text-nowrap">
-      <%= f.label :"パスワード６文字以上",class: "col-sm-2 control-label mr-5" %>
-      <% if @minimum_password_length %>
-      <em><% @minimum_password_length %></em>
-      <% end %>
-      <%= f.password_field :password, autocomplete: "new-password" %>
-    </div>
-
-    <div class="form-group col-12">
-      <%= f.label :"パスワード(確認用)",class: "col-sm-2 control-label mr-5" %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
-    <div class="actions col-7 text-center">
-      <%= f.submit "新規会員登録", class: 'btn btn-sm btn-success control-submit mr-5' %>
-    </div>
+  <div class="row">
+    <h3 class="col-md-6 text-center font-weight-bold">新規会員登録</h3>
   </div>
-<% end %>
 
-   <h5 class="col text-left font-weight-bold">既に登録済みの方</h5>
-   <div class="col offset-1 font-weight-bold">
-       <%= link_to "こちら", new_customer_session_path %> からログインしてください。
+
+     <%= form_with model: @customer, url: customer_registration_path  do |f| %>
+      <%= render "public/shared/error_messages", resource: resource %>
+      <div class="mt-5">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-3 text-left text-md-center">
+              <%= f.label :name, '名前', class: "control-label" %>
+            </div>
+            <div class="col-md-9">
+              <%= f.text_field :name, autofocus: true, :placeholder => "ユーザーネーム", class: 'form-control col-5' %>
+            </div>
+          </div>
+        </div>
        </div>
-    </div>
- 
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-3 text-left text-md-center">
+              <%= f.label :sex, '性別', class: "control-label" %>
+            </div>
+            <div class="col-md-9">
+              <%= f.collection_radio_buttons :sex, Customer.sexes_i18n, :first, :last do |b| %>
+                <span class="mr-3">
+                  <%= b.label {b.radio_button + b.text} %>
+                </span>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+         <div class="form-group">
+          <div class="row">
+            <div class="col-md-3 text-left text-md-center">
+              <%= f.label :email, 'メールアドレス', class: "control-label" %>
+            </div>
+            <div class="col-md-9">
+              <%= f.email_field :email, :placeholder => "sample@example.com", class: 'form-control col-5' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-3 text-left text-md-center">
+             <%= f.label :active_area, "活動拠点", class: "control-label" %>
+            </div>
+            <div class="col-md-9">
+            <%= f.select :active_area, Customer.ride_areas.keys, {},class: 'form-control col-5' %>
+           </div>
+         </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-3 text-left text-md-center">
+             <%= f.label :objective, "筋トレ目的", class: "control-label" %>
+            </div>
+            <div class="col-md-9">
+            <%= f.select :objective,{'健康のため': 0,'見た目を良くしたい': 1,'痩せたい': 2,'筋肉をつけたい': 3,'大会意識': 4},{ include_blank: '選択してください' }, class: 'form-control col-5' %>
+           </div>
+         </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-3 text-left text-md-center">
+             <%= f.label :frequency, "筋トレ頻度", class: "control-label" %>
+            </div>
+            <div class="col-md-9">
+            <%= f.select :frequency,{'月1〜2回': 0,'週2〜3回': 1,'週3〜4回': 2,'週4〜5回': 3,'週5回以上': 4},{ include_blank: '選択してください' }, class: 'form-control col-5' %>
+           </div>
+         </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-3 text-left text-md-center">
+             <%= f.label :traning_style, "筋トレスタイル", class: "control-label" %>
+            </div>
+            <div class="col-md-9">
+            <%= f.select :traning_style,{'ウェイトトレーニング': 0,'自重トレーニング': 1,'パーソナルトレーニング': 2,'その他': 3},{ include_blank: '選択してください' },class: 'form-control col-5' %>
+           </div>
+         </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-3 text-left text-md-center">
+             <%= f.label :heart, "筋トレの熱意", class: "control-label" %>
+            </div>
+            <div class="col-md-9">
+           <%= f.select :heart,{'健康のため': 0,'見た目を良くしたい': 1,'痩せたい': 2},{ include_blank: '選択してください' },class: 'form-control col-5' %>
+          </div>
+        </div>
+       </div>
+
+       <div class="form-group">
+         <div class="row">
+           <div class="col-md-3 text-left text-md-center">
+            <%= f.label :password, "パスワード６文字以上", class: "control-label" %>
+            <% if @minimum_password_length %>
+            <em><% @minimum_password_length %></em>
+            <% end %>
+           </div>
+           <div class="col-md-9">
+            <%= f.password_field :password, class: 'form-control col-5' %>
+          </div>
+        </div>
+       </div>
+
+       <div class="form-group">
+         <div class="row">
+           <div class="col-md-3 text-left text-md-center">
+            <%= f.label :password_confirmation, "パスワード(確認用)", class: "control-label" %>
+            <% if @minimum_password_length %>
+            <em><% @minimum_password_length %></em>
+            <% end %>
+           </div>
+           <div class="col-md-9">
+            <%= f.password_field :password_confirmation, class: 'form-control col-5' %>
+             </div>
+           </div>
+          </div>
+          <div class="actions col-7 text-center">
+           <%= f.submit "新規会員登録", class: 'btn btn-sm btn-success control-submit mr-5 mb-3' %>
+         </div>
+         <%end %>
+         <div class="row">
+          <div class="col-md-4 pr-0 text-right text-md-center font-weight-bold">既に登録済みの方は
+           <%= link_to "こちら", new_customer_session_path %>
+          </div>
+</div>

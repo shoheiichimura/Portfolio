@@ -1,0 +1,6 @@
+ ja:  # 日本語の設定
+    enums:  # enumの設定
+      customer: # モデル名
+        sex:  # カラム名
+          man: "男性"
+          woman: "女性"
