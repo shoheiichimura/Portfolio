@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 # 顧客用
 # URL /customers/sign_in ...
@@ -18,6 +17,7 @@ namespace :public do
     root to: 'homes#top'
     get 'about' => 'homes#about', as: 'about'
     resources :customers
+    resources :posts
   end
   
 end

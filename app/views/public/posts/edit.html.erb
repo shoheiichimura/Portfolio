@@ -1,0 +1,49 @@
+<div class="contaner">
+  <div class="row">
+    <div class="col text-center mb-3">
+      <h3>投稿編集</h3>
+    </div>
+  </div>
+
+    <%= form_with model: @post, url: public_post_path, method: :patch do |f| %>
+      <div class="form-group">
+       <div class="row">
+       <div class="col-md-6 text-right">
+          <%= f.label :title, "Title",class: "control-label" %>
+        </div>
+        <div class="col-sm-6">
+          <%= f.text_field :title, autofocus: true, :placeholder => "Title",class: 'form-control col-5' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-grap m-3">
+      <div class="row">
+       <div class="col-md-6 text-right">
+          <%= f.label :caption, "Caption", class: "control-label" %>
+        </div>
+        <div class="col-sm-6">
+          <%= f.text_area :caption, :placeholder => "Caption",class: 'form-control col-5' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-grap">
+      <div class="row">
+        <div class="col-md-6 text-right">
+          <%= f.label :image, "image", class: "control-label" %>
+        </div>
+        <div class="col-sm-6">
+         <%= f.file_field :image, accept: "image/*",class: "form-comtrol" %>
+        </div>
+     </div>
+    </div>
+
+    <div class="row m-3">
+      <div class="offset-6 col-md-6">
+         <%= f.submit "更新", class: 'btn btn-sm btn-success control-submit mr-5 mb-3' %>
+      </div>
+    </div>
+   <% end %>
+   
+   </div>
