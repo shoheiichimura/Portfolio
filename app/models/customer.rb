@@ -11,7 +11,6 @@ class Customer < ApplicationRecord
   validates :frequency, presence: true
   validates :heart, presence: true
   validates :traning_style, presence: true
-  
 
   has_many :posts, dependent: :destroy
 

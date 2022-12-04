@@ -18,7 +18,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
    protected
    def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:introduction,:email,:sex,:active_area,:objective,:frequency,:heart,:traning_style,:is_deleted])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:introduction,:email,:sex,:profile_image,:active_area,:objective,:frequency,:heart,:traning_style,:is_deleted])
    end
   # GET /resource/sign_up
   # def new

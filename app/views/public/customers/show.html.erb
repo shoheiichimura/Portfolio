@@ -1,14 +1,12 @@
-<div class="contaner">
-  <div class="row p-5 justify-content-center">
-     <div class="col-sm-3 text-center">
-        <div class=""><%= image_tag @customer.get_profile_image(80,80) %></div>
-        <div class=""><%= @customer.name %></div>
-         <div class=""><%= link_to "プロフィール編集", edit_customer_path(@customer) %></div>
-         <div class="">投稿○件</div>
-         <div class="">フォロワー〇〇人</div>
-         <div class="">フォロー中〇〇人</div>
+<div class="contaner pb-5">
+  <div class="row pb-3 justify-content-center align-items-center" id="show">
+     <div class="col-lg-3 text-center">
+        <div class=""><%= image_tag @customer.get_profile_image(300,300) %></div>
+        <div class=""><%= @customer.name %><%= link_to "編集", edit_customer_path(@customer) %></div>
+         <div class="">投稿<%= @posts.count %>件</div>
+         <div class="">フォロワー〇〇人フォロー中〇〇人</div>
      </div>
-     <div class="col-sm-6 text-left ">
+     <div class="col-lg-5 py-3 text-left ">
          <table class="table table-sm text-center">
            <tbody>
              <tr>
@@ -36,12 +34,26 @@
               <td><%= @customer.heart_i18n %></td>
             </tr>
             <tr>
-              <th>ひと言</th>
-              <td><%= @customer.introduction %></td>
+              <th>自己紹介</th>
+              <td style="word-break:break-word"><%= @customer.introduction %></td>
             </tr>
           </tbody>
-        </table
+        </table>
       </div>
+    </div>
+    
+     <div class="row">
+     <div class="col-lg-12 d-flex justify-content-center flex-wrap">
+            <% @posts.each do |post| %>
+            <div class="p-3">
+             <%=link_to  post_path(post.id) do %>
+             <%= image_tag post.image, size: "250x250" %>
+             <% end %>
+           </div>
+          <% end %>
+        </div>
+    </div>
   </div>
-</div>
+  </div>
+
 
