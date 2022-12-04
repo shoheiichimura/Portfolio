@@ -1,7 +1,7 @@
 class Public::CustomersController < ApplicationController
 
   def index
-    @customer = Customer.all
+    @customers = Customer.all
   end
 
   def show
@@ -17,7 +17,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     if @customer.update(customer_params)
       flash[:alert] = "更新完了しました！"
-      redirect_to public_customer_path(@customer)
+      redirect_to customer_path(@customer)
     else
       render "edit"
     end
@@ -31,7 +31,7 @@ class Public::CustomersController < ApplicationController
     @customer = currrent_customer
     @customer.update(is_deleted: true)
     reset_session
-    redirect_to pablic_root_path
+    redirect_to root_path
   end
 
   private

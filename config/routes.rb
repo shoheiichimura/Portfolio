@@ -13,7 +13,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
-namespace :public do
+ scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about', as: 'about'
     resources :customers

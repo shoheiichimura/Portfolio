@@ -2,9 +2,11 @@
   <div class="row">
    <%= flash[:alart] %>
     <div class="col mb-5 mt-3 text-center font-weight-bold">投稿詳細</div>
-      <div class="col-lg-10 offset-2 d-flex justify-content-start">
+  </div>
+    <div class="row">
+      <div class="col-lg-6 offset-3 d-flex justify-content-start">
        <%= image_tag @post.image, size: "300x300" %>
-        <table class="table table-borderless text-center">
+        <table class="table table-borderless table-sm text-center">
           <tr>
             <td><%= @post.title %></td>
           </tr>
@@ -12,9 +14,10 @@
             <td><%= @post.caption %></td>
           </tr>
           <tr>
-            <td><%= link_to "編集する", edit_public_post_path(@post), class: 'btn btn-sm btn-success control-submit' %></td>
+            <td><%= link_to "編集する", edit_post_path(@post), class: 'btn btn-sm btn-success control-submit' %></td>
           </tr>
         </table>
+        </div>
        </div>
       </div>
     </div>

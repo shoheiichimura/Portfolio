@@ -57,12 +57,12 @@ ActiveRecord::Schema.define(version: 2022_12_02_052623) do
     t.string "encrypted_password", default: "", null: false
     t.string "name", default: "", null: false
     t.text "introduction", default: "", null: false
-    t.integer "sex", null: false
-    t.string "active_area", default: "", null: false
-    t.string "objective", default: "", null: false
-    t.string "frequency", default: "", null: false
-    t.string "heart", default: "", null: false
-    t.string "traning_style", default: "", null: false
+    t.integer "sex", default: 0, null: false
+    t.integer "active_area", default: 0, null: false
+    t.integer "objective", default: 0, null: false
+    t.integer "frequency", default: 0, null: false
+    t.integer "heart", default: 0, null: false
+    t.integer "traning_style", default: 0, null: false
     t.boolean "is_deleted", default: false, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

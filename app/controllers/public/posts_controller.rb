@@ -14,7 +14,8 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.limit(10).order('created_at DESC')
+    
   end
 
   def show
@@ -30,8 +31,8 @@ class Public::PostsController < ApplicationController
     @post.customer_id = current_customer.id
     if @post.update(post_params)
       flash[:notice] = "You have updated post successfully."
-      redirect_to new_public_post_path
-     end
+      redirect_to new_post_path
+    end
   end
 
   private

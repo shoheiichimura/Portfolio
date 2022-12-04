@@ -8,12 +8,12 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.string :encrypted_password, null: false, default: ""
       t.string :name, null: false, default: ""
       t.text   :introduction, null: false, default: ""
-      t.integer :sex, null: false, default: ""
-      t.string :active_area, null: false, default: ""
-      t.string :objective, null: false, default: ""
-      t.string :frequency, null: false, default: ""
-      t.string :heart, null: false, default: ""
-      t.string :traning_style, null: false, default: ""
+      t.integer :sex, null: false, default: 0
+      t.integer :active_area, null: false, default: 0
+      t.integer :objective, null: false, default: 0
+      t.integer :frequency, null: false, default: 0
+      t.integer :heart, null: false, default: 0
+      t.integer :traning_style, null: false, default: 0
       t.boolean :is_deleted, null: false, default: false
 
       ## Recoverable
