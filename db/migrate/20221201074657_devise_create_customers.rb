@@ -10,6 +10,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.text   :introduction, null: false, default: ""
       t.integer :sex, null: false, default: 0
       t.integer :active_area, null: false, default: 0
+      t.integer :history, null: false, default: 0
       t.integer :objective, null: false, default: 0
       t.integer :frequency, null: false, default: 0
       t.integer :heart, null: false, default: 0

@@ -1,7 +1,44 @@
 // Place all the styles related to the public/customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-#show {
-  background-color: rgba(255, 255, 255, 0.8);
+
+.btn-follow:link,
+.btn-follow:visited {
+ text-transform: uppercase;
+ text-decoration: none;
+ color: rgb(27, 27, 27);
+ padding: 5px 20px;
+ border: 1px solid;
+ border-radius: 1000px;
+ display: inline-block;
+ transition: all .2s;
+ position: relative;
 }
 
+.btn-follow:hover {
+ transform: translateY(-5px);
+ box-shadow: 0 10px 20px rgba(27, 27, 27, .5);
+}
+
+.btn-follow:active {
+ transform: translateY(-3px);
+}
+
+.btn-follow::after {
+ content: "";
+ display: inline-block;
+ height: 100%;
+ width: 100%;
+ border-radius: 100px;
+ top: 0;
+ left: 0;
+ position: absolute;
+ z-index: -1;
+ transition: all .3s;
+}
+
+.btn-follow:hover::after {
+ background-color: rgb(0, 238, 255);
+ transform: scaleX(1.4) scaleY(1.5);
+ opacity: 0;
+}

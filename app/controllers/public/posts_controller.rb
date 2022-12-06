@@ -31,9 +31,17 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.customer_id = current_customer.id
     if @post.update(post_params)
-      flash[:notice] = "You have updated post successfully."
+      flash[:notice] = "更新しました！"
       redirect_to new_post_path
     end
+  end
+  
+  def destroy
+    @post = Post.find(params[:id])
+     if @post.destroy
+      flash[:notice] = "削除完了しました！"
+      redirect_to new_post_path
+     end
   end
 
   private

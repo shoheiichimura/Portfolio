@@ -1,4 +1,4 @@
-<div class="contaner">
+<div class="contaner py-5" id="edit">
   <div class="row">
     <div class="col text-center mb-3">
       <h3>投稿編集</h3>
@@ -42,8 +42,10 @@
     <div class="row m-3">
       <div class="offset-6 col-md-6">
          <%= f.submit "更新", class: 'btn btn-sm btn-success control-submit mr-5 mb-3' %>
+         <%= link_to "削除", post_path(@post),class: "btn btn-sm btn-danger mr-5 mb-3", method: :delete, "data-confirm" => "本当に削除しますか？" %>
       </div>
     </div>
+
    <% end %>
-   
+
    </div>
