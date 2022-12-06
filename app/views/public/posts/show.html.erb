@@ -4,12 +4,15 @@
     <div class="col mb-5 text-center font-weight-bold">投稿詳細</div>
   </div>
 
-    <div class="card mx-auto rounded-3" style="width: 35rem;">
+    <div class="card mx-auto rounded-3 shadow p-3 mb-5 bg-body rounded" style="width: 35rem;">
       <h5 class="card-header"><%= @post.customer.name %>
-      <%= link_to "・・・", edit_post_path(@post) %></h5>
+       <%# if @post.customer == current_customer %>
+        <%= link_to "・・・", edit_post_path(@post) %>
+       <%# end %>
+      </h5>
       <%= image_tag @post.image %>
       <div class="card-body">
-
+       <!--いいねボタン部分テンプレート-->
        <div class="favorite-btn">
         <%= render "public/favorites/favorite-btn", post: @post %>
        </div>
@@ -17,13 +20,18 @@
           <h5 class="card-title"><%= @post.title %></h5>
          <p class="card-text"><%= @post.caption %></p>
 
+         <!--ここからコメント-->
           <% @post.comments.each do |comment| %>
           <p class="m-0 p-0 border-top">
             <%= image_tag comment.customer.get_profile_image(50,500) %>
              <%= comment.customer.name %>
-             <%= comment.created_at.strftime('%Y/%m/%d') %>
+             <span class="text-black-50"><small>
+             <i class="far fa-clock clock-icon"></i><%= time_ago_in_words(comment.created_at) %>前
+             </small></span>
              <% if comment.customer == current_customer %>
-             <%= link_to "削除", post_comment_path(@post, comment), method: :delete %>
+             <%= link_to post_comment_path(@post, comment), method: :delete do %>
+               <i class="fas fa-trash-alt text-black-50"></i>
+             <% end %>
              </p>
              <div class="py-2">
              <%= comment.comment %>
@@ -33,10 +41,11 @@
           </div>
 
           <%= form_with model: [@post, @comment], local: false do |f| %>
-          <div class="text-center">
-           <%= f.text_area :comment, rows: '1', placeholder: "コメント....",class: "form-control border-0" %>
-           <%= f.submit class: "m-2 fas fa-paper-plane fa-lg mb-2"%>
-           </div>
+           <div class="text-center">
+            <%= f.text_area :comment, rows: '1', placeholder: "コメント....",class: "form-control border-0" %>
+            <%= button_tag type: "submit", class: "btn btn-default" do %>
+             <i class="fas fa-paper-plane"></i></div>
+            <% end %>
            <% end %>
       </div>
     </div>

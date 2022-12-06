@@ -18,21 +18,21 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  padding:0;
+}
 
 .navbar {
-  background-color: #000000;
+  background-color: #000;
 }
-.navbar-toggler {
-  border-color: #fff;
-  background-color: #fff;
-}
+
 footer {
   background-color: #000
 }
+
+/*背景画像*/
 main {
-  /*background-image: url(AdobeStock_266594824.jpeg);*/
-  background: radial-gradient(ellipse at center, rgba(255,255,255,0) 40%,rgba(255,255,255,0.5) 60%,rgba(255,255,255,1) 100%),url(AdobeStock_266594824.jpeg);
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.5) 40%,rgba(255,255,255,0.8) 60%,rgba(255,255,255,1) 100%),url(AdobeStock_266594824.jpeg);
   background-size: cover;
   background-position: top center;
-  /*background: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);*/
 }

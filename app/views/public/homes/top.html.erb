@@ -1,4 +1,23 @@
-<h1>Public::Homes#top</h1>
-<p class="m-0 p-0">Find me in app/views/public/homes/top.html.erb</p>
-
-<i class="fas fa-wind fa-fw"></i>
+<div class="container py-5 top">
+  <div class="row align-items-center" style="padding-top: 60px;">
+    <div class="col-md-5 m-5 mx-auto text-center">
+      <h1><strong>Traning_friend</strong></h1>
+      <h2>Welcom to <strong>Traning_friend !!</strong></h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4 mx-auto text-right">
+      <p>in<strong>Traning_friend,</strong></p>
+    </div>
+  </div>
+  <div class"row">
+    <div class="col py-4 text-center">
+      <%= link_to "Log in", new_customer_session_path, class: "btn-top btn-border-shadow btn-border-shadow--color2" %>
+    </div>
+  </div>
+  <div class"row">
+    <div class="col py-4 text-center">
+       <%= link_to "Sign in", new_customer_registration_path, class: "btn-top btn-border-shadow btn-border-shadow--color2" %>
+    </div>
+  </div>
+</div>

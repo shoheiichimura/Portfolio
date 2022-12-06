@@ -3,9 +3,10 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  validates :name, presence: true
+  validates :name, presence: true,length: { in: 2..20 }
   validates :introduction, presence: true, length: { maximum: 200 }
   validates :sex, presence: true
+  validates :history, presence: true
   validates :active_area, presence: true
   validates :objective, presence: true
   validates :frequency, presence: true
@@ -26,7 +27,7 @@ class Customer < ApplicationRecord
    profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
-
+ # 新規登録のenum記述
   enum sex: { man: 0, woman: 1 }
 
   enum active_area:{ hokkaido:0,aomori:1,iwate:2,miyagi:3,akita:4,yamagata:5,hukusima:6,
@@ -39,8 +40,8 @@ class Customer < ApplicationRecord
      hukuoka:39,saga:40,nagasaki:41,kumamoto:42,ooita:43,miyazaki:44,kagosima:45,
      okinawa:46
   }
-  
-  enum objective:{ health:0,appearance:1,rack:2,muscle:3,tournament:4
+
+   enum objective:{ health:0,appearance:1,rack:2,muscle:3,tournament:4
    }
    enum frequency:{ month:0,two:1,three:2,five:3
    }
@@ -48,7 +49,28 @@ class Customer < ApplicationRecord
    }
    enum heart:{ laxly:0,moderate:1,stoic:2
    }
+   enum history:{ beginner:0,months:1,years:2,old_hand:3
+   }
+   
+   # フォローをした、されたの関係
+   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
 
-
+   # 一覧画面で使う
+   has_many :followings, through: :relationships, source: :followed
+   has_many :followers, through: :reverse_of_relationships, source: :follower
+   
+   # フォローしたときの処理
+   def follow(customer_id)
+     relationships.create(followed_id: customer_id)
+   end
+   # フォローを外すときの処理
+   def unfollow(customer_id)
+     relationships.find_by(followed_id: customer_id).destroy
+   end
+   # フォローしているか判定
+   def following?(customer)
+     followings.include?(customer)
+   end
 
 end

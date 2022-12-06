@@ -6,13 +6,13 @@
   </div>
 
     <%= form_with model: @post, url: posts_path, method: :post do |f| %>
-      <div class="form-group">
+      <div class="form-group ">
        <div class="row">
        <div class="col-md-5 text-right">
           <%= f.label :title, "Title",class: "control-label" %>
         </div>
         <div class="col-sm-7">
-          <%= f.text_field :title, autofocus: true, :placeholder => "Title",class: 'form-control col-5' %>
+          <%= f.text_field :title, autofocus: true, :placeholder => "Title",class: 'form-control col-5 ' %>
         </div>
       </div>
     </div>
@@ -51,7 +51,7 @@
             <% @posts.each do |post| %>
             <div class="p-3">
              <%=link_to post_path(post.id) do %>
-             <%= image_tag post.image, size: "200x200" %>
+             <%= image_tag post.image, size: "200x200",class: "rounded" %>
              <% end %>
            </div>
           <% end %>

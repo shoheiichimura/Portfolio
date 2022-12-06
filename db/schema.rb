@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_04_080114) do
+ActiveRecord::Schema.define(version: 2022_12_06_071446) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 2022_12_04_080114) do
     t.text "introduction", default: "", null: false
     t.integer "sex", default: 0, null: false
     t.integer "active_area", default: 0, null: false
+    t.integer "history", default: 0, null: false
     t.integer "objective", default: 0, null: false
     t.integer "frequency", default: 0, null: false
     t.integer "heart", default: 0, null: false
@@ -92,6 +93,13 @@ ActiveRecord::Schema.define(version: 2022_12_04_080114) do
     t.integer "customer_id"
     t.string "title", default: "", null: false
     t.text "caption", default: "", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
