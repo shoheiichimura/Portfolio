@@ -17,10 +17,12 @@ Rails.application.routes.draw do
     get 'customers/confirm' => "customers#confirm", as: 'confirm'
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw'
     get 'customers/search'
+    resources :chat_rooms, only: [:create, :show]
+    resources :chats, only: [:show, :create]
     resources :customers do
       resource :relationships, only: [:create, :destroy]
-      get 'followings' => 'relationships/followings', as: 'followings'
-      get 'followers' => 'relationships/followers', as: 'followers'
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
     end
     resources :posts do
       resources :comments, only: [:create,:destroy]

@@ -72,5 +72,9 @@ class Customer < ApplicationRecord
    def following?(customer)
      followings.include?(customer)
    end
+   
+   has_many :user_rooms
+   has_many :chat_rooms, through: :user_rooms
+   has_many :chats
 
 end
