@@ -1,6 +1,6 @@
 <div class="container py-5">
   <div class="row">
-    <h3 class="col-md-6 text-center font-weight-bold">会員編集</h3>
+    <h3 class="col-md-12 text-center font-weight-bold">会員編集</h3>
   </div>
 
 
@@ -8,10 +8,10 @@
       <div class="mt-5">
         <div class="form-group">
           <div class="row">
-            <div class="col-md-3 text-left text-md-center">
+            <div class="col-md-5 text-left text-md-right">
               <%= f.label :name, '名前', class: "control-label" %>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-7">
               <%= f.text_field :name, autofocus: true, :placeholder => "ユーザーネーム", class: 'form-control col-7' %>
             </div>
           </div>
@@ -20,10 +20,10 @@
 
         <div class="form-group">
           <div class="row">
-            <div class="col-md-3 text-left text-md-center">
+            <div class="col-md-5 text-left text-md-right">
               <%= f.label :sex, '性別', class: "control-label" %>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-7">
               <%= f.collection_radio_buttons :sex, Customer.sexes_i18n, :first, :last do |b| %>
                 <span class="mr-3">
                   <%= b.label {b.radio_button + b.text} %>
@@ -35,10 +35,10 @@
 
         <div class="form-group">
           <div class="row">
-            <div class="col-md-3 text-left text-md-center">
+            <div class="col-md-5 text-left text-md-right">
               <%= f.label :email, 'メールアドレス', class: "control-label" %>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-7">
               <%= f.email_field :email, :placeholder => "sample@example.com", class: 'form-control col-7' %>
             </div>
           </div>
@@ -46,10 +46,10 @@
 
         <div class="form-group">
           <div class="row">
-            <div class="col-md-3 text-left text-md-center">
+            <div class="col-md-5 text-left text-md-right">
              <%= f.label :active_area, "活動拠点", class: "control-label" %>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-7">
             <%= f.select :active_area,Customer.active_areas_i18n.invert,{},class: 'form-control col-7' %>
            </div>
          </div>
@@ -57,10 +57,10 @@
 
         <div class="form-group">
           <div class="row">
-            <div class="col-md-3 text-left text-md-center">
+            <div class="col-md-5 text-left text-md-right">
              <%= f.label :objective, "筋トレ目的", class: "control-label" %>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-7">
             <%= f.select :objective,Customer.objectives_i18n.invert,{},class: 'form-control col-7' %>
            </div>
          </div>
@@ -68,10 +68,10 @@
 
         <div class="form-group">
           <div class="row">
-            <div class="col-md-3 text-left text-md-center">
+            <div class="col-md-5 text-left text-md-right">
              <%= f.label :frequency, "筋トレ頻度", class: "control-label" %>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-7">
             <%= f.select :frequency,Customer.frequencies_i18n.invert,{},class: 'form-control col-7' %>
            </div>
          </div>
@@ -79,10 +79,10 @@
 
         <div class="form-group">
           <div class="row">
-            <div class="col-md-3 text-left text-md-center">
+            <div class="col-md-5 text-left text-md-right">
              <%= f.label :traning_style, "筋トレスタイル", class: "control-label" %>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-7">
             <%= f.select :traning_style,Customer.traning_styles_i18n.invert,{},class: 'form-control col-7' %>
            </div>
          </div>
@@ -90,10 +90,10 @@
 
         <div class="form-group">
           <div class="row">
-            <div class="col-md-3 text-left text-md-center">
+            <div class="col-md-5 text-left text-md-right">
              <%= f.label :heart, "筋トレの熱意", class: "control-label" %>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-7">
            <%= f.select :heart,Customer.hearts_i18n.invert,{},class: 'form-control col-7' %>
           </div>
         </div>
@@ -101,16 +101,17 @@
        
        <div class="form-group">
           <div class="row">
-            <div class="col-md-3 text-left text-md-center">
+            <div class="col-md-5 text-left text-md-right">
               <%= f.label :introduction, '自己紹介', class: "control-label" %>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-7">
               <%= f.text_area :introduction, :placeholder => "自己紹介", class: 'form-control col-7' %>
             </div>
           </div>
         </div>
 
-          <div class="actions col-7 text-center">
+          <div class="actions col-12 text-center">
            <%= f.submit "更新", class: 'btn btn-sm btn-success control-submit mr-5 mb-3' %>
+           <%= link_to "退会", confirm_path, class: 'btn btn-sm btn-danger control-submit mr-5 mb-3' %>
          </div>
          <%end %>
