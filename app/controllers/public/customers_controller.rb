@@ -33,9 +33,19 @@ class Public::CustomersController < ApplicationController
     reset_session
     redirect_to root_path
   end
+  
+  def search
+     @results = @d.result
+     render :index
+  end
 
   private
   def customer_params
   params.require(:customer).permit(:name,:introduction, :email,:sex,:profile_image,:active_area,:objective,:frequency,:heart,:traning_style)
   end
+  
+  def search_customer
+    @d = Customer.ransack(params[:q])
+  end
+  
 end

@@ -1,16 +1,10 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'relationships/followings'
-    get 'relationships/followers'
-  end
-
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -20,6 +14,9 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about', as: 'about'
+    get 'customers/confirm' => "customers#confirm", as: 'confirm'
+    patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw'
+    get 'customers/search'
     resources :customers do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships/followings', as: 'followings'
@@ -30,5 +27,6 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
   end
+
 
 end
