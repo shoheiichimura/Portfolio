@@ -13,12 +13,22 @@ class Customer < ApplicationRecord
   validates :heart, presence: true
   validates :traning_style, presence: true
 
+
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
   has_one_attached :profile_image
 
+  # ゲストログイン
+  def self.guest
+    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com',introduction: "ゲスト",sex: "0",active_area: "0",hirosima: "0",objective: "0",frequency: "0",heart: "0",traning_style: "0") do |customer|
+      customer.password = SecureRandom.urlsafe_base64
+      customer.name = "guestuser"
+    end
+  end
+
+# プロフィール画像
   def get_profile_image(width, height)
    unless profile_image.attached?
     file_path = Rails.root.join('app/assets/images/parts3.png')
@@ -27,7 +37,7 @@ class Customer < ApplicationRecord
    profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
- # 新規登録のenum記述
+ # 新規登録時のenum記述
   enum sex: { man: 0, woman: 1 }
 
   enum active_area:{ hokkaido:0,aomori:1,iwate:2,miyagi:3,akita:4,yamagata:5,hukusima:6,
@@ -51,7 +61,7 @@ class Customer < ApplicationRecord
    }
    enum history:{ beginner:0,months:1,years:2,old_hand:3
    }
-   
+
    # フォローをした、されたの関係
    has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
    has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
@@ -59,7 +69,7 @@ class Customer < ApplicationRecord
    # 一覧画面で使う
    has_many :followings, through: :relationships, source: :followed
    has_many :followers, through: :reverse_of_relationships, source: :follower
-   
+
    # フォローしたときの処理
    def follow(customer_id)
      relationships.create(followed_id: customer_id)
@@ -72,9 +82,9 @@ class Customer < ApplicationRecord
    def following?(customer)
      followings.include?(customer)
    end
-   
-   has_many :user_rooms
+
+   has_many :user_rooms, dependent: :destroy
    has_many :chat_rooms, through: :user_rooms
-   has_many :chats
+   has_many :chats, dependent: :destroy
 
 end

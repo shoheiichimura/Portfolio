@@ -1,9 +1,11 @@
-<div class="contaner p-5">
-  <div class="row pb-3 justify-content-center align-items-center" id="show">
+<div class="contaner py-5">
+  <div class="row">
+    <h1 class="col-sm-5 my-5 mx-auto text-center">User</h1>
+  </div>
+  <div class="row pb-3 justify-content-center align-items-center" id="show" >
      <div class="col-lg-3 text-center">
-
         <div class="rounded-circle">
-            <%= image_tag @customer.get_profile_image(300,300) %>
+            <%= image_tag @customer.get_profile_image(500,500) %>
         </div>
         <h5 class="font-weight-bold pt-3 ">
           <%= @customer.name %>
@@ -32,8 +34,10 @@
            <%= link_to "フォロー", customer_relationships_path(@customer.id),class: "btn-follow text-primary",method: :post %>
          <% end %>
          </strong>
+         <p><%=link_to"いいね一覧",favorites_customer_path(@customer) %></p>
      </div>
-
+         <!--チャットを始める-->
+         <!--もしログイン中のユーザーが対象のユーザーではなく、対象のユーザーをフォローしていてかつ、ぞのユーザーからフォローされていた場合リンクを出現-->
      <% if current_customer != @customer && current_customer.following?(@customer) && @customer.following?(current_customer) %>
        <%= link_to 'chatを始める', chat_path(@customer.id), class: "ml-3" %>
      <% end %>
@@ -41,8 +45,12 @@
 
 
      <!--会員詳細-->
-     <div class="col-sm-7 col-lg-5 py-3 text-left ">
-         <table class="table ">
+     <div class="col-sm-7 col-lg-5 pb-3 text-left ">
+        <h3 class="text-left"><strong>
+         <i class="fas fa-id-card mr-2"></i>：
+         <%=@customer.name %></strong>
+        </h3>
+         <table class="table mt-5">
            <tbody>
              <tr>
               <th>性別<i class="fas fa-user-circle"></i></th>

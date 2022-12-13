@@ -1,6 +1,8 @@
-<div class="col-md-8 offset-md-1">
-<h2>Users</h2>
-　<table class="table text-center">
+<div class="contaner py-5">
+  <div class="row">
+    <h1 class="col-sm-5 my-5 mx-auto text-center">Users</h1>
+  </div>
+　<table class="col-sm-8 table mx-auto text-center">
 　 <thead>
 　  <tr>
 　   <th>image</th>
@@ -11,10 +13,13 @@
 　  <tbody>
 　<% @customers.each do |customer| %>
 　<tr>
-  <td><%= image_tag customer.get_profile_image(80,80) %></td>
-  <td><%= customer.name %></td>
-  <td><%= link_to 'Show', customer_path(customer)%></td>
+    <td><%= image_tag customer.get_profile_image(80,80) %></td>
+    <%= link_to customer_path(customer) do %>
+    <td><%= customer.name %></td>
+   <% end %>
+   <td><%= link_to "Show" ,customer_path(customer)%></td>
 </tr>
 <% end %>
 </tbody>
 </table>
+

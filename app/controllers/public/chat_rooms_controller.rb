@@ -1,17 +1,18 @@
 class Public::ChatRoomsController < ApplicationController
-   before_action :authenticate_customer!
 
-  def create
-    current_customer_chat_rooms = UserRoom.where(customer_id: current_customer.id).map(&:chat_room)
-    chat_room = UserRoom.where(chat_room: current_user_chat_rooms, user_id: params[:customer_id]).map(&:chat_room).first
-    if chat_room.blank?
-      chat_room = ChatRoom.create
-      UserRoom.create(chat_room: chat_room, customer_id: current_customer.id)
-      UserRoom.create(chat_room: chat_room, customer_id: params[:customer_id])
+  def index
+    
+    # ログインユーザーが入っているルームID取得
+    @current_user_rooms = current_customer.user_rooms
+    my_room_id = []
+    # byebug
+    @current_user_rooms.each do |user_room|
+      my_room_id << user_room.chat_room.id
     end
-    redirect_to action: :show, id: chat_room.id
+     # 自分のchat_room_idでcustomer_idが自分じゃないのを取得
+     @another_user_rooms = UserRoom.where(chat_room_id: my_room_id).where('customer_id != ?', current_customer.id)
+     # トークの最後のメッセージを取得
+     @last_message = Chat.find_by(chat_room_id: @another_user_rooms.last.chat_room_id).message
   end
 
-  def show
-  end
 end

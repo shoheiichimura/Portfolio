@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <h1 class="col-sm-12 text-center">
+      DM一覧
+    </h1>
+      <% @another_user_rooms.each do |e| %>
+      <%= link_to chat_path(e.chat.id) %>
+      <%= e.customer.profile_image %>
+      <%= e.customer.name %>
+      <%= @last_message %>
+      <% end %>
+  </div>
+</div>

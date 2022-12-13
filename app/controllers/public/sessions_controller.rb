@@ -2,11 +2,17 @@
 
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-  
+
   def after_customer_sign_out_path_for
     about_path
   end
-  
+
+  def guest_sign_in
+    customer = Customer.guest
+   
+    sign_in customer  # ユーザーをログインさせる
+    redirect_to customer_path(customer), notice: 'ゲストユーザーでログインしました。'
+  end
 
   # GET /resource/sign_in
   # def new

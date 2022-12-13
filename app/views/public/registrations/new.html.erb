@@ -1,8 +1,7 @@
-<div class="container py-5">
+<div class="contaner py-5">
   <div class="row">
-    <h3 class="col-md-12 text-center font-weight-bold">新規会員登録</h3>
+    <h1 class="col-sm-5 my-5 mx-auto text-center">New user</h1>
   </div>
-
 
      <%= form_with model: @customer, url: customer_registration_path  do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>
@@ -125,10 +124,10 @@
         <div class="form-group">
           <div class="row">
             <div class="col-md-5 text-left text-md-right">
-              <%= f.label :get_profile_image, 'プロフィール画像', class: "control-label" %>
+              <%= f.label :profile_image, 'プロフィール画像', class: "control-label" %>
             </div>
             <div class="col-md-7">
-              <%= f.file_field :get_profile_image %>
+              <%= f.file_field :profile_image %>
             </div>
           </div>
         </div>
