@@ -22,9 +22,17 @@ class Customer < ApplicationRecord
 
   # ゲストログイン
   def self.guest
-    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com',introduction: "ゲスト",sex: "0",active_area: "0",hirosima: "0",objective: "0",frequency: "0",heart: "0",traning_style: "0") do |customer|
+    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com',introduction: "ゲスト",sex: 0,active_area: 0,objective: 0,frequency: 0,heart: 0,traning_style: 0) do |customer|
       customer.password = SecureRandom.urlsafe_base64
       customer.name = "guestuser"
+      customer.introduction = "ゲスト"
+      customer.sex = 0
+      customer.active_area = 0
+      customer.objective = 0
+      customer.frequency = 0
+      customer.heart = 0
+      customer.traning_style = 0
+
     end
   end
 

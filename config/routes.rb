@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about', as: 'about'
     get 'customers/confirm' => "customers#confirm", as: 'confirm'
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw'
-    get 'customers/search'
+    get 'search' => 'customers#search'
     resources :chat_rooms, only: [:index]
     resources :chats, only: [:show, :create]
     resources :customers do
@@ -44,7 +44,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
      root to: 'homes#top'
-     resources :customers
+     resources :customers, only: [:index,:show,:edit,:update,:destroy]
   end
 
 end

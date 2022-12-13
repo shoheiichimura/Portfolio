@@ -4,10 +4,12 @@
       DM一覧
     </h1>
       <% @another_user_rooms.each do |e| %>
-      <%= link_to chat_path(e.chat.id) %>
-      <%= e.customer.profile_image %>
+      <%= link_to chat_path(e.chat_room_id) do %>
+      <%= image_tag e.customer.profile_image %>
       <%= e.customer.name %>
-      <%= @last_message %>
       <% end %>
+      <%= e.chat_room.chats.order('created_at DESC').first.message %>
+      <% end %>
+
   </div>
 </div>

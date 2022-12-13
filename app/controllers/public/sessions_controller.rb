@@ -11,7 +11,7 @@ class Public::SessionsController < Devise::SessionsController
     customer = Customer.guest
    
     sign_in customer  # ユーザーをログインさせる
-    redirect_to customer_path(customer), notice: 'ゲストユーザーでログインしました。'
+    redirect_to root_path, notice: 'ゲストユーザーでログインしました。'
   end
 
   # GET /resource/sign_in

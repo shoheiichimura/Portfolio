@@ -4,48 +4,40 @@
       <%= @customer.name %> さんとのチャットルーム
     </h1>
   </div>
-  
   <% @chats.each do |chat| %>
     <% if chat.customer_id == current_customer.id %>
-      <div class="row">
-        <div class="col-sm-8" >
-          <div class="sb-box">
-            <div class="icon-img icon-img-left">
-             （画像）
-            </div><!-- /.icon-img icon-img-left -->
-            <div class="icon-name icon-name-left">
-               <%= @customer.name %>oooooooooooooooo
-            </div>
-           <div class="sb-side sb-side-left">
-             <div class="sb-txt sb-txt-left">
-                <%= chat.message %>
-             </div><!-- /.sb-txt sb-txt-left -->
-           </div><!-- /.sb-side sb-side-left -->
-         </div><!-- /.sb-box -->
-<!-- 吹き出し（左）の終わり -->
-<!-- 吹き出し（右）の始まり -->
-         <% else %>
-         <div class="sb-box">
-             <div class="icon-img icon-img-right">
-                 （画像)
-             </div><!-- /.icon-img icon-img-right -->
-             <div class="icon-name icon-name-right"><% current_customer.name %></div>
-             <div class="sb-side sb-side-right">
-                 <div class="sb-txt sb-txt-right">
-                     <%= chat.message %>
-                 </div><!-- /.sb-txt sb-txt-right -->
-             </div><!-- /.sb-side sb-side-right -->
-          </div><!-- /.sb-box -->
-        <% end %>
-     <% end %>
-<!-- 吹き出し（右）の終わり -->
+      <%= @customer.name %>
+        <%= chat.message %>
+          <% else %>
+            <% current_customer.name %>
+              <%= chat.message %>
+      <% end %>
+   <% end %>
+   
+ <div class="kaiwa line">
+  <% @chats.each do |chat| %>
+    <% if chat.customer_id == current_customer.id %>
+	<div class="name">
+		<%= @customer.name %>
+	</div>
+	<div class="fukidasi left">
+		<%= chat.message %>
+	</div>
+	 <% else %>
+	<div class="fukidasi right">
+	<%= chat.message %>
+	</div>
+	 <% end %>
+   <% end %>
+   </div>
    
       
-
+       
+  
   <div class="errors">
     <%= render "layouts/errors", obj: @chat %>
   </div>
-  
+
   <%= form_with model: @chat, data: {remote: true} do |f| %>
     <%= f.text_field :message %>
     <%= f.hidden_field :chat_room_id %>
