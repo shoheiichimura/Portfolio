@@ -1,31 +1,20 @@
-<div class="search-data">
-  <h3>検索</h3>
-  <%= search_form_for @d, url: customers_search_path do |f| %>
-    <%= f.label :sex_ep, '性別検索' %>
-    <%= f.collection_select :sex_ep, @customer, :sex, :sex, include_blank: '指定なし' %>
-    <%= f.submit '検索' %>
-    <% end %>
-</div>
-
-<h1>検索結果</h1>
-<% if @results.length !=0 %>
-  <% @results.each do |result| %>
-    <td>
-    <br>
-    <li>
-      <%= result.name %>
-      <%= result.sex %>
-      <%= result.active_area %>
-      <%= result.history %>
-      <%= result.objective %>
-      <%= result.frequency %>
-      <%= result.heart %>
-      <%= result.traning_style %>
-      <%= result.introduction %>
-    </li>
-  <% end %>
-<% else %>
-  該当する会員はおりません
+<div class="col-md-8 offset-md-1">
+<h2>Users</h2>
+　<table class="table text-center">
+　 <thead>
+　  <tr>
+　   <th>image</th>
+　   <th>name</th>
+　   <th colspan="3"></th>
+　   </tr>
+　  </thead>
+　  <tbody>
+　<% @customers.each do |customer| %>
+　<tr>
+  <td><%= image_tag customer.get_profile_image(80,80) %></td>
+  <td><%= customer.name %></td>
+  <td><%= link_to 'Show', customer_path(customer)%></td>
+</tr>
 <% end %>
-<br>
-<%= link_to 'トップページへ戻る', root_path %>
+</tbody>
+</table>

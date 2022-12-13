@@ -5,7 +5,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def show
-    @customer = current_customer
+    @customer = Customer.find(params[:id])
     @posts = @customer.posts
   end
 
@@ -28,12 +28,12 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdraw
-    @customer = currrent_customer
+    @customer = current_customer
     @customer.update(is_deleted: true)
     reset_session
     redirect_to root_path
   end
-  
+
   def search
      @results = @d.result
      render :index
@@ -43,9 +43,9 @@ class Public::CustomersController < ApplicationController
   def customer_params
   params.require(:customer).permit(:name,:introduction, :email,:sex,:profile_image,:active_area,:objective,:frequency,:heart,:traning_style)
   end
-  
+
   def search_customer
     @d = Customer.ransack(params[:q])
   end
-  
+
 end

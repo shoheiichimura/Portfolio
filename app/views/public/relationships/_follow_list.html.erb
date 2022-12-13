@@ -1,22 +1,26 @@
-<% if customers.exists? %>
-  <% customers.each do |customer| %>
-    <table>
-      <thead>
-        <tr>
-          <th>name</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><%= customer.name %></td>
-          <td>フォロー数: <%= customer.followings.count %></td>
-          <td>フォロワー数: <%= customer.followers.count %></td>
-        </tr>
-      </tbody>
-    </table>
-  <% end %>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
+<div clss="container">
+  <div class="row">
+    <div class="col-md-6 offset-3">
+     <% if customers.exists? %>
+       <% customers.each do |customer| %>
+         <table class="table table-hover">
+           <tbody>
+             <tr>
+               <td><%= customer.name %></td>
+               <td>フォロー数: <%= customer.followings.count %></td>
+               <td>フォロワー数: <%= customer.followers.count %></td>
+               <td>
+                   <% if current_customer != customer && current_customer.following?(customer) && customer.following?(current_customer) %>
+                     <%= link_to 'chatを始める', chat_path(customer.id), class: "ml-3" %>
+                    <% end %>
+                </td>
+              </tr>
+             </tbody>
+            </table>
+           <% end %>
+         <% else %>
+       <p>ユーザーはいません</p>
+     <% end %>
+    </div>
+  </div>
+
