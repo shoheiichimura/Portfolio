@@ -1,6 +1,6 @@
 <div class="container py-5 top">
   <div class="row align-items-center" style="padding-top: 60px;">
-    <div class="col-md-5 m-5 mx-auto text-center">
+    <div class="col-sm-5 m-5 mx-auto text-center">
       <h1><strong>Traning_friend</strong></h1>
       <h2>Welcom to <strong>Traning_friend !!</strong></h2>
     </div>
@@ -19,5 +19,10 @@
     <div class="col py-4 text-center">
        <%= link_to "Sign in", new_customer_registration_path, class: "btn-top btn-border-shadow btn-border-shadow--color2" %>
     </div>
+  </div>
+  <div class="row">
+     <div class="col py-4 text-center">
+       <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, class: "btn-top btn-border-shadow btn-border-shadow--color2", method: :post %>
+     </div>
   </div>
 </div>

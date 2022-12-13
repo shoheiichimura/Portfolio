@@ -5,13 +5,18 @@ class Public::ChatsController < ApplicationController
   def show
     @customer = Customer.find(params[:id]) #チャットする相手は誰か？
     chat_rooms = current_customer.user_rooms.pluck(:chat_room_id) #ログイン中のユーザーの部屋情報を全て取得
-    user_rooms = UserRoom.find_by(customer_id: @customer.id, chat_room_id: chat_rooms)#その中にチャットする相手とのルームがあるか確認
+     # user_roomモデルから
+     # customer_idがチャット相手のidが一致するものと、
+     # chat_room_idが上記chat_roomsのどれかに一致するレコードを
+     # user_roomsに代入。
+    user_rooms = UserRoom.find_by(customer_id: @customer.id, chat_room_id: chat_rooms)
 
-    unless user_rooms.nil? #ユーザールームが無くなかった
+    unless user_rooms.nil?  # もしuser_roomが空でないなら
       @chat_room = user_rooms.chat_room #変数@chat_roomにユーザー（自分と相手）と紐づいているchat_roomを代入
     else  #ユーザールームが無かった場合
-      @chat_room = ChatRoom.new#新しくChat_Roomを作る
+      @chat_room = ChatRoom.new # それ以外は新しくroomを作り、
       @chat_room.save  #そして保存
+       # user_roomをカレントユーザー分とチャット相手分を作る
       UserRoom.create(customer_id: current_customer.id, chat_room_id: @chat_room.id) #自分の中間テーブルを作る
       UserRoom.create(customer_id: @customer.id, chat_room_id: @chat_room.id) #相手の中間テーブルを作る
     end
@@ -23,6 +28,7 @@ class Public::ChatsController < ApplicationController
     @chat = current_customer.chats.new(chat_params)
     render :validater unless @chat.save
   end
+  
 
   private
   def chat_params

@@ -1,25 +1,37 @@
-<h2>Log in</h2>
+<div class="container py-5">
+  <div class="row">
+    <h1 class="col-md-8 text-center font-weight-bold">管理者Log in</h1>
+  </div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <%= render "public/shared/error_messages", resource: resource %>
+   <div class="mt-5">
+    <div class="form-group">
+          <div class="row">
+            <div class="col-md-5 text-left text-md-right">
+              <%= f.label :email, 'メールアドレス', class: "control-label" %>
+            </div>
+            <div class="col-md-7">
+              <%= f.email_field :email, :placeholder => "sample@example.com", class: 'form-control col-7' %>
+            </div>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <div class="form-group">
+         <div class="row">
+           <div class="col-md-5 text-left text-md-right">
+            <%= f.label :password, "パスワード６文字以上", class: "control-label" %>
+            <% if @minimum_password_length %>
+            <em><% @minimum_password_length %></em>
+            <% end %>
+           </div>
+           <div class="col-md-7">
+            <%= f.password_field :password, class: 'form-control col-7' %>
+          </div>
+        </div>
+       </div>
+     <div class="actions col-12 text-center">
+    <%= f.submit "Log in", class: 'btn btn-sm btn-success control-submit mr-5 mb-3' %>
   </div>
 <% end %>
 

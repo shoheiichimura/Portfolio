@@ -12,6 +12,7 @@ class Public::SearchesController < ApplicationController
   private
   
   def search_customer
-    @d = Customer.ransack(params[:q])
+    @p = Customer.ransack(params[:q])  # 検索オブジェクトを生成
+    @results = @p.result
   end
 end

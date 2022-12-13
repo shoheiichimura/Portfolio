@@ -1,0 +1,36 @@
+
+<!--@pに検索の情報を入れて、コントローラーに渡します。-->
+<%= search_form_for q do |f| %>
+  <div class = 'nav-up'>
+<!--:title_or_text_contは、text_fieldに入力した文字がtitleかtextの中に含まれているか、という記述-->
+    <%= f.search_field :name_cont, placeholder: "キーワードから探す", class: "input-box" %>
+    <%= f.submit %>
+  </div>
+  <div class='nav-down'>
+    <div class='label-select'>
+      <%= f.label :sex_eq, '性別', class: 'label' %>
+      <%= f.select :sex_eq, Customer.sexes_i18n.map {|k, v| [v,Customer.sexes[k]] }, {include_blank: '指定なし'}, {class: 'search-select'} %>
+    </div>
+    <div class='label-select'>
+      <%= f.label :active_area_eq, '活動拠点', class: 'label' %>
+      <%= f.select :active_area_eq, Customer.active_areas_i18n.map {|k, v| [v,Customer.active_areas[k]] }, {include_blank: '指定なし'}, {class: 'search-select'} %>
+    </div>
+    <div class='label-select'>
+      <%= f.label :history_eq, '筋トレ歴', class: 'label' %>
+      <%= f.select :history_eq, Customer.histories_i18n.map {|k, v| [v,Customer.histories[k]] }, {include_blank: '指定なし'},  {class: 'search-select'}%>
+    </div>
+    <div class='label-select'>
+      <%= f.label :objective_eq, '筋トレ目的', class: 'label' %>
+      <%= f.select :objective_eq, Customer.objectives_i18n.map {|k, v| [v,Customer.objectives[k]] }, {include_blank: '指定なし'}, {class: 'search-select'}%>
+    </div>
+    <div class='label-select'>
+      <%= f.label :frequency_eq, '筋トレ頻度', class: 'label' %>
+      <%= f.select :frequency_eq, Customer.frequencies_i18n.map {|k, v| [v,Customer.frequencies[k]] }, {include_blank: '指定なし'}, {class: 'search-select'}%>
+    </div>
+    <div class='label-select'>
+      <%= f.label :traning_style_eq, '筋トレスタイル', class: 'label' %>
+      <%= f.select :traning_style_eq, Customer.traning_styles_i18n.map {|k, v| [v,Customer.traning_styles[k]] }, {include_blank: '指定なし'},  {class: 'search-select'} %>
+    </div>
+  </div>
+<% end %>
+

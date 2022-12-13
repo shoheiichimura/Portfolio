@@ -1,7 +1,10 @@
 class Public::CustomersController < ApplicationController
+   before_action :search_customer, only: [:index]
+   before_action :ensure_guest_user, only: [:edit]
 
   def index
-    @customers = Customer.all
+    @q = Customer.ransack(params[:q])  # 検索オブジェクトを生成
+    @results = @q.result
   end
 
   def show
@@ -14,7 +17,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    @customer = current_customer
+    @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
       flash[:alert] = "更新完了しました！"
       redirect_to customer_path(@customer)
@@ -34,18 +37,28 @@ class Public::CustomersController < ApplicationController
     redirect_to root_path
   end
 
-  def search
-     @results = @d.result
-     render :index
+  def favorites
+    @customer = Customer.find(params[:id])
+    favorites = Favorite.where(customer_id: @customer.id).pluck(:post_id)
+    @favorite_posts = Post.find(favorites)
   end
 
   private
+
   def customer_params
   params.require(:customer).permit(:name,:introduction, :email,:sex,:profile_image,:active_area,:objective,:frequency,:heart,:traning_style)
   end
 
   def search_customer
-    @d = Customer.ransack(params[:q])
+    @q = Customer.ransack(params[:q])  # 検索オブジェクトを生成
+    @results = @q.result
+  end
+
+  def ensure_guest_user
+    @customer = Customer.find(params[:id])
+    if @customer.name == "guestuser"
+      redirect_to customer_path(current_customer) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    end
   end
 
 end
