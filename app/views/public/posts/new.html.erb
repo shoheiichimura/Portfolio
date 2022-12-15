@@ -6,7 +6,7 @@
     <%= form_with model: @post, url: posts_path, method: :post do |f| %>
       <div class="form-group ">
        <div class="row">
-       <div class="col-md-5 text-right">
+       <div class="col-md-5 text-right" style="align-items: center;">
           <%= f.label :title, "Title",class: "control-label" %>
         </div>
         <div class="col-sm-7">
@@ -17,7 +17,7 @@
 
     <div class="form-grap m-3">
       <div class="row">
-       <div class="col-md-5 text-right">
+       <div class="col-md-5 text-right" style="align-items: center;">
           <%= f.label :caption, "Caption", class: "control-label" %>
         </div>
         <div class="col-sm-7">

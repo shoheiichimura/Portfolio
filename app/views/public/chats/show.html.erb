@@ -4,43 +4,34 @@
       <%= @customer.name %> さんとのチャットルーム
     </h1>
   </div>
-  <% @chats.each do |chat| %>
-    <% if chat.customer_id == current_customer.id %>
-      <%= @customer.name %>
-        <%= chat.message %>
-          <% else %>
-            <% current_customer.name %>
-              <%= chat.message %>
+
+  <div class="row">
+    <div class="col-sm-6 mx-auto text-center">
+       <% @chats.each do |chat| %>
+        <% if chat.customer_id == current_customer.id %>
+         <p style="text-align:right;">
+           <span id="me"><%= chat.message %></span>
+           <%= image_tag current_customer.profile_image, :size =>'50x50', class: "rounded-circle mx-4"%>
+         </p>
+       <% else %>
+         <p style="text-align:left;">
+            <%= link_to customer_path(@customer) do %><%= image_tag @customer.profile_image,  :size =>'50x50',class: "rounded-circle mx-4" %><% end %>
+           <span id="you"><%= chat.message %></span>
+        </p>
+       <% end %>
       <% end %>
-   <% end %>
-   
- <div class="kaiwa line">
-  <% @chats.each do |chat| %>
-    <% if chat.customer_id == current_customer.id %>
-	<div class="name">
-		<%= @customer.name %>
-	</div>
-	<div class="fukidasi left">
-		<%= chat.message %>
-	</div>
-	 <% else %>
-	<div class="fukidasi right">
-	<%= chat.message %>
-	</div>
-	 <% end %>
-   <% end %>
-   </div>
-   
-      
-       
-  
-  <div class="errors">
-    <%= render "layouts/errors", obj: @chat %>
+    </div>
   </div>
 
-  <%= form_with model: @chat, data: {remote: true} do |f| %>
-    <%= f.text_field :message %>
-    <%= f.hidden_field :chat_room_id %>
-  <% end %>
-  
+  <div class="form-group">
+    <div class="row">
+      <div class="col-sm-9 d-flex justify-content-end">
+        <%= form_with model: @chat, data: {remote: true} do |f| %>
+        <%= f.text_field :message, class: "form-control col-12" %>
+        <%= f.hidden_field :chat_room_id %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+
 </div>

@@ -4,11 +4,11 @@
     <h1 class="col-sm-5 my-5 mx-auto text-center">Details</h1>
   </div>
 
-    <div class="card mx-auto rounded-3 shadow p-3 mb-5 bg-body rounded" style="width: 35rem;">
+    <div class="card mx-auto rounded-3 shadow p-3 mb-5 bg-body rounded" style="width: 80rem;">
       <h5 class="card-header"><%= @post.customer.name %>
-       <%# if @post.customer == current_customer %>
-        <%= link_to "・・・", edit_post_path(@post) %>
-       <%# end %>
+       <% if @post.customer == current_customer %>
+        <%= link_to "編集", edit_post_path(@post) %>
+       <% end %>
       </h5>
       <%= image_tag @post.image %>
       <div class="card-body">
@@ -23,17 +23,17 @@
          <!--ここからコメント-->
           <% @post.comments.each do |comment| %>
           <p class="m-0 p-0 border-top">
-            <%= image_tag comment.customer.get_profile_image(50,500) %>
+            <%= image_tag comment.customer.profile_image, :size =>'50x50', class: "rounded-circle"%>
              <%= comment.customer.name %>
              <span class="text-black-50"><small>
              <i class="far fa-clock clock-icon"></i><%= time_ago_in_words(comment.created_at) %>前
              </small></span>
              <% if comment.customer == current_customer %>
-             <%= link_to post_comment_path(@post, comment), method: :delete do %>
+             <%= link_to post_comment_path(@post, comment), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
                <i class="fas fa-trash-alt text-black-50"></i>
              <% end %>
              </p>
-             <div class="py-2">
+             <div class="py-2 text-center">
              <%= comment.comment %>
              </div>
               <% end %>

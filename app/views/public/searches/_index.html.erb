@@ -1,35 +1,78 @@
 
 <!--@pに検索の情報を入れて、コントローラーに渡します。-->
 <%= search_form_for q do |f| %>
-  <div class = 'nav-up'>
+  <div class = 'nav-up h4'>
+    <div class='row'>
+       <div class="col-md-12 text-md-center ">
 <!--:title_or_text_contは、text_fieldに入力した文字がtitleかtextの中に含まれているか、という記述-->
-    <%= f.search_field :name_cont, placeholder: "キーワードから探す", class: "input-box" %>
-    <%= f.submit %>
+          <%= f.search_field :name_cont, placeholder: "キーワードから探す", class: "input-box mr-3" %>
+          <%= f.submit class: "btn btn-outline-primary btn-sm"%>
+       </div>
+     </div>
   </div>
-  <div class='nav-down'>
-    <div class='label-select'>
-      <%= f.label :sex_eq, '性別', class: 'label' %>
-      <%= f.select :sex_eq, Customer.sexes_i18n.map {|k, v| [v,Customer.sexes[k]] }, {include_blank: '指定なし'}, {class: 'search-select'} %>
+
+  <div class='nav-down h4'>
+    <div class='row'>
+      <div class="col-md-6 text-left text-md-right ">
+        <%= f.label :sex_eq, '性別', class: 'label' %><i class="fas fa-user-circle" style="color:#800080"></i>
+      </div>
+      <div class="col-md-6">
+        <%= f.select :sex_eq, Customer.sexes_i18n.map {|k, v| [v,Customer.sexes[k]] }, {include_blank: '指定なし'}, {class: 'search-select'} %>
+      </div>
     </div>
-    <div class='label-select'>
-      <%= f.label :active_area_eq, '活動拠点', class: 'label' %>
-      <%= f.select :active_area_eq, Customer.active_areas_i18n.map {|k, v| [v,Customer.active_areas[k]] }, {include_blank: '指定なし'}, {class: 'search-select'} %>
+
+    <div class='row'>
+      <div class="col-md-6 text-left text-md-right ">
+        <%= f.label :active_area_eq, '活動拠点', class: 'label' %><i class="fas fa-map-pin" style="color:#00BB00;"></i>
+      </div>
+      <div class="col-md-6">
+        <%= f.select :active_area_eq, Customer.active_areas_i18n.map {|k, v| [v,Customer.active_areas[k]] }, {include_blank: '指定なし'}, {class: 'search-select'} %>
+      </div>
     </div>
-    <div class='label-select'>
-      <%= f.label :history_eq, '筋トレ歴', class: 'label' %>
-      <%= f.select :history_eq, Customer.histories_i18n.map {|k, v| [v,Customer.histories[k]] }, {include_blank: '指定なし'},  {class: 'search-select'}%>
+
+    <div class='row'>
+      <div class="col-md-6 text-left text-md-right">
+        <%= f.label :history_eq, '筋トレ歴', class: 'label' %><i class="fas fa-hiking" style="color:#B8860B; margin-left:5px"></i>
+      </div>
+      <div class="col-md-6">
+        <%= f.select :history_eq, Customer.histories_i18n.map {|k, v| [v,Customer.histories[k]] }, {include_blank: '指定なし'},  {class: 'search-select'}%>
+      </div>
     </div>
-    <div class='label-select'>
-      <%= f.label :objective_eq, '筋トレ目的', class: 'label' %>
-      <%= f.select :objective_eq, Customer.objectives_i18n.map {|k, v| [v,Customer.objectives[k]] }, {include_blank: '指定なし'}, {class: 'search-select'}%>
+
+    <div class='row'>
+      <div class="col-md-6 text-left text-md-right">
+        <%= f.label :objective_eq, '筋トレ目的', class: 'label' %><i class="fas fa-bullseye" style="color:#FF773E;"></i>
+      </div>
+       <div class="col-md-6">
+        <%= f.select :objective_eq, Customer.objectives_i18n.map {|k, v| [v,Customer.objectives[k]] }, {include_blank: '指定なし'}, {class: 'search-select'}%>
+      </div>
     </div>
-    <div class='label-select'>
-      <%= f.label :frequency_eq, '筋トレ頻度', class: 'label' %>
-      <%= f.select :frequency_eq, Customer.frequencies_i18n.map {|k, v| [v,Customer.frequencies[k]] }, {include_blank: '指定なし'}, {class: 'search-select'}%>
+
+    <div class='row'>
+      <div class="col-md-6 text-left text-md-right">
+        <%= f.label :frequency_eq, '筋トレ頻度', class: 'label' %><i class="fas fa-sort-amount-down" style="color:#0000FF;"></i>
+      </div>
+      <div class="col-md-6">
+        <%= f.select :frequency_eq, Customer.frequencies_i18n.map {|k, v| [v,Customer.frequencies[k]] }, {include_blank: '指定なし'}, {class: 'search-select'}%>
+      </div>
     </div>
-    <div class='label-select'>
-      <%= f.label :traning_style_eq, '筋トレスタイル', class: 'label' %>
-      <%= f.select :traning_style_eq, Customer.traning_styles_i18n.map {|k, v| [v,Customer.traning_styles[k]] }, {include_blank: '指定なし'},  {class: 'search-select'} %>
+
+    <div class='row'>
+       <div class="col-md-6 text-left text-md-right">
+        <%= f.label :traning_style_eq, '筋トレスタイル', class: 'label' %><i class="fas fa-running" style="color:#FFFF00;"></i>
+       </div>
+       <div class="col-md-6">
+        <%= f.select :traning_style_eq, Customer.traning_styles_i18n.map {|k, v| [v,Customer.traning_styles[k]] }, {include_blank: '指定なし'},  {class: 'search-select'} %>
+       </div>
+    </div>
+
+    <div class='row'>
+       <div class="col-md-6 text-left text-md-right">
+        <%= f.label :heart_eq, '筋トレの熱意', class: 'label' %><i class="fas fa-fire" style="color:#FF0000"></i>
+       </div>
+       <div class="col-md-6">
+        <%= f.select :heart_eq, Customer.hearts_i18n.map {|k, v| [v,Customer.hearts[k]] }, {include_blank: '指定なし'},  {class: 'search-select'} %>
+       </div>
     </div>
   </div>
 <% end %>

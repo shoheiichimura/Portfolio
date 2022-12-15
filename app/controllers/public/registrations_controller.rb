@@ -3,6 +3,7 @@
 class Public::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  before_action :authenticate_customer!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
    def after_sign_in_path_for(resource)
@@ -14,6 +15,10 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
     def after_sign_out_path_for(resource)
     about_path
+    end
+
+    def after_customer_sign_out_path_for
+    admin_session_path
     end
 
    protected

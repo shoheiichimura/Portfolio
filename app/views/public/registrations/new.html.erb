@@ -6,7 +6,7 @@
      <%= form_with model: @customer, url: customer_registration_path  do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>
       <div class="mt-5">
-        <div class="form-group">
+        <div class="form-group h4">
           <div class="row">
             <div class="col-md-5 text-left text-md-right ">
               <%= f.label :name, '名前', class: "control-label" %>
@@ -18,7 +18,7 @@
         </div>
        </div>
 
-        <div class="form-group">
+        <div class="form-group h4">
           <div class="row">
             <div class="col-md-5 text-left text-md-right ">
               <%= f.label :sex, '性別', class: "control-label " %>
@@ -33,7 +33,7 @@
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group h4">
           <div class="row">
             <div class="col-md-5 text-left text-md-right">
               <%= f.label :email, 'メールアドレス', class: "control-label" %>
@@ -44,7 +44,7 @@
           </div>
         </div>
         
-        <div class="form-group">
+        <div class="form-group h4">
           <div class="row">
             <div class="col-md-5 text-left text-md-right">
              <%= f.label :history, "筋トレ歴", class: "control-label" %>
@@ -55,7 +55,7 @@
          </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group h4">
           <div class="row">
             <div class="col-md-5 text-left text-md-right">
              <%= f.label :active_area, "活動拠点", class: "control-label" %>
@@ -66,7 +66,7 @@
          </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group h4">
           <div class="row">
             <div class="col-md-5 text-left text-md-right">
              <%= f.label :objective, "筋トレ目的", class: "control-label" %>
@@ -77,7 +77,7 @@
          </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group h4">
           <div class="row">
             <div class="col-md-5 text-left text-md-right">
              <%= f.label :frequency, "筋トレ頻度", class: "control-label" %>
@@ -88,7 +88,7 @@
          </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group h4">
           <div class="row">
             <div class="col-md-5 text-left text-md-right">
              <%= f.label :traning_style, "筋トレスタイル", class: "control-label" %>
@@ -99,7 +99,7 @@
          </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group h4">
           <div class="row">
             <div class="col-md-5 text-left text-md-right">
              <%= f.label :heart, "筋トレの熱意", class: "control-label" %>
@@ -110,7 +110,7 @@
         </div>
        </div>
 
-       <div class="form-group">
+       <div class="form-group h4">
           <div class="row">
             <div class="col-md-5 text-left text-md-right">
               <%= f.label :introduction, '自己紹介', class: "control-label" %>
@@ -121,7 +121,7 @@
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group h4">
           <div class="row">
             <div class="col-md-5 text-left text-md-right">
               <%= f.label :profile_image, 'プロフィール画像', class: "control-label" %>
@@ -132,7 +132,7 @@
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group h4">
          <div class="row">
            <div class="col-md-5 text-left text-md-right">
             <%= f.label :password, "パスワード６文字以上", class: "control-label" %>
@@ -146,7 +146,7 @@
         </div>
        </div>
 
-       <div class="form-group">
+       <div class="form-group h4">
          <div class="row">
            <div class="col-md-5 text-left text-md-right">
             <%= f.label :password_confirmation, "パスワード(確認用)", class: "control-label" %>
@@ -164,7 +164,7 @@
          </div>
          <%end %>
          <div class="row">
-          <div class="col-md-4 pr-0 text-right text-md-center font-weight-bold">既に登録済みの方は
+          <div class="col-md-12 pr-0  text-md-center font-weight-bold">既に登録済みの方は
            <%= link_to "こちら", new_customer_session_path %>
           </div>
 </div>

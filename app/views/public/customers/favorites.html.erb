@@ -1,14 +1,18 @@
 <div class="contaner py-5">
   <div class="row">
-    <h1 class="col-sm-5 my-5 mx-auto text-center">いいね一覧</h1>
+    <h1 class="col-sm-5 my-5 mx-auto text-center">いいね一覧<i class="fas fa-heart unlike-btn"></i></h1>
   </div>
   <div class="row">
     <div class="col-sm-12 text-center">
+      <% if @favorite_posts.present? %>
       <% @favorite_posts.each do |post|%>
        <%= link_to post_path(post) do %>
          <%= post.customer.name %>
          <%= post.title %>
         <% end %>
+      <% end %>
+      <% else %>
+      <p>いいねした投稿がありません。</p>
       <% end %>
     </div>
   </div>

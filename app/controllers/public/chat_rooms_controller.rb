@@ -1,7 +1,6 @@
 class Public::ChatRoomsController < ApplicationController
 
   def index
-    
     # ログインユーザーが入っているルームID取得
     @current_user_rooms = current_customer.user_rooms
     my_room_id = []

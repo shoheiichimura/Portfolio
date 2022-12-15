@@ -88,20 +88,57 @@ a.btn-border-shadow--color2:before {
 
 // ここからトップページ
 .top {
-  height: 700px;
+  height: 620px;
 }
 
-// ここからaboutページ
-.about {
-  height: 700px;
-}
 
 h1 {
 	color: #000;
 	border-bottom: solid 2px #73cfe6;
 	padding: 10px 0;
+	font-weight: 900;
+	font-size: 30px;
 }
 h1:first-letter {
 	color: #73cfe6;
-	font-size: 30px;
+	font-size: 50px;
+}
+
+// アバウトページレイアウト
+.kakomi-tape2 {
+ position: relative;
+ width: 90%;
+ margin: 2.5em auto;
+ padding: 35px 30px 20px;
+ color: black;/* 文字色 */
+ background-color: #fff; /*枠背景色*/
+ box-shadow: inset 0 0 40px rgba(204, 186, 136,1), 0 2px 2px #ccc;
+}
+.kakomi-tape2::before {
+ display: block;
+ position: absolute;
+ content: "";
+ width: 140px;
+ height: 35px;
+ left: 35%;
+ top: -16px;
+ background-color: rgba(204, 186, 136,0.3);/*テープ色*/
+ box-shadow: 0 0 3px rgba(0,0,0,0.1);
+ transform: rotate( -3deg ); /*テープ角度*/
+}
+
+.text {
+	color: #000;
+	border-bottom: solid 2px #73cfe6;
+	padding: 10px 0;
+	font-weight: 900;
+	font-size: 80px;
+}
+.text:first-letter {
+	color: #73cfe6;
+	font-size: 130px;
+}
+
+.form-group {
+  font-weight: 900;
 }

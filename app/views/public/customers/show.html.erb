@@ -2,82 +2,85 @@
   <div class="row">
     <h1 class="col-sm-5 my-5 mx-auto text-center">User</h1>
   </div>
-  <div class="row pb-3 justify-content-center align-items-center" id="show" >
+  <div class="row pb-3 justify-content-center align-items-center">
      <div class="col-lg-3 text-center">
         <div class="rounded-circle">
             <%= image_tag @customer.profile_image, :size =>'350x350', class: "rounded-circle" %>
         </div>
-        <h5 class="font-weight-bold pt-3 ">
+        <h3 class="font-weight-bold pt-3 ">
           <%= @customer.name %>
             <%= link_to  edit_customer_path(@customer) do %>
               <i class="fas fa-user-cog" style="color: black; margin-left:5px"></i>
             <% end %>
-        </h5>
+        </h3>
 
-        <div class="font-weight-bold">
+        <h4 class="font-weight-bold">
             投稿<%= @posts.count %>件
-        </div>
-        <div class="font-weight-bold">
-           <%= link_to customer_followings_path(@customer) do %>
+            <%=link_to"いいね一覧",favorites_customer_path(@customer), class: "ml-3 text-body" %><i class="fas fa-heart" style="color: #e54747;"></i>
+        </h4>
+        <h4 class="font-weight-bold">
+           <%= link_to customer_followings_path(@customer), class: "text-body" do %>
              フォロー中:<%= @customer.followings.count %>人
            <% end %>
-           <%= link_to customer_followers_path(@customer) do %>
+           <%= link_to customer_followers_path(@customer),  class: "text-body" do %>
              フォロワー:<%= @customer.followers.count %>人
            <% end %>
-        </div>
+        </h4>
 
          <!--フォロー機能-->
          <% if current_customer.following?(@customer) %>
-          <strong>
-           <%= link_to "フォロー中", customer_relationships_path(@customer.id),class: "btn-follow text-primary",method: :delete %>
+           <%= link_to "フォロー中", customer_relationships_path(@customer.id),class: "btn-follow text-primary font-weight-bold h4 mt-2",method: :delete %>
          <% else %>
-           <%= link_to "フォロー", customer_relationships_path(@customer.id),class: "btn-follow text-primary",method: :post %>
+           <%= link_to "フォロー", customer_relationships_path(@customer.id),class: "btn-follow text-primary font-weight-bold h4 mt-2",method: :post %>
          <% end %>
-         </strong>
-         <p><%=link_to"いいね一覧",favorites_customer_path(@customer) %></p>
+
      </div>
-         <!--チャットを始める-->
-         <!--もしログイン中のユーザーが対象のユーザーではなく、対象のユーザーをフォローしていてかつ、ぞのユーザーからフォローされていた場合リンクを出現-->
-     <% if current_customer != @customer && current_customer.following?(@customer) && @customer.following?(current_customer) %>
-       <%= link_to 'chatを始める', chat_path(@customer.id), class: "ml-3" %>
-     <% end %>
 
 
 
      <!--会員詳細-->
      <div class="col-sm-7 col-lg-5 pb-3 text-left ">
-        <h3 class="text-left"><strong>
+        <h2 class="text-left"><strong>
          <i class="fas fa-id-card mr-2"></i>：
          <%=@customer.name %></strong>
-        </h3>
-         <table class="table mt-5">
+         <!--チャットを始める-->
+         <!--もしログイン中のユーザーが対象のユーザーではなく、対象のユーザーをフォローしていてかつ、ぞのユーザーからフォローされていた場合リンクを出現-->
+         <% if current_customer != @customer && current_customer.following?(@customer) && @customer.following?(current_customer) %>
+           <%= link_to 'Chatを始める', chat_path(@customer.id), class: "ml-3" %>
+         <% end %>
+        </h2>
+         <table class="table mt-5 h3 " >
            <tbody>
              <tr>
-              <th>性別<i class="fas fa-user-circle"></i></th>
+              <th>性別<i class="fas fa-user-circle" style="color:#800080; margin-left:5px"></i></th>
               <td><%= @customer.sex_i18n %></td>
             </tr>
             <tr>
-              <th>活動拠点<i class="fas fa-map-pin"></i></th>
+              <th>活動拠点<i class="fas fa-map-pin" style="color:#00BB00; margin-left:5px"></i></th>
               <td><%= @customer.active_area_i18n %></td>
             </tr>
             <tr>
-              <th>筋トレ目的<i class="fas fa-bullseye"></i></th>
+              <th>筋トレ歴<i class="fas fa-hiking" style="color:#B8860B; margin-left:5px"></i></th>
+              <td><%= @customer.history_i18n %></td>
+            </tr>
+            <tr>
+              <th>筋トレ目的<i class="fas fa-bullseye" style="color:#FF773E; margin-left:5px"></i></th>
               <td><%= @customer.objective_i18n %></td>
             </tr>
             <tr>
-              <th>筋トレ頻度<i class="fas fa-sort-amount-down"></i></th>
+              <th>筋トレ頻度<i class="fas fa-sort-amount-down" style="color:#0000FF; margin-left:5px"></i></th>
               <td><%= @customer.frequency_i18n %></td>
             </tr>
             <tr>
-              <th>筋トレスタイル<i class="fas fa-running"></i></i></th>
+              <th>筋トレスタイル<i class="fas fa-running" style="color:#FFFF00; margin-left:5px"></i></th>
               <td><%= @customer.traning_style_i18n %></td>
             </tr>
             <tr>
-              <th>筋トレの熱意<i class="fas fa-fire"></i></th>
+              <th>筋トレの熱意<i class="fas fa-fire" style="color:#FF0000; margin-left:5px"></i></th>
               <td><%= @customer.heart_i18n %></td>
             </tr>
             <tr>
-              <th>自己紹介<i class="far fa-kiss-wink-heart"></i></th>
+              <th>自己紹介<i class="far fa-kiss-wink-heart" style="color:#00FFFF; margin-left:5px"></i></th>
               <td style="word-break:break-word"><%= @customer.introduction %></td>
             </tr>
           </tbody>
@@ -88,6 +91,7 @@
      <div class="row">
        <h3 class="col-sm-12 text-center"><%= @customer.name %>さんの投稿一覧</h3>
          <div class="col-lg-12 d-flex justify-content-center flex-wrap">
+          <% if @posts.present? %>
             <% @posts.each do |post| %>
             <div class="p-3">
              <%=link_to  post_path(post.id) do %>
@@ -95,8 +99,11 @@
              <% end %>
            </div>
           <% end %>
+          <% else %>
+           <p class="pt-5">投稿がまだありません。</p>
+          <% end %>
         </div>
      </div>
 </div>
- 
+
 

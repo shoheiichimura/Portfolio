@@ -23,14 +23,14 @@ class Public::ChatsController < ApplicationController
     @chats = @chat_room.chats  #チャットの一覧用の変数
     @chat = Chat.new(chat_room_id: @chat_room.id)  #チャットの投稿用の変数
   end
-  
+
   def create
     @chat = current_customer.chats.new(chat_params)
     render :validater unless @chat.save
   end
   
-
   private
+  
   def chat_params
     params.require(:chat).permit(:message, :chat_room_id)
   end

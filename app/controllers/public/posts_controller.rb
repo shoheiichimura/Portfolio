@@ -8,7 +8,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
     if @post.save
-      flash[:notice] = "You have created post successfully."
+      flash[:notice] = "投稿完了しました！"
       redirect_to request.referer
     end
   end
