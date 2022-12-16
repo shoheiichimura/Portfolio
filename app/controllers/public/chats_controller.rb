@@ -28,9 +28,9 @@ class Public::ChatsController < ApplicationController
     @chat = current_customer.chats.new(chat_params)
     render :validater unless @chat.save
   end
-  
+
   private
-  
+
   def chat_params
     params.require(:chat).permit(:message, :chat_room_id)
   end

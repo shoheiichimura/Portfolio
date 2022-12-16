@@ -1,7 +1,18 @@
-<!--自分の投稿に対するいいね、コメントは通知に表示しない-->
-<% notifications = @notifications.where.not(visitor_id: current_customer.id) %>
- <% if @notifications.exists? %>
-   <%= render @notifications %>
- <% else %>
-   <p> 通知はありません</p>
- <% end %>
+ <div class="container">
+  <div class="row">
+   <div class="col-md-8 mx-auto text-center">
+    <h1>Notification</h1>
+   </div>
+  </div>
+   <!--自分の投稿に対するいいね、コメントは通知に表示しない-->
+   <% notifications = @notifications.where.not(visitor_id: current_customer.id) %>
+    <% if @notifications.exists? %>
+      <%= render @notifications %>
+    <% else %>
+    <div class="row notification">
+     <div class="col-md text-center">
+       <h3> 通知はありません</h3>
+     </div>
+    </div>
+   <% end %>
+</div>
