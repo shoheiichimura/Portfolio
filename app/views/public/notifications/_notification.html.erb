@@ -1,0 +1,27 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+<div class="container">
+  <div class="row">
+    <div class="col-md mx-auto">
+      
+        <%= link_to "会員"customer_path(visitor) %>
+       
+          <%= visitor.name %>さんが
+          
+          <% case notification.action %>
+          <% when 'follow' then %>
+          あなたをフォローしました
+          <% when 'favorite' then %>
+           <%= link_to 'あなたの投稿', notification.post %>にいいねをしました
+          <% when 'comment' then %>
+            <% if notification.post.customer_id == visited.id %>
+             <%= link_to 'あなたの投稿', notification.post %>
+            <% else %>
+              <%= notification.post.customer.name %>さんの投稿にコメントしました
+              <%= Comment.find_by(:id notification.comment_id)&.comment %>
+            <% end %>
+            
+
+    </div>
+  </div>
+</div>
