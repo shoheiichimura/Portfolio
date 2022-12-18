@@ -1,13 +1,15 @@
 class Public::CommentsController < ApplicationController
 
    def create
-     post = Post.find(params[:post_id])
-     comment = Comment.new(comment_params)
-     comment.customer_id = current_customer.id
-     comment.post_id = post.id
-     comment.save
-     post.create_notification_comment!(current_customer, comment.id)
-     redirect_to post_path(post)
+     @post = Post.find(params[:post_id])
+     @comment = Comment.new(comment_params)
+     @comment.customer_id = current_customer.id
+     @comment.post_id = @post.id
+     if @comment.save
+     @post.create_notification_comment!(current_customer, @comment.id)
+     else
+      render 'public/posts/show'
+     end
    end
 
    def destroy

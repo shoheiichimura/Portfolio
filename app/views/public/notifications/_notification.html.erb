@@ -1,27 +1,29 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
-<div class="container">
-  <div class="row">
-    <div class="col-md mx-auto">
-      
-        <%= link_to "会員"customer_path(visitor) %>
-       
-          <%= visitor.name %>さんが
-          
-          <% case notification.action %>
-          <% when 'follow' then %>
-          あなたをフォローしました
-          <% when 'favorite' then %>
-           <%= link_to 'あなたの投稿', notification.post %>にいいねをしました
-          <% when 'comment' then %>
-            <% if notification.post.customer_id == visited.id %>
-             <%= link_to 'あなたの投稿', notification.post %>
-            <% else %>
-              <%= notification.post.customer.name %>さんの投稿にコメントしました
-              <%= Comment.find_by(:id notification.comment_id)&.comment %>
-            <% end %>
-            
 
-    </div>
+<div class="container">
+  <div class="row alert alert-info">
+    <div class="col-md-8 mx-auto my-auto text-right h4">
+      <%= link_to customer_path(visitor) do %>
+        <% image_tag visitor.profile_image, size: '30x30',class: "rounded-circle" %>
+          <% end %>
+            <%= visitor.name %>さんが
+              <% case notification.action %>
+               <% when 'follow' then %>
+                   あなたをフォローしました
+               <% when 'favorite' then %>
+                 <%= link_to 'あなたの投稿', post_path(notification.post_id) %>にいいねをしました
+               <% when 'comment' then %>
+                  <% if notification.post.customer_id == visited.id %>
+                    <%= link_to 'あなたの投稿', post_path(notification.post_id) %>にコメントしました
+                  <% else %>
+                    <%= notification.post.customer.name %>さんの投稿にコメントしました
+                    <%= Comment.find_by(id: notification.comment_id)&.comment %>
+                  <% end %>
+                <% end %>
+              <span class='mr-3 text-black-50 '><%= time_ago_in_words(notification.created_at).upcase %></span>
+            </div>
+            <div class="col-md-4 text-center my-auto h4"><%= link_to "既読にする", notification_path(notification), method: :patch %></div>
+
   </div>
 </div>

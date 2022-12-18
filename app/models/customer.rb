@@ -97,8 +97,10 @@ class Customer < ApplicationRecord
   # 通知機能のアソシエーション
   # 紐付ける名前とクラス名が異なるため、明示的にクラス名とIDを指定して紐付ける
   # 自分からの通知
-  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy  # 相手からの通知
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy  
+  # 相手からの通知
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy  
+  
   # <-----フォロー通知----->
   def create_notification_follow!(current_customer)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_customer.id, id, 'follow'])

@@ -21,32 +21,14 @@
          <p class="card-text"><%= @post.caption %></p>
 
          <!--ここからコメント-->
-          <% @post.comments.each do |comment| %>
-          <p class="m-0 p-0 border-top">
-            <%= image_tag comment.customer.profile_image, :size =>'50x50', class: "rounded-circle"%>
-             <%= comment.customer.name %>
-             <span class="text-black-50"><small>
-             <i class="far fa-clock clock-icon"></i><%= time_ago_in_words(comment.created_at) %>前
-             </small></span>
-             <% if comment.customer == current_customer %>
-             <%= link_to post_comment_path(@post, comment), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
-               <i class="fas fa-trash-alt text-black-50"></i>
-             <% end %>
-             </p>
-             <div class="py-2 text-center">
-             <%= comment.comment %>
-             </div>
-              <% end %>
-            <% end %>
+         <div id="comments_area"> 
+           <%= render 'public/comments/post_comments', post: @post %>
+         </div>
+        </div>
+          <!--コメントフォーム-->
+          <div class="new-comment">
+           <%= render 'public/comments/form', post: @post, comment: @comment %>
           </div>
-
-          <%= form_with model: [@post, @comment], local: false do |f| %>
-           <div class="text-center">
-            <%= f.text_area :comment, rows: '1', placeholder: "コメント....",class: "form-control border-0" %>
-            <%= button_tag type: "submit", class: "btn btn-default" do %>
-             <i class="fas fa-paper-plane"></i></div>
-            <% end %>
-           <% end %>
       </div>
     </div>
    </div>

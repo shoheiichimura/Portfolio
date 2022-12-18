@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about', as: 'about'
     get 'customers/confirm' => "customers#confirm", as: 'confirm'
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw'
-    get 'search' => 'customers#search'
+    
     resources :chat_rooms, only: [:index]
     resources :chats, only: [:show, :create]
     resources :customers do

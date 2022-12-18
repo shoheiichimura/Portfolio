@@ -3,13 +3,13 @@ class Public::CustomersController < ApplicationController
    before_action :ensure_guest_user, only: [:edit]
 
   def index
-    @q = Customer.ransack(params[:q])  # 検索オブジェクトを生成
+    @q = Customer.page(params[:page]).per(8).ransack(params[:q]) # 検索オブジェクトを生成
     @results = @q.result
   end
 
   def show
     @customer = Customer.find(params[:id])
-    @posts = @customer.posts
+    @posts = @customer.posts.page(params[:page])
   end
 
   def edit
@@ -32,9 +32,12 @@ class Public::CustomersController < ApplicationController
 
   def withdraw
     @customer = current_customer
-    @customer.update(is_deleted: true)
+    if @customer.update(is_deleted: true)
     reset_session
     redirect_to root_path
+    else
+      redirect_to request.referer
+    end
   end
 
   def favorites
@@ -51,7 +54,7 @@ class Public::CustomersController < ApplicationController
 
   def search_customer
     @q = Customer.ransack(params[:q])  # 検索オブジェクトを生成
-    @results = @q.result
+    @results = @q.result(distinct: true)
   end
 
   def ensure_guest_user

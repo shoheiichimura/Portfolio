@@ -50,11 +50,17 @@
            <i class="fas fa-envelope fa-2x mx-3"></i>
           <% end %>
          </li>
+         
           <li>
           <%= link_to notifications_path(current_customer),class: "nav-link text-light" do %>
+          <% if unchecked_notifications.any? %>
            <i class="fas fa-bell fa-2x mx-3"></i>
+          <% else %>
+           <i class="fas.fa-circle n-circle" %>
+           <% end %>
           <% end %>
          </li>
+         
          <li>
           <%= link_to  posts_path, class: "nav-link text-light" do %>
            <i class="fas fa-search-plus fa-2x mx-3"></i>
@@ -109,10 +115,10 @@
 
   <main>
    <% if notice %>
-    <p class="notice"><%= notice %></p>
+    <p class="notice text-center alert alert-success"><%= notice %></p>
    <% end %>
    <% if alert %>
-    <p class="alert"><%= alert %></p>
+    <p class="alert text-center"><%= alert %></p>
    <% end %>
     <%= yield %>
   </main>

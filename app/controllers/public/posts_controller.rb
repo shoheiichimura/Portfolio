@@ -1,4 +1,6 @@
 class Public::PostsController < ApplicationController
+  
+  
   def new
     @post = Post.new
     @posts = Post.all
@@ -9,12 +11,16 @@ class Public::PostsController < ApplicationController
     @post.customer_id = current_customer.id
     if @post.save
       flash[:notice] = "投稿完了しました！"
+      redirect_to post_path(@post.id)
+    else
       redirect_to request.referer
     end
   end
-
+  
   def index
-    @posts = Post.limit(10).order('created_at DESC')
+    @q = Post.page(params[:page]).per(8).order('created_at DESC').ransack(params[:q])
+    @posts = @q.result(distinct: true)
+    @count = @posts.total_count
     
   end
 
@@ -33,6 +39,8 @@ class Public::PostsController < ApplicationController
     if @post.update(post_params)
       flash[:notice] = "更新しました！"
       redirect_to new_post_path
+    else
+      redirect_to request.referer
     end
   end
   
@@ -41,6 +49,8 @@ class Public::PostsController < ApplicationController
      if @post.destroy
       flash[:notice] = "削除完了しました！"
       redirect_to new_post_path
+     else
+      redirect_to request.referer
      end
   end
 

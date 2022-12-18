@@ -17,10 +17,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
     about_path
     end
 
-    def after_customer_sign_out_path_for
-    admin_session_path
-    end
-
    protected
    def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:introduction,:email,:sex,:profile_image,:history,:active_area,:objective,:frequency,:heart,:traning_style,:is_deleted])
