@@ -4,7 +4,7 @@ class Public::FavoritesController < ApplicationController
     @post = Post.find(params[:post_id])
     favorite = @post.favorites.new(customer_id: current_customer.id)
     favorite.save
-    favorite.create_notification_favorite!(current_customer)
+    @post.create_notification_favorite!(current_customer)
     # redirect_to request.referer
   end
 

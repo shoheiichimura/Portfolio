@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2022_12_15_040618) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.text "comment"
+    t.text "comment", default: "", null: false
     t.integer "customer_id"
     t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 2022_12_15_040618) do
     t.integer "visited_id", null: false
     t.integer "post_id"
     t.integer "comment_id"
-    t.integer "action", null: false
+    t.string "action", default: "", null: false
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

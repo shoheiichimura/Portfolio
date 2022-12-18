@@ -26,7 +26,8 @@ class Public::ChatsController < ApplicationController
 
   def create
     @chat = current_customer.chats.new(chat_params)
-    render :validater unless @chat.save
+    @customer = current_customer
+    @chat.save
   end
 
   private

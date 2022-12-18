@@ -1,2 +1,2 @@
-$('.message').append("<p style='text-align: right;'><%= @chat.message %></p>");
+$('.message').append("<%= render 'chat', chat: @chat, customer: @customer %>");
 $('input[type=text]').val("")

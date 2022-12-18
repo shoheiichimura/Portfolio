@@ -67,5 +67,6 @@ class Admin::RegistrationsController < Devise::RegistrationsController
   def after_sign_out_path_for(resource)
       admin_customers_path
   end
+  
 
 end
