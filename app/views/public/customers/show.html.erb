@@ -28,11 +28,9 @@
         </h4>
 
          <!--フォロー機能-->
-         <% if current_customer.following?(@customer) %>
-           <%= link_to "フォロー中", customer_relationships_path(@customer.id),class: "btn-follow text-primary font-weight-bold h4 mt-2",method: :delete %>
-         <% else %>
-           <%= link_to "フォロー", customer_relationships_path(@customer.id),class: "btn-follow text-primary font-weight-bold h4 mt-2",method: :post %>
-         <% end %>
+         <div class="follow-btn">
+            <%= render 'public/relationships/follow_btn', customer: @customer %>
+         </div>
 
      </div>
 
