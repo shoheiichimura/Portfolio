@@ -28,6 +28,10 @@ class Public::ChatsController < ApplicationController
     @chat = current_customer.chats.new(chat_params)
     @customer = current_customer
     @chat.save
+     # 新規作成された@chatに紐づくchat_roomを@chat_roomに格納する
+    @chat_room = @chat.chat_room
+    # 本引数を２つ持たせてcreate_notification_dmメソッドを実行
+    @chat_room.create_notification_dm!(current_customer, @chat.id)
   end
 
   private
