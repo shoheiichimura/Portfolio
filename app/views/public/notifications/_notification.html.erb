@@ -9,6 +9,10 @@
           <% end %>
             <%= visitor.name %>さんが
               <% case notification.action %>
+               <% when 'dm' then %>
+               あなたに<%= link_to "DM", chat_path(notification.visited_id)  %>を送りました
+                 <p class"text-black-50">メッセージ内容:
+                    <%= truncate(notification.chat.message, length: 20, omission: '... (一部表示)') %>
                <% when 'follow' then %>
                    あなたをフォローしました
                <% when 'favorite' then %>
@@ -18,10 +22,10 @@
                     <%= link_to 'あなたの投稿', post_path(notification.post_id) %>にコメントしました
                   <% else %>
                     <%= notification.post.customer.name %>さんの投稿にコメントしました
-                    <%= Comment.find_by(id: notification.comment_id)&.comment %>
                   <% end %>
                 <% end %>
-              <span class='mr-3 text-black-50 '><%= time_ago_in_words(notification.created_at).upcase %></span>
+              <span class='mr-5 text-black-50 h5'><%= time_ago_in_words(notification.created_at).upcase %>前</span>
+              </p>
             </div>
             <div class="col-md-4 text-center my-auto h4"><%= link_to "既読にする", notification_path(notification), method: :patch %></div>
 

@@ -52,11 +52,11 @@
          </li>
 
           <li>
-          <%= link_to notifications_path(current_customer),class: "nav-link text-light" do %>
+          <%= link_to notifications_path(),class: "nav-link text-light" do %>
           <% if unchecked_notifications.any? %>
-           <i class="fas fa-bell fa-2x mx-3"></i>
+           <i class="fas fa-bell fa-2x mx-3" style="color: gold;"></i>
           <% else %>
-           <i class="fas.fa-circle n-circle" %>
+           <i class="fas fa-bell fa-2x mx-3" ></i>
            <% end %>
           <% end %>
          </li>
