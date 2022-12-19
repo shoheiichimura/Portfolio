@@ -1,10 +1,10 @@
 class ChatRoom < ApplicationRecord
-  
+
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
   has_many :customers, through: :user_rooms
   has_many :notifications, dependent: :destroy
-  
+
   def create_notification_dm!(current_customer, chat_id)
     # ユーザールームからcustomer_idが自分と同じものを省いて
     # chat_room_idが生成されたチャットルームIDと一致する
@@ -20,6 +20,6 @@ class ChatRoom < ApplicationRecord
     )
     notification.save if notification.valid?
   end
-  
-  
+
+
 end

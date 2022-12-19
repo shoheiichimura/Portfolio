@@ -37,3 +37,7 @@ main {
   background-position: top center;
 }
 
+/*グーグルフォント*/
+body {
+  font-family: 'Mochiy Pop P One', sans-serif;;
+}
