@@ -19,10 +19,10 @@
             <%=link_to"いいね一覧",favorites_customer_path(@customer), class: "ml-3 text-body" %><i class="fas fa-heart" style="color: #e54747;"></i>
         </h4>
         <h4 class="font-weight-bold">
-           <%= link_to customer_followings_path(@customer), class: "text-body" do %>
+           <%= link_to customer_followings_path(@customer), class: "link text-body" do %>
              フォロー中:<%= @customer.followings.count %>人
            <% end %>
-           <%= link_to customer_followers_path(@customer),  class: "text-body" do %>
+           <%= link_to customer_followers_path(@customer),  class: "link text-body" do %>
              フォロワー:<%= @customer.followers.count %>人
            <% end %>
         </h4>
@@ -103,5 +103,6 @@
         </div>
      </div>
 </div>
+
 
 

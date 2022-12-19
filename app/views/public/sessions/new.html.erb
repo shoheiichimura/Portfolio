@@ -1,4 +1,4 @@
-<div class="contaner py-5">
+<div class="contaner py-5"  style="height:720px">
   <div class="row">
     <h1 class="col-sm-5 my-5 mx-auto text-center">Log in</h1>
   </div>
@@ -6,30 +6,30 @@
 　<%= form_with model: @customer, url: customer_session_path do |f| %>
    <%= render "public/shared/error_messages", resource: resource %>
     <div class="mt-5">
-      <div class="form-group h4">
+      <div class="form-group h3">
          <div class="row">
-           <div class="col-md-5 text-left text-md-right">
+           <div class="col-md-6 text-left text-md-right">
              <%= f.label :email, 'メールアドレス', class: "control-label" %>
            </div>
-           <div class="col-md-7">
+           <div class="col-md-6">
              <%= f.text_field :email, autofocus: true, :placeholder => "sample@example.com", class: 'form-control col-5' %>
            </div>
          </div>
        </div>
       </div>
-      <div class="form-group h4">
+      <div class="form-group h3">
          <div class="row">
-           <div class="col-md-5 text-left text-md-right">
+           <div class="col-md-6 text-left text-md-right">
             <%= f.label :password, "パスワード", class: "control-label" %>
            </div>
-           <div class="col-md-7">
+           <div class="col-md-6">
             <%= f.password_field :password, autocomplete: "current-password", class: 'form-control col-5' %>
           </div>
         </div>
        </div>
-       <div class="form-group">
+       <div class="form-grouph3">
          <div class="row">
-           <div class="col-md-7 offset-5">
+           <div class="col-md-6 offset-6">
             <% if devise_mapping.rememberable? %>
              <%= f.check_box :remember_me %>
              <%= f.label :remember_me %>
@@ -37,15 +37,15 @@
            <% end %>
            </div>
           </div>
-        <div class="actions col-7 offset-5">
+        <div class="actions col-6 offset-6">
            <%= f.submit "ログイン", class: 'btn btn-sm btn-success control-submit mr-5 mb-3' %>
         </div>
       <% end %>
       <div class="row">
-          <div class="col-7 offset-5 pr-0 text-center text-md-left font-weight-bold">新規登録は
+          <div class="col-6 offset-6 pr-0 text-center text-md-left font-weight-bold h4">新規登録は
            <%= link_to "こちら", new_customer_registration_path %>
           </div>
-
+      </div>
   </div>
 
 

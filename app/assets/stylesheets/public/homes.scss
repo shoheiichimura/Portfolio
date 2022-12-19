@@ -25,7 +25,7 @@ body {
 a.btn-top,
 button.btn-top {
   font-size: 1.6rem;
-  font-weight: 700;
+  font-weight: 900;
   line-height: 1.5;
   position: relative;
   display: inline-block;
@@ -47,7 +47,6 @@ button.btn-top {
 
 a.btn-border-shadow {
   padding: calc(1.5rem - 12px) 3rem 1.5rem;
-
   background-color: rgba(255, 255, 255, 0.6);
 }
 
@@ -87,58 +86,94 @@ a.btn-border-shadow--color2:before {
 }
 
 // ここからトップページ
+.top-height {
+  height: 660px;
+}
+
 .top {
-  height: 620px;
-}
-
-
-h1 {
-	color: #000;
-	border-bottom: solid 2px #73cfe6;
-	padding: 10px 0;
-	font-weight: 900;
-	font-size: 30px;
-}
-h1:first-letter {
-	color: #73cfe6;
-	font-size: 50px;
-}
-
-// アバウトページレイアウト
-.kakomi-tape2 {
- position: relative;
- width: 90%;
- margin: 2.5em auto;
- padding: 35px 30px 20px;
- color: black;/* 文字色 */
- background-color: #fff; /*枠背景色*/
- box-shadow: inset 0 0 40px rgba(204, 186, 136,1), 0 2px 2px #ccc;
-}
-.kakomi-tape2::before {
- display: block;
- position: absolute;
- content: "";
- width: 140px;
- height: 35px;
- left: 35%;
- top: -16px;
- background-color: rgba(204, 186, 136,0.3);/*テープ色*/
- box-shadow: 0 0 3px rgba(0,0,0,0.1);
- transform: rotate( -3deg ); /*テープ角度*/
-}
-
-.text {
 	color: #000;
 	border-bottom: solid 2px #73cfe6;
 	padding: 10px 0;
 	font-weight: 900;
 	font-size: 80px;
 }
-.text:first-letter {
+.top:first-letter {
 	color: #73cfe6;
 	font-size: 130px;
 }
 
-.form-group {
+
+// アバウトページレイアウト
+
+.adout-text {
+  font-family: 'Shippori Mincho', serif;
+  font-weight: bold;
+}
+
+.line{
+  text-align: center;
+  color: #000;
+  line-height: 1.4;
+  -webkit-box-reflect: below -10px -webkit-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0) 10%,rgba(0, 0, 0, 0.3));
+  font-weight: bold;
+// 	line-height:0.95em;
+// 	color: #FFF;
+// 	text-shadow: 0 0 0.2em rgba(0,0,0,1);
+}
+
+.blockquote {
+  font-size: 30px;
+}
+
+
+
+// aboutスライドショー
+.c{
+  height: 550px;
+  width: 100%;
+}
+.slick-dots {
+  li {
+    font-size: 20px !important;
+    button:before {
+      content: "★" !important;
+      font-size: 14px !important;
+      color: rgb(60, 60, 60) !important;
+    }
+  }
+}
+
+.slick-next {
+  right: 20px !important;
+  z-index: 9999 !important;
+}
+.slick-prev {
+  left: 20px !important;
+  z-index: 9999 !important;
+}
+
+.slick-prev,
+.slick-next {
+    width: 40px !important;
+    height: 40px !important;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    font-size: 40px !important;/*少し大きくする*/
+}
+
+.box {
+  position:relative;
+}
+
+.slider_logo {
+  z-index:10;
+  position:absolute;
+  left: 50%;
+  top: 40%;
+  font-size: 70px;
+  color:#fff;
+  transform: translate(-50%, -50%);
   font-weight: 900;
 }
