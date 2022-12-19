@@ -5,112 +5,127 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-　　
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
   </head>
-
+  
   <body>
     <header>
-
-
-       <nav class="navbar navbar-expand-md">
-         <div class="container">
-          <a class="navbar-brand" href="/">
-           <%=image_tag "IMG_0083.jpg", size:"300x100" %>
-           </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav  ml-auto mr-auto">
-
-         <% if customer_signed_in? %>
-         <!--会員はサインインしているか-->
-         <li>
-          <%= link_to customer_path(current_customer), class: "nav-link text-light" do %>
-           <i class="fas fa-user fa-2x mx-3"></i>
-          <% end %>
+     <h2 class="header-logo">Logo</h2>
+      <nav>
+       <ul>
+        <% if customer_signed_in? %>
+        <!--会員はサインインしているか-->
+         <li class="has-child"><%= link_to customer_path(current_customer), class: "a" do %>
+          <i class="fas fa-user fa-2x mx-3"></i>
+         <% end %>
+          <ul>
+           <li><%= link_to customer_path(current_customer), class: "a" do %>マイページ<i class="fas fa-user mx-1"></i><% end %></li>
+           <li><%= link_to customers_path, class: "a" do %>会員一覧<i class="fas fa-users mx-1"></i><% end %></li>
+           <li><%= link_to customer_followings_path(current_customer), class: "a" do %>フォロー一覧<% end %></li>
+           <li><%= link_to customer_followers_path(current_customer), class: "a" do %>フォロワー一覧<% end %></li>
+          </ul>
          </li>
-         <li>
-          <%= link_to customers_path, class: "nav-link text-light" do %>
-           <i class="fas fa-users fa-2x mx-3"></i>
-          <% end %>
-         </li>
-         <li>
-          <%= link_to new_post_path,class: "nav-link text-light" do %>
+         <li class="has-child">
+          <%= link_to new_post_path,class: "a" do %>
            <i class="fas fa-camera fa-2x mx-3"></i>
           <% end %>
+          <ul>
+           <li><%= link_to new_post_path,class: "a" do %>新規投稿<i class="fas fa-camera mx-1"></i><% end %></li>
+           <li><%= link_to  posts_path, class: "a" do %>投稿一覧<i class="fas fa-search-plus mx-1"></i><% end %></li>
+          </ul>
          </li>
-         <li>
-          <%= link_to chat_rooms_path,class: "nav-link text-light" do %>
+         <li class="has-child">
+          <%= link_to chat_rooms_path,class: "a" do %>
            <i class="fas fa-envelope fa-2x mx-3"></i>
           <% end %>
+          <ul>
+            <li><%= link_to chat_rooms_path, class: "a" do %>チャット<i class="fas fa-envelope mx-1"></i><% end %></li>
+          </ul>
          </li>
-
-          <li>
-          <%= link_to notifications_path(),class: "nav-link text-light" do %>
+         <li class="has-child">
+          <%= link_to notifications_path,class: "a" do %>
           <% if unchecked_notifications.any? %>
            <i class="fas fa-bell fa-2x mx-3" style="color: gold;"></i>
           <% else %>
            <i class="fas fa-bell fa-2x mx-3" ></i>
-           <% end %>
           <% end %>
-         </li>
-
-         <li>
-          <%= link_to  posts_path, class: "nav-link text-light" do %>
-           <i class="fas fa-search-plus fa-2x mx-3"></i>
           <% end %>
-         </li>
-         <li>
-          <%= link_to destroy_customer_session_path, class: "nav-link text-light", method: :delete do %>
-           <i class="fas fa-sign-out-alt fa-2x mx-3"></i>
-          <% end %>
-         </li>
-          <% elsif admin_signed_in? %>
-         <!--adminがログイン中のヘッダー-->
-          <li class="nav-item">
-           <%= link_to admin_customers_path,class: "nav-link text-light" do %>
-            <i class="fas fa-users fa-2x mx-3"></i>
-           <% end %>
-          </li>
-          <li class="nav-item">
-           <%= link_to destroy_admin_session_path,class: "nav-link text-light", method: :delete do %>
-            <i class="fas fa-sign-out-alt fa-2x mx-3"></i>
-           <% end %>
-
-          <% else %>
-          <!--会員がサインインしていない時のヘッダー-->
-         <li class="nav-item">
-           <%= link_to root_path,class: "nav-link text-light" do %>
-            <i class="fas fa-home fa-2x mx-3"></i>
-           <% end %>
-         </li>
-         <li class="nav-item">
-          <%= link_to about_path,class:"nav-link text-light" do %>
-           <i class="fas fa-dumbbell fa-2x mx-3"></i>
-          <% end %>
-         </li>
-         <li class="nav-item">
-          <%= link_to new_customer_registration_path,class: "nav-link text-light" do %>
-           <i class="fas fa-user-plus fa-2x mx-3"></i>
-          <% end %>
-         </li>
-         <li class="nav-item">
-          <%= link_to  customer_session_path,class: "nav-link text-light" do %>
-           <i class="fas fa-sign-in-alt fa-2x mx-3"></i>
-          <% end %>
-         </li>
-       <% end %>
-       </ul>
-      </div>
-    </div>
-    </nav>
-  </header>
+         <ul>
+          <li><%= link_to notifications_path, class: "a" do %>通知一覧<i class="fas fa-bell mx-1"></i><% end %></li>
+         </ul>
+        </li>
+        <li class="has-child">
+         <%= link_to destroy_customer_session_path, class: "a", method: :delete do %>
+          <i class="fas fa-sign-out-alt fa-2x mx-3"></i>
+         <% end %>
+         <ul>
+          <li><%= link_to destroy_customer_session_path, class: "a", method: :delete do %>ログアウト<i class="fas fa-sign-out-alt mx-1"></i><% end %></li>
+         </ul>
+        </li>
+         <% elsif admin_signed_in? %>
+        <!--adminがログイン中のヘッダー-->
+         <li class="has-child">
+          <%= link_to admin_customers_path, class:  "a" do %>
+          <i class="fas fa-users fa-2x mx-3"></i>
+         <% end %>
+         <ul>
+           <li> <%= link_to admin_customers_path,class: "a" do %>会員一覧<i class="fas fa-users mx-1"></i><% end %></li>
+         </ul>
+        </li>
+        <li class="has-child">
+         <%= link_to destroy_admin_session_path,class:  "a",  method: :delete do %>
+          <i class="fas fa-sign-out-alt fa-2x mx-3"></i>
+         <% end %>
+         <ul>
+           <li><%= link_to destroy_admin_session_path, class: "a", method: :delete do %>ログアウト<i class="fas fa-sign-out-alt mx-1"></i><% end %></li>
+         </ul>
+        </li>
+        <% else %>
+        <!--会員がサインインしていない時のヘッダー-->
+        <li class="has-child">
+         <%= link_to root_path,class: "a"  do %>
+          <i class="fas fa-home fa-2x mx-3"></i>
+         <% end %>
+         <ul>
+           <li><%= link_to root_path,class: "a" do %>Home<i class="fas fa-home mx-1"></i><% end %></li>
+         </ul>
+        </li>
+        <li class="has-child">
+         <%= link_to about_path,class: "a" do %>
+          <i class="fas fa-dumbbell fa-2x mx-3"></i>
+         <% end %>
+         <ul>
+           <li><%= link_to about_path,class: "a" do %>About<i class="fas fa-dumbbell mx-1"></i><% end %></li>
+         </ul>
+        </li>
+        <li class="has-child">
+         <%= link_to new_customer_registration_path,class: "a" do %>
+          <i class="fas  fa-user-plus fa-2x mx-3"></i>
+         <% end %>
+         <ul>
+           <li><%= link_to new_customer_registration_path,class: "a" do %>新規会員登録<i class="fas  fa-user-plus mx-1"></i><% end %></li>
+         </ul>
+        </li>
+         <li class="has-child">
+         <%= link_to customer_session_path,class: "a" do %>
+          <i class="fas fa-sign-in-alt fa-2x mx-3"></i>
+         <% end %>
+         <ul>
+           <li><%= link_to customer_session_path,class: "a" do %>ログイン<i class="fas fa-sign-in-alt mx-1"></i><% end %></li>
+         </ul>
+        </li>
+        <% end %>
+      </nav>
+      <script>
+       
+      </script>
+   </header>
 
 
   <main>
@@ -124,7 +139,7 @@
   </main>
 
   <footer>
-    <div class="container p-5">
+    <div class="container p-5 mb-0 h4">
     	<div class="row">
     	 <div class="mx-auto">
     		<p style="color:white;">@Traning_friend</p>
