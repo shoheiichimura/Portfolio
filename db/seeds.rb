@@ -54,5 +54,5 @@ Customer.all.each do |customer|
     caption: 'テキストテキストテキストテキストテキストテキスト',
   )
 end
-image.attach(io: File.open("./app/assets/images/portfolio/post#{n}.jpg"), filename: "image.jpg", content_type: 'image/jpg')
+image.attach(io: File.open("./app/assets/images/portfolio/post#{n}.jpg"), filename: "image#{n}.jpg", content_type: 'image/jpg')
 end
