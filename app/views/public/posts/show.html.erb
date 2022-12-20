@@ -1,25 +1,22 @@
 <div class="contaner py-5">
   <div class="row">
-    <%= flash[:alart] %>
     <h1 class="col-sm-5 my-5 mx-auto text-center">Details</h1>
   </div>
 
-    <div class="card mx-auto rounded-3 shadow p-3 mb-5 bg-body rounded" style="width: 80rem;">
-      <h5 class="card-header"><%= @post.customer.name %>
-       <% if @post.customer == current_customer %>
-        <%= link_to "編集", edit_post_path(@post) %>
-       <% end %>
-      </h5>
-      <%= image_tag @post.image %>
-      <div class="card-body">
+    <div class="card mx-auto rounded-3 shadow p-3 mb-5 bg-body rounded" style="width: 100rem;">
+       <h4 class="card-header"><%= @post.customer.name %>
+         <% if @post.customer == current_customer %>
+           <%= link_to "編集", edit_post_path(@post) %>
+         <% end %>
+       </h4>
+       <%= image_tag @post.image %>
+       <div class="card-body">
        <!--いいねボタン部分テンプレート-->
-       <div class="favorite-btn">
-        <%= render "public/favorites/favorite-btn", post: @post %>
-       </div>
-
-          <h5 class="card-title"><%= @post.title %></h5>
-         <p class="card-text"><%= @post.caption %></p>
-
+         <div class="favorite-btn">
+           <%= render "public/favorites/favorite-btn", post: @post %>
+         </div>
+          <h4 class="card-title"><strong><%= @post.title %></strong></h4>
+            <p class="card-text"><strong><%= @post.caption %></strong></p>
          <!--ここからコメント-->
          <div id="comments_area"> 
            <%= render 'public/comments/post_comments', post: @post %>
@@ -31,4 +28,4 @@
           </div>
       </div>
     </div>
-   </div>
+  

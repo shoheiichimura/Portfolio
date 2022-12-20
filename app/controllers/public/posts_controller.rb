@@ -1,9 +1,9 @@
 class Public::PostsController < ApplicationController
-  
+  before_action :ensure_guest_user, only: [:create]
   
   def new
     @post = Post.new
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(8).order('created_at DESC')
   end
 
   def create
@@ -57,5 +57,11 @@ class Public::PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:title,:caption,:image)
+  end
+  
+  def ensure_guest_user
+     if current_customer.name == "guestuser"
+       redirect_to request.referer , alart: 'ゲストユーザーは投稿できません。'
+     end
   end
 end

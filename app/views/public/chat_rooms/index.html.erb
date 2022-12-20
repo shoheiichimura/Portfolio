@@ -8,7 +8,8 @@
    <div class="col-sm-6 mx-auto">
     <table class="table table-borderless mt-5 text-center h3">
 
-      <tbody>
+    <tbody>
+      <% if @another_user_rooms.exists? %>
         <% @another_user_rooms.each do |e| %>
         <tr>
           <th>
@@ -21,6 +22,8 @@
             <%= e.chat_room.chats.order('created_at DESC').first.message %>
           </td>
         </tr>
+        <% else %>
+        <p>DMはありません。</p>
         <% end %>
       </tbody>
     </table>

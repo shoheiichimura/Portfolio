@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
    before_action :search_customer, only: [:index]
-   before_action :ensure_guest_user, only: [:edit]
+   before_action :ensure_guest_user, only: [:update,]
 
   def index
     @q = Customer.page(params[:page]).per(8).ransack(params[:q]) # 検索オブジェクトを生成
@@ -32,7 +32,9 @@ class Public::CustomersController < ApplicationController
 
   def withdraw
     @customer = current_customer
-    if @customer.update(is_deleted: true)
+    if @customer.name == "guestuser"
+      redirect_to customer_path(current_customer) , alert: 'ゲストユーザーは退会できません。'
+    elsif  @customer.update(is_deleted: true)
     reset_session
     redirect_to root_path
     else
@@ -60,7 +62,7 @@ class Public::CustomersController < ApplicationController
   def ensure_guest_user
     @customer = Customer.find(params[:id])
     if @customer.name == "guestuser"
-      redirect_to customer_path(current_customer) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+      redirect_to customer_path(current_customer) , alert: 'ゲストユーザーはプロフィール編集できません。'
     end
   end
 

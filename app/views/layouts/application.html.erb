@@ -45,7 +45,7 @@
            <i class="fas fa-envelope fa-2x mx-3"></i>
           <% end %>
           <ul>
-            <li><%= link_to chat_rooms_path, class: "a" do %>チャット<i class="fas fa-envelope mx-1"></i><% end %></li>
+            <li><%= link_to chat_rooms_path, class: "a" do %>DM一覧<i class="fas fa-envelope mx-1"></i><% end %></li>
           </ul>
          </li>
          <li class="has-child">
@@ -133,7 +133,7 @@
     <p class="notice text-center alert alert-success"><%= notice %></p>
    <% end %>
    <% if alert %>
-    <p class="alert text-center"><%= alert %></p>
+    <p class="alert text-center alert alert-danger"><%= alert %></p>
    <% end %>
     <%= yield %>
   </main>

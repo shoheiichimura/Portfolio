@@ -5,15 +5,21 @@
   <div class="row">
     <div class="col-sm-12 d-flex justify-content-center text-center">
       <% if @favorite_posts.present? %>
-      <% @favorite_posts.each do |post|%>
-       <%= link_to post_path(post) do %>
-         <div class="mx-3"><%= image_tag post.image, :size => '100x100' %></div>
-         <p><%= post.customer.name %></p>
-         <p><%= post.title %></p>
+        <% @favorite_posts.each do |post|%>
+          <%= link_to post_path(post) do %>
+           <div class="mx-3"><%= image_tag post.image, :size => '100x100' %></div>
+            <p><%= post.customer.name %></p>
+            <p><%= post.title %></p>
+          <% end %>
         <% end %>
-      <% end %>
       <% else %>
-      <p>いいねした投稿がありません。</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col pt-5 text-center" style="height:500px">
+      <h3>いいねはありません。</h3>
       <% end %>
     </div>
   </div>
+ </div>
+  

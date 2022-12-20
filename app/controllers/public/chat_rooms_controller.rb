@@ -1,5 +1,5 @@
 class Public::ChatRoomsController < ApplicationController
-
+  before_action :ensure_guest_user, only: [:index]
   def index
     # ログインユーザーが入っているルームID取得
     @current_user_rooms = current_customer.user_rooms
@@ -13,5 +13,13 @@ class Public::ChatRoomsController < ApplicationController
      # トークの最後のメッセージを取得
      @last_message = Chat.find_by(chat_room_id: @another_user_rooms.last.chat_room_id).message
   end
-
+  
+  private
+  
+  def ensure_guest_user
+     if current_customer.name == "guestuser"
+     redirect_to customer_path(current_customer) , alert: 'ゲストユーザーはDMできません。'
+     end
+  end
+    
 end

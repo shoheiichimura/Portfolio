@@ -1,4 +1,4 @@
-
+<div class="container">
   <div class="row">
     <div class="col-md-6 offset-3 my-5">
      <% if customers.exists? %>
@@ -11,19 +11,25 @@
                  <%= customer.name %>
                </th>
                <td style="vertical-align: middle;">フォロー数: <%= customer.followings.count %></td>
-               <td style="vertical-align: middle;">フォロワー数: <%= customer.followers.count %>
-               <td style="vertical-align: middle;"><% if current_customer != customer && current_customer.following?(customer) && customer.following?(current_customer) %>
-                      <%= link_to 'chatを始める', chat_path(customer.id), class: "ml-3" %>
-               </td><% end %>
-                </td>
+               <td style="vertical-align: middle;">フォロワー数: <%= customer.followers.count %></td>
+               <td style="vertical-align: middle;">
+                 <% if current_customer != customer && current_customer.following?(customer) && customer.following?(current_customer) %>
+                  <%= link_to 'chatを始める', chat_path(customer.id), class: "ml-3" %>
+                 <% end %>
+               </td>
               </tr>
            </tbody>
           </table>
         <% end %>
-     <% else %>
-       <p>ユーザーはいません</p>
-     <% end %>
+      <% else %>
+     </div>
     </div>
+    <div class="row">
+       <div class="col pt-5 text-center" style="height:500px">
+         <h3>ユーザーはいません。</h3>
+       </div>
+    </div>
+  <% end %>
   </div>
 </div>
 

@@ -1,4 +1,5 @@
 class Public::FavoritesController < ApplicationController
+  before_action :ensure_guest_user, only: [:create]
 
   def create
     @post = Post.find(params[:post_id])
@@ -13,5 +14,13 @@ class Public::FavoritesController < ApplicationController
     favorite = current_customer.favorites.find_by(post_id: @post.id)
     favorite.destroy
     # redirect_to request.referer
+  end
+  
+  private
+  
+  def ensure_guest_user
+     if current_customer.name == "guestuser"
+       redirect_to request.referer , alart: 'ゲストユーザーはいいねできません。'
+     end
   end
 end

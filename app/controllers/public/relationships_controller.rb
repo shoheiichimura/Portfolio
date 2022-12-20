@@ -1,4 +1,5 @@
 class Public::RelationshipsController < ApplicationController
+   before_action :ensure_guest_user, only: [:create]
 
   # フォローするとき
   def create
@@ -23,6 +24,15 @@ class Public::RelationshipsController < ApplicationController
   def followers
     @customer = Customer.find(params[:customer_id])
     @customers = @customer.followers
+  end
+  
+   private
+  
+  def ensure_guest_user
+    @customer = Customer.find(params[:id])
+    if @customer.name == "guestuser"
+      redirect_to customer_path(current_customer) , alart: 'ゲストユーザーはフォローできません。'
+    end
   end
 
 end
