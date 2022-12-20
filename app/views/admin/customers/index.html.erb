@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container py-5">
  <div class="row">
   <div class="col-sm-8 mx-auto text-center ">
    <h1 class="m-4 font-weight-bold">Users</h1>
@@ -31,8 +31,14 @@
          <% end %>
         </td>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
- </div>
+       <% end %>
+     </tbody>
+   </table>
+  </div>
+  <div class="row">
+      <div class="col-md d-flex justify-content-center">
+        <%= paginate @customers %>
+      </div>
+  </div>
+</div> 
 
