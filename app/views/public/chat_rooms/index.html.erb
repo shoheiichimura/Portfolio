@@ -7,28 +7,29 @@
   <div class="row">
    <div class="col-sm-6 mx-auto">
     <table class="table table-borderless mt-5 text-center h3">
-
-    <tbody>
-      <% if @another_user_rooms.exists? %>
-        <% @another_user_rooms.each do |e| %>
-        <tr>
-          <th>
-             <%= link_to chat_path(e.customer.id) do %>
-             <%= image_tag e.customer.profile_image, :size =>'50x50', class: "rounded-circle" %>
-             <p class="h6"><%= e.customer.name %></p>
-             <% end %>
-          </th>
-          <td style="vertical-align: middle;">
-            <%= e.chat_room.chats.order('created_at DESC').first.message %>
-          </td>
-        </tr>
-        <% else %>
-        <p>DMはありません。</p>
-        <% end %>
+      <tbody>
+       <% if @another_user_rooms.exists? %>
+         <% @another_user_rooms.each do |e| %>
+           <tr>
+             <th>
+                <%= link_to chat_path(e.customer.id) do %>
+                <%= image_tag e.customer.profile_image, :size =>'50x50', class: "rounded-circle" %>
+                <p class="h6"><%= e.customer.name %></p>
+                <% end %>
+             </th>
+             <td style="vertical-align: middle;">
+               <%= e.chat_room.chats.order('created_at DESC').first.message %>
+             </td>
+           </tr>
+         <% end %>
+       <% else %>
+         <p>DMはありません。</p>
+       <% end %>
       </tbody>
-    </table>
-   </div>
+     </table>
+    </div>
   </div>
+</div>
 
 
 

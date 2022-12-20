@@ -12,7 +12,7 @@
       <% if @results.present? %>
        <% @results.each do |customer| %>
          <%= link_to customer_path(customer) do %>
-         <%= image_tag customer.profile_image, :size =>'300x300', class: "m-3" %>
+         <%= image_tag customer.profile_image, :size =>'350x300', class: "m-3" %>
         <% end %>
        <% end %>
      <% end %>

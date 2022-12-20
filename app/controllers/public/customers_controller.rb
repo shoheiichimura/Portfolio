@@ -3,7 +3,7 @@ class Public::CustomersController < ApplicationController
    before_action :ensure_guest_user, only: [:update,]
 
   def index
-    @q = Customer.page(params[:page]).per(8).ransack(params[:q]) # 検索オブジェクトを生成
+    @q = Customer.page(params[:page]).per(9).order('created_at DESC').ransack(params[:q]) # 検索オブジェクトを生成
     @results = @q.result
   end
 

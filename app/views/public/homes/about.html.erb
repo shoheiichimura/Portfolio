@@ -16,17 +16,17 @@
     <!--スライドショー-->
 <div class="row">
 <div class="col-md-9 mx-auto">
-　<div class="box">
+  <div class="box">
     <div class="slider">
-      <div class="b"><%= image_tag 'about1.jpg', class: 'c' %></div>
-      <div class="b"><%= image_tag 'about2.jpg', class: 'c' %></div>
-      <div class="b"><%= image_tag 'about3.jpg', class: 'c' %></div>
-      <div class="b"><%= image_tag 'about4.jpg', class: 'c' %></div>
+      <div class="b"><%= image_tag 'portfolio/slide.jpg', class: 'c' %></div>
+      <div class="b"><%= image_tag 'portfolio/slide1.jpg', class: 'c' %></div>
+      <div class="b"><%= image_tag 'portfolio/slide2.jpg', class: 'c' %></div>
+      <div class="b"><%= image_tag 'portfolio/slide3.jpg', class: 'c' %></div>
     </div>
     <div class="slider_logo">
-    　<p>Traning_friend</p>
+      <p>Traning_friend</p>
     </div>
-　</div>
+  </div>
 </div>
 </div>
 
@@ -39,7 +39,7 @@
     </div>
     <div class="row ">
         <div class="col-md-6 text-right">
-            <%= image_tag 'about1.jpeg', size: '500x300' %>
+            <%= image_tag 'portfolio/About1.jpg', size: '500x300' %>
         </div>
         <div class="adout-text col-md-6 offset-1 mx-auto my-auto h4">
                 <p>世間では、筋トレは継続することが難しいと言われており、</p></br>
@@ -57,7 +57,7 @@
     </div>
     <div class="row">
         <div class="col-md-6 text-right">
-            <%= image_tag 'about3.jpeg', size: '500x300' %>
+            <%= image_tag 'portfolio/About2.jpg', size: '500x300' %>
         </div>
         <div class="adout-text col-md-6 offset-1 mx-auto my-auto h4">
             <p>そもそも、人間の脳は安定を好み、変化を嫌うように作られています。</p></br>
@@ -66,7 +66,7 @@
             <p>逆になにか新しいことを初めて、安全な生活が脅かされると、</p></br>
             <p>なにか危険なことが起こるんじゃないかと考えて、元の生活に戻ろうとします。
             <p>この点から見れば、新しい習慣をライフスタイルに取り入れようとしても続かないのは普通のことで、</p></br>
-            <p>継続できない=✖︎　継続できる=○ではなく、継続できない=○　継続できる=◎と考えることが正しいと考えます。</p></br>
+            <p>継続できない=✖︎  継続できる=○ではなく、継続できない=○ 継続できる=◎と考えることが正しいと考えます。</p></br>
         </div>
     </div>
 
@@ -77,7 +77,7 @@
     </div>
     <div class="row">
         <div class="col-md-6 text-right">
-            <%= image_tag 'about4.jpeg', size: '500x300' %>
+            <%= image_tag 'portfolio/About3.jpg', size: '500x300' %>
         </div>
         <div class="adout-text col-md-6 offset-1 mx-auto my-auto h4">
             <p>継続していく上で大切なことは、「筋トレは何の工夫もなければ継続できないのは当たり前」だと認めること。</p></br>
@@ -97,6 +97,8 @@
         dots: true,
         autoplay: true,
         autoplaySpeed: 2000,
+        fade: true,    // fedeオン
+        speed: 500,   // 画像切り替えにかかる時間（ミリ秒）
       });
     });
 </script>

@@ -24,6 +24,7 @@ class Customer < ApplicationRecord
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com',introduction: "ゲスト",sex: 0,active_area: 0,objective: 0,frequency: 0,heart: 0,traning_style: 0) do |customer|
       customer.password = SecureRandom.urlsafe_base64
       customer.name = "guestuser"
+      customer.email = 'guest@example.com'
       customer.introduction = "ゲスト"
       customer.sex = 0
       customer.active_area = 0
@@ -58,16 +59,11 @@ class Customer < ApplicationRecord
      okinawa:46
   }
 
-   enum objective:{ health:0,appearance:1,rack:2,muscle:3,tournament:4
-   }
-   enum frequency:{ month:0,two:1,three:2,five:3
-   }
-   enum traning_style:{ gym:0,home:1,personal:2,other:3
-   }
-   enum heart:{ laxly:0,moderate:1,stoic:2
-   }
-   enum history:{ beginner:0,months:1,years:2,old_hand:3
-   }
+   enum objective: { health: 0, appearance: 1, rack: 2, muscle: 3, tournament: 4 }
+   enum frequency: { month: 0, two: 1, three: 2, five: 3}
+   enum traning_style: { gym: 0, home: 1, personal: 2, other: 3}
+   enum heart: { laxly: 0, moderate: 1, stoic: 2}
+   enum history: { beginner: 0, months: 1, years: 2, old_hand: 3}
 
    # フォローをした、されたの関係
    has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy

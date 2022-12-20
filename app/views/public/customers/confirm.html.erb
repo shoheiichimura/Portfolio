@@ -1,7 +1,7 @@
 <div class="container py-5" id="confirm">
  <div class="row mt-5">
   <div class="col-sm-12 py-5 mx-auto text-center">
-    <h1><strong>本当に退会しますか？</strong></h1>
+    <h1><strong>退会しますか？</strong></h1>
   </div>
 </div>
   <div class="row my-3">
@@ -15,7 +15,7 @@
   </div>
   <div class="row my-5">
     <div class="col text-center">
-     <%= link_to "退会しない", customers_path(current_customer), class: "btn btn-primary mr-3" %>
+     <%= link_to "退会しない", customer_path(current_customer), class: "btn btn-primary mr-3" %>
      <%= link_to "退会する", withdraw_path, class: "btn btn-danger ", method: :patch, "data-confirm" => "本当に退会しますか？"  %>
     </div>
    </div>
