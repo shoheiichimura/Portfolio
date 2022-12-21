@@ -1,10 +1,10 @@
 <!--エラーメッセージ-->
 <% if model.errors.any? %>
-  <div class="alert alert-danger">
+  <div class="text-danger text-center my-3">
     <ul class="list-unstyled">
-      <h5><%= model.errors.count %>件のエラー</h5>
+      <h5><strong><%= model.errors.count %>件のエラー</strong></h5>
       <% model.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li><strong>・<%= message %></strong></li>
       <% end %>
     </ul>
   </div>

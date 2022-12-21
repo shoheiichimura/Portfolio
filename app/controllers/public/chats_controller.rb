@@ -1,6 +1,6 @@
 class Public::ChatsController < ApplicationController
-
   before_action :reject_non_related, only: [:show]
+  before_action :authenticate_customer!
 
   def show
     @customer = Customer.find(params[:id]) #チャットする相手は誰か？
@@ -37,7 +37,7 @@ class Public::ChatsController < ApplicationController
   private
 
   def chat_params
-    params.require(:chat).permit(:message, :chat_room_id)
+    params.require(:chat).permit(:message, :chat_room_id, :chat_image)
   end
 
   def reject_non_related

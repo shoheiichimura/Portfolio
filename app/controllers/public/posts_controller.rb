@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :ensure_guest_user, only: [:create]
+  before_action :authenticate_customer!
   
   def new
     @post = Post.new
@@ -10,8 +11,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
     if @post.save
-      flash[:notice] = "投稿完了しました！"
-      redirect_to post_path(@post.id)
+      redirect_to post_path(@post.id), notice: '投稿完了しました！'
     else
       redirect_to request.referer
     end

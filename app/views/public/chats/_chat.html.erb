@@ -1,11 +1,13 @@
 　　　　<% if chat.customer_id == current_customer.id %>
          <p style="text-align:right;">
            <span class='mr-3 text-black-50'><%= time_ago_in_words(chat.created_at) %>前</span><span id="me"><%= chat.message %></span>
-           <%= image_tag current_customer.profile_image, :size =>'50x50', class: "rounded-circle mx-4"%>
+           <%= image_tag current_customer.profile_image, :size =>'60x60', class: "rounded-circle mx-4"%>
+           <%= image_tag current_customer.chat.chat_image if chat.chat_image.attached?%>
          </p>
        <% else %>
          <p style="text-align:left;">
-            <%= link_to customer_path(customer) do %><%= image_tag customer.profile_image,  :size =>'50x50',class: "rounded-circle mx-4" %><% end %>
-           <span id="you"><%= chat.message %></span><span class='ml-3 text-black-50'><%= time_ago_in_words(chat.created_at) %>前</span>
+            <%= link_to customer_path(customer) do %><%= image_tag customer.profile_image,  :size =>'60x60',class: "rounded-circle mx-4" %><% end %>
+           <span id="you" class="flex-wrap"><%= chat.message %></span><span class='ml-3 text-black-50'><%= time_ago_in_words(chat.created_at) %>前</span>
+           <%= image_tag chat.chat_image if chat.chat_image.attached?%>
         </p>
        <% end %>

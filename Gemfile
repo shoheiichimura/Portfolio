@@ -60,6 +60,7 @@ gem 'enum_help'
 gem 'carrierwave'
 gem 'ransack'
 gem 'kaminari','~> 1.2.1'
+gem 'rails-i18n'
 
 gem 'dotenv-rails'
 group :production do

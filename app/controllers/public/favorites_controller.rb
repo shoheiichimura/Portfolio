@@ -1,5 +1,6 @@
 class Public::FavoritesController < ApplicationController
   before_action :ensure_guest_user, only: [:create]
+  before_action :authenticate_customer!
 
   def create
     @post = Post.find(params[:post_id])

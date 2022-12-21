@@ -1,4 +1,6 @@
 class Admin::CustomersController < ApplicationController
+  before_action :authenticate_admin!
+  
   def index
     @customers = Customer.page(params[:page]).per(10).order('created_at DESC')
   end
@@ -14,7 +16,7 @@ class Admin::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-    redirect_to admin_customer_path
+    redirect_to admin_customer_path, notice: "更新が完了しました"
     else
     render "edit"
     end
@@ -23,7 +25,7 @@ class Admin::CustomersController < ApplicationController
   def destroy
     @customer = Customer.find(params[:id])
     @customer.destroy
-    redirect_to admin_customers_path
+    redirect_to admin_customers_path, notice: "削除が完了しました"
   end
 
   private

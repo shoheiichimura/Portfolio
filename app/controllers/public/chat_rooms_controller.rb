@@ -1,5 +1,7 @@
 class Public::ChatRoomsController < ApplicationController
   before_action :ensure_guest_user, only: [:index]
+  before_action :authenticate_customer!
+  
   def index
     # ログインユーザーが入っているルームID取得
     @current_user_rooms = current_customer.user_rooms

@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
- 
+
 * {
   margin: 0;
   padding: 0;
@@ -27,15 +27,15 @@ h1 {
 	color: #000;
 	border-bottom: solid 2px #73cfe6;
 	padding: 10px 0;
-	font-weight: 900;
-	font-size: 30px;
-	text-shadow: 
-		0.04em 0.02em 0 #B0BEC5, 
-		0.08em 0.05em 0 rgba(0, 0, 0, 0.6);
+	font-weight: 900 !important;
+	font-size: 40px !important;
+	text-shadow:
+		0.04em 0.02em 0 #B0BEC5,
+		0.08em 0.05em 0 rgba(0, 0, 0, 0.6)
 }
 h1:first-letter {
 	color: #73cfe6;
-	font-size: 50px;
+	font-size: 60px;
 }
 
 // .navbar {
@@ -98,7 +98,7 @@ main {
 }
 
 #nav ul li a:hover{
-  color:#fff; 
+  color:#fff;
 }
 
 /*==矢印の設定*/
@@ -194,11 +194,11 @@ main {
   #nav{
     padding: 0;
   }
-  
+
   #nav ul{
     display: block;
   }
-  
+
   #nav li.has-child ul,
   #nav li.has-child ul ul{
     position: relative;
@@ -210,7 +210,7 @@ main {
   display: none;/*JSのslidetoggleで表示させるため非表示に*/
   transition:none;/*JSで制御するためCSSのアニメーションを切る*/
 }
-  
+
 #nav ul li a{
   border-bottom:1px solid #ccc;
 }
@@ -218,7 +218,7 @@ main {
 /*矢印の位置と向き*/
 
 #nav ul li.has-child::before{
-  left:20px;  
+  left:20px;
 }
 #nav ul ul li.has-child::before{
     transform: rotate(135deg);
@@ -234,3 +234,4 @@ main {
   text-transform: uppercase;
   padding: 20px;
 }
+

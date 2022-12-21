@@ -3,7 +3,8 @@
     <h1 class="col-sm-5 my-5 mx-auto text-center">New user</h1>
   </div>
 
-     <%= form_with model: @customer, url: customer_registration_path  do |f| %>
+  <%= form_with model: @customer, url: customer_registration_path  do |f| %>
+     <%= render 'layouts/error_messages', model: f.object %>
       <div class="mt-5">
         <div class="form-group h4">
           <div class="row">
@@ -42,7 +43,7 @@
             </div>
           </div>
         </div>
-        
+
         <div class="form-group h4">
           <div class="row">
             <div class="col-md-5 text-left text-md-right">
@@ -111,7 +112,7 @@
 
        <div class="form-group h4">
           <div class="row">
-            <div class="col-md-5 text-left text-md-right">
+            <div class="col-md-5 text-left text-md-right my-auto">
               <%= f.label :introduction, '自己紹介', class: "control-label" %>
             </div>
             <div class="col-md-7">

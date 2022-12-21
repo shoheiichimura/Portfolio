@@ -47,12 +47,14 @@
 #     )
 #   customer.profile_image.attach(io: File.open("./app/assets/images/woman/woman#{n}.jpg"), filename: "woman#{n}.jpg", content_type: 'image/jpg')
 # end
-for n in 1..17
-Customer.all.each do |customer|
-  customer.posts.create!(
-    title: 'タイトル',
-    caption: 'テキストテキストテキストテキストテキストテキスト',
-  )
-end
-image.attach(io: File.open("./app/assets/images/portfolio/post#{n}.jpg"), filename: "image#{n}.jpg", content_type: 'image/jpg')
-end
+
+# for n in 1..17
+# Customer.all.each do |customer|
+#   customer.posts.create!(
+#     title: 'タイトル',
+#     caption: 'テキストテキストテキストテキストテキストテキストテキストテキストテキスト',
+#   )
+# end
+# # image.attach(io: File.open("./app/fixtures/sample-post#{n}.jpg"), filename: "sample-post#{n}.jpg", content_type: 'image/jpg')
+# end
+

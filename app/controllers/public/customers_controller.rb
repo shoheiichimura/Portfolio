@@ -1,6 +1,7 @@
 class Public::CustomersController < ApplicationController
    before_action :search_customer, only: [:index]
    before_action :ensure_guest_user, only: [:update,]
+   before_action :authenticate_customer!
 
   def index
     @q = Customer.page(params[:page]).per(9).order('created_at DESC').ransack(params[:q]) # 検索オブジェクトを生成
@@ -19,8 +20,7 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      flash[:alert] = "更新完了しました！"
-      redirect_to customer_path(@customer)
+      redirect_to customer_path(@customer), notice: "更新完了しました！"
     else
       render "edit"
     end

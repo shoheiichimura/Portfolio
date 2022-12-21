@@ -6,7 +6,7 @@
   </div>
 
   <div class="row">
-    <div class="message col-sm-6 mx-auto text-center">
+    <div class="message col-sm-8 mx-auto">
        <% @chats.each do |chat| %>
         <%= render 'chat', chat: chat, customer: @customer %>
       <% end %>
@@ -15,7 +15,7 @@
 
   <div class="form-group">
     <div class="row">
-      <div class="col-sm-9 d-flex justify-content-end">
+      <div class="col-sm-9 d-flex justify-content-end ">
         <%= form_with model: @chat, data: {remote: true} do |f| %>
         <%= f.text_field :message, class: "form-control col-12" %>
         <%= f.hidden_field :chat_room_id %>

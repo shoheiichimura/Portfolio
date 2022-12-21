@@ -3,29 +3,51 @@
     <h1 class="col-sm-5 my-5 mx-auto text-center">Details</h1>
   </div>
 
-    <div class="card mx-auto rounded-3 shadow p-3 mb-5 bg-body rounded" style="width: 100rem;">
-       <h4 class="card-header"><%= @post.customer.name %>
-         <% if @post.customer == current_customer %>
-           <%= link_to "編集", edit_post_path(@post) %>
-         <% end %>
+    <div class=" col-10 card mx-auto rounded-3 shadow p-3 mb-5 bg-body rounded" style="width: 100rem;">
+       <h4 class="card-header text-info">
+         <div class="row">
+           <div class="col-6">
+             <strong><%= link_to customer_path(@post.customer) do %><%= @post.customer.name %><% end %></strong>
+           </div>
+           <div class="col-6 text-right">
+             <% if @post.customer == current_customer %>
+               <%= link_to edit_post_path(@post) do %>
+                <i class="fas fa-cog fa-lg mr-3" style="color: black;"></i>
+               <% end %>
+             <% end %>
+           </div>
+         </div>
+
        </h4>
        <%= image_tag @post.image %>
-       <div class="card-body">
+       <div class="card-body ">
        <!--いいねボタン部分テンプレート-->
-         <div class="favorite-btn">
-           <%= render "public/favorites/favorite-btn", post: @post %>
+         <div class="row">
+           <div class="favorite-btn col-1">
+             <%= render "public/favorites/favorite-btn", post: @post %>
+           </div>
+           <div class="col-11 card-title h2 text-center" style="right:45px"><strong><%= @post.title %></strong></div>
          </div>
-          <h4 class="card-title"><strong><%= @post.title %></strong></h4>
-            <p class="card-text"><strong><%= @post.caption %></strong></p>
+         <div class="col-10">
+           <p class="card-text h4 my-5"><%= @post.caption %></p>
+         </div>
+
+
          <!--ここからコメント-->
-         <div id="comments_area"> 
+         <div id="comments_area">
            <%= render 'public/comments/post_comments', post: @post %>
          </div>
         </div>
           <!--コメントフォーム-->
-          <div class="new-comment">
+        <div class="new-comment">
            <%= render 'public/comments/form', post: @post, comment: @comment %>
-          </div>
+        </div>
       </div>
+      
+      <div class="row">
+        <div class="col text-center">
+           <%= link_to "投稿一覧へ戻る",posts_path, class: "btn btn-dark" %>
+        </div>
+      </div>
+     
     </div>
-  

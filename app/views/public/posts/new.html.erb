@@ -3,35 +3,36 @@
     <h1 class="col-sm-5 my-5 mx-auto text-center">New post</h1>
   </div>
 
-    <%= form_with model: @post, url: posts_path, method: :post do |f| %>
-      <div class="form-group">
-       <div class="row">
-       <div class="col-md-5 text-right my-auto" style="align-items: center;">
+  <%= form_with model: @post, url: posts_path, method: :post do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
+     <div class="form-group ">
+      <div class="row">
+       <div class="col-md-5 text-right my-auto h3" style="align-items: center;">
           <%= f.label :title, "Title",class: "control-label" %>
         </div>
         <div class="col-sm-7">
-          <%= f.text_field :title, autofocus: true, :placeholder => "Title",class: 'form-control col-5 ' %>
+          <%= f.text_field :title, autofocus: true, :placeholder => "Title",class: 'form-control col-5' %>
         </div>
       </div>
     </div>
 
     <div class="form-grap m-3">
       <div class="row">
-       <div class="col-md-5 text-right my-auto" style="align-items: center;">
+       <div class="col-md-5 text-right my-auto h3" style="align-items: center;">
           <%= f.label :caption, "Caption", class: "control-label" %>
         </div>
-        <div class="col-sm-7">
-          <%= f.text_area :caption, :placeholder => "Caption",class: 'form-control col-5' %>
+        <div class="col-sm-7 h4">
+          <%= f.text_area :caption, :placeholder => "Caption",class: 'form-control col-5', rows: "4" %>
         </div>
       </div>
     </div>
 
     <div class="form-grap">
       <div class="row">
-        <div class="col-md-5 text-right my-auto">
+        <div class="col-md-5 text-right my-auto h3">
           <%= f.label :image, "image", class: "control-label" %>
         </div>
-        <div class="col-sm-7">
+        <div class="col-sm-7 h4">
          <%= f.file_field :image, accept: "image/*",class: "form-comtrol" %>
         </div>
      </div>

@@ -5,5 +5,7 @@ class Chat < ApplicationRecord
   
   has_many :notifications, dependent: :destroy
   
+  has_one_attached :chat_image
+  
   validates :message, presence: true, length: { maximum: 140 }
 end

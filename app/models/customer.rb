@@ -3,6 +3,7 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_one_attached :profile_image
   validates :name, presence: true,length: { in: 2..20 }
   validates :introduction, presence: true, length: { maximum: 200 }
   validates :sex, presence: true
@@ -12,12 +13,13 @@ class Customer < ApplicationRecord
   validates :frequency, presence: true
   validates :heart, presence: true
   validates :traning_style, presence: true
+  validates :profile_image, presence: true
  
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   
-  has_one_attached :profile_image
+ 
 
   # ゲストログイン
   def self.guest

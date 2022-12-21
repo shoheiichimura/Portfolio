@@ -9,6 +9,7 @@
   </div>
 
      <%= form_with model: @customer, url:  customer_path(@customer)  do |f| %>
+     <%= render 'layouts/error_messages', model: f.object %>
       <div class="mt-5">
         <div class="form-group">
           <div class="row">

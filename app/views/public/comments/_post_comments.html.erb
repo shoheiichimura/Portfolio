@@ -1,18 +1,19 @@
 
 <% post.comments.each do |comment| %>
    <p class="m-0 p-0 border-top">
-     <%= image_tag comment.customer.profile_image, :size =>'50x50', class: "rounded-circle"%>
-      <%= comment.customer.name %>
-      <span class="text-black-50"><small>
-      <i class="far fa-clock clock-icon"></i><%= time_ago_in_words(comment.created_at) %>前
-      </small></span>
-      <% if comment.customer == current_customer %>
-        <%= link_to post_comment_path(post, comment), method: :delete, remote: true,"data-confirm" => "本当に削除しますか？" do %>
-         <i class="fas fa-trash-alt text-black-50"></i>
+      <%= image_tag comment.customer.profile_image, :size =>'50x50', class: "rounded-circle"%>
+        <strong><%= comment.customer.name %></strong>
+        <span class="text-black-50"><small>
+          <i class="far fa-clock clock-icon"></i><%= time_ago_in_words(comment.created_at) %>前
+        </small></span>
+       <% if comment.customer == current_customer %>
+         <%= link_to post_comment_path(post, comment), method: :delete, remote: true,"data-confirm" => "本当に削除しますか？" do %>
+             <i class="fasf fa-trash-alt text-black-50"></i>
+         <% end %>
       <% end %>
-    </p>
+   </p>
       <div class="py-2 text-left">
       <%= comment.comment %>
       </div>
-       <% end %>
+       
  <% end %>

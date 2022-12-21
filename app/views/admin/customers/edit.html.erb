@@ -7,10 +7,11 @@
     </div>
 </div>
  <%= form_with model: @customer, url: admin_customer_path(@customer)  do |f| %>
+   <%= render 'layouts/error_messages', model: f.object %>
       <div class="mt-5">
         <div class="form-group">
           <div class="row">
-            <div class="col-md-5 text-left text-md-right">
+            <div class="col-md-5 text-left text-md-right h4">
               <%= f.label :name, '名前', class: "control-label" %>
             </div>
             <div class="col-md-7">
@@ -22,7 +23,7 @@
 
         <div class="form-group">
           <div class="row">
-            <div class="col-md-5 text-left text-md-right">
+            <div class="col-md-5 text-left text-md-right h4">
               <%= f.label :sex, '性別', class: "control-label" %>
             </div>
             <div class="col-md-7">
@@ -37,7 +38,7 @@
 
         <div class="form-group">
           <div class="row">
-            <div class="col-md-5 text-left text-md-right">
+            <div class="col-md-5 text-left text-md-right h4">
               <%= f.label :email, 'メールアドレス', class: "control-label" %>
             </div>
             <div class="col-md-7">
@@ -48,7 +49,7 @@
 
         <div class="form-group">
           <div class="row">
-            <div class="col-md-5 text-left text-md-right">
+            <div class="col-md-5 text-left text-md-right h4">
              <%= f.label :active_area, "活動拠点", class: "control-label" %>
             </div>
             <div class="col-md-7">
@@ -59,7 +60,7 @@
 
         <div class="form-group">
           <div class="row">
-            <div class="col-md-5 text-left text-md-right">
+            <div class="col-md-5 text-left text-md-right h4">
              <%= f.label :objective, "筋トレ目的", class: "control-label" %>
             </div>
             <div class="col-md-7">
@@ -70,7 +71,7 @@
 
         <div class="form-group">
           <div class="row">
-            <div class="col-md-5 text-left text-md-right">
+            <div class="col-md-5 text-left text-md-right h4">
              <%= f.label :frequency, "筋トレ頻度", class: "control-label" %>
             </div>
             <div class="col-md-7">
@@ -81,7 +82,7 @@
 
         <div class="form-group">
           <div class="row">
-            <div class="col-md-5 text-left text-md-right">
+            <div class="col-md-5 text-left text-md-right h4">
              <%= f.label :traning_style, "筋トレスタイル", class: "control-label" %>
             </div>
             <div class="col-md-7">
@@ -92,7 +93,7 @@
 
         <div class="form-group">
           <div class="row">
-            <div class="col-md-5 text-left text-md-right">
+            <div class="col-md-5 text-left text-md-right h4">
              <%= f.label :heart, "筋トレの熱意", class: "control-label" %>
             </div>
             <div class="col-md-7">
@@ -103,24 +104,24 @@
 
        <div class="form-group">
           <div class="row">
-            <div class="col-md-5 text-left text-md-right">
+            <div class="col-md-5 text-left text-md-right my-auto h4">
               <%= f.label :introduction, '自己紹介', class: "control-label" %>
             </div>
             <div class="col-md-7">
-              <%= f.text_area :introduction, :placeholder => "自己紹介", class: 'form-control col-7' %>
+              <%= f.text_area :introduction, :placeholder => "自己紹介", class: 'form-control col-7'%>
             </div>
           </div>
         </div>
          <div class="form-group">
           <div class="row">
-            <div class="col-md-5 text-left text-md-right">
-              <%=f.label:s_deleted,"販売ステータス" %>
+            <div class="col-md-5 text-left text-md-right h4">
+              <%=f.label:is_deleted,"会員ステータス" %>
             </div>
              <div class="col-md-7">
+              <%= f.radio_button :is_deleted, :true %>
+              <%= f.label :is_deleted, "退会済", {value: :true, style: "display: inline-block;"} %>
               <%= f.radio_button :is_deleted, :false %>
               <%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
-              <%= f.radio_button :is_deleted, :true %>
-              <%= f.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %>
             </div>
           </div>
         </div>
