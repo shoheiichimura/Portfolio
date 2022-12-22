@@ -5,7 +5,7 @@
   <div class="row pb-3 justify-content-center align-items-center">
      <div class="col-lg-3 text-center">
         <div class="rounded-circle">
-            <%= image_tag @customer.profile_image, :size =>'350x350', class: "rounded-circle" %>
+            <%= image_tag @customer.profile_image, :size =>'370x350', class: "rounded-circle" %>
         </div>
         <h3 class="font-weight-bold pt-3 ">
           <%= @customer.name %>
@@ -36,11 +36,9 @@
         <h2 class="text-left"><strong>
          <i class="fas fa-id-card mr-2"></i>：
          <%=@customer.name %></strong>
-         <!--チャットを始める-->
-         <!--もしログイン中のユーザーが対象のユーザーではなく、対象のユーザーをフォローしていてかつ、ぞのユーザーからフォローされていた場合リンクを出現-->
-         <% if current_customer != @customer && current_customer.following?(@customer) && @customer.following?(current_customer) %>
-           <%= link_to 'Chatを始める', chat_path(@customer.id), class: "ml-3" %>
-         <% end %>
+           <span class = "chat_start">
+             <%= render 'chat_start', customer: @customer  %>
+           </span>
         </h2>
          <table class="table mt-5 h3 " >
            <tbody>
@@ -88,9 +86,9 @@
          <div class="col-md-10 mx-auto d-flex justify-content-center flex-wrap">
           <% if @posts.present? %>
             <% @posts.each do |post| %>
-              <div class="p-3">
+              <div class="new-image p-3">
                 <%= link_to post_path(post.id) do %>
-                  <%= image_tag post.image, size: "300x250"%>
+                  <%= image_tag post.image, size: "300x250",class: "border border-5 border-info"%>
                 <% end %>
               </div>
             <% end %>

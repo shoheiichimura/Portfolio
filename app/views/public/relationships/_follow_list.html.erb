@@ -7,8 +7,10 @@
            <tbody>
              <tr>
                <th>
-                 <%= image_tag customer.profile_image, :size =>'50x50', class: "rounded-circle" %>
-                 <%= customer.name %>
+                 <%= link_to customer_path(customer), class: "text-info" do %>
+                   <%= image_tag customer.profile_image, :size =>'50x50', class: "rounded-circle" %>
+                   <%= customer.name %>
+                 <% end %>
                </th>
                <td style="vertical-align: middle;">フォロー数: <%= customer.followings.count %></td>
                <td style="vertical-align: middle;">フォロワー数: <%= customer.followers.count %></td>
