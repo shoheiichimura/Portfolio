@@ -1,0 +1,5 @@
+         <!--チャットを始める-->
+         <!--もしログイン中のユーザーが対象のユーザーではなく、対象のユーザーをフォローしていてかつ、ぞのユーザーからフォローされていた場合リンクを出現-->
+         <% if current_customer != customer && current_customer.following?(customer) && customer.following?(current_customer) %>
+           <%= link_to 'Chatを始める', chat_path(customer.id), class: "btn btn-info btn-lg ml-3" %>
+         <% end %>

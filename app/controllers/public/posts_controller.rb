@@ -1,5 +1,4 @@
 class Public::PostsController < ApplicationController
-  before_action :ensure_guest_user, only: [:create]
   before_action :authenticate_customer!
 
   def new
@@ -61,10 +60,4 @@ class Public::PostsController < ApplicationController
     params.require(:post).permit(:title,:caption,:image)
   end
 
-  def ensure_guest_user
-     if current_customer.name == "guestuser"
-       flash[:alert] = "ゲストユーザーは投稿できません。"
-       redirect_to request.referer
-     end
-  end
 end
