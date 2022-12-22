@@ -14,7 +14,7 @@
                <td style="vertical-align: middle;">フォロワー数: <%= customer.followers.count %></td>
                <td style="vertical-align: middle;">
                  <% if current_customer != customer && current_customer.following?(customer) && customer.following?(current_customer) %>
-                  <%= link_to 'chatを始める', chat_path(customer.id), class: "ml-3" %>
+                  <%= link_to 'chatを始める', chat_path(customer.id), class: "btn btn-info btn-lg" %>
                  <% end %>
                </td>
               </tr>

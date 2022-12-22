@@ -7,7 +7,9 @@
       <%= link_to customer_path(visitor) do %>
         <% image_tag visitor.profile_image, size: '30x30',class: "rounded-circle" %>
           <% end %>
-            <%= visitor.name %>さんが
+          <%= link_to customer_path(visitor),class: "text-info" do %>
+            <%= visitor.name %>
+          <% end %>さんが
               <% case notification.action %>
                <% when 'dm' then %>
                あなたに<%= link_to "DM", chat_path(notification.visitor_id)  %>を送りました
@@ -16,10 +18,10 @@
                <% when 'follow' then %>
                    あなたをフォローしました
                <% when 'favorite' then %>
-                 <%= link_to 'あなたの投稿', post_path(notification.post_id) %>にいいねをしました
+                 <%= link_to 'あなたの投稿', post_path(notification.post_id), class: "text-success" %>にいいねをしました
                <% when 'comment' then %>
                   <% if notification.post.customer_id == visited.id %>
-                    <%= link_to 'あなたの投稿', post_path(notification.post_id) %>にコメントしました
+                    <%= link_to 'あなたの投稿', post_path(notification.post_id), class: "text-success" %>にコメントしました
                   <% else %>
                     <%= notification.post.customer.name %>さんの投稿にコメントしました
                   <% end %>
@@ -27,7 +29,7 @@
               <span class='mr-5 text-black-50 h5'><%= time_ago_in_words(notification.created_at).upcase %>前</span>
               </p>
             </div>
-            <div class="col-md-2 text-left my-auto h4"><%= link_to "既読にする", notification_path(notification), method: :patch %></div>
+            <div class="col-md-2 text-left my-auto h4"><%= link_to "既読にする", notification_path(notification), class: "btn btn-primary btn-lg", method: :patch %></div>
 
   </div>
 </div>

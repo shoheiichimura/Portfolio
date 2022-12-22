@@ -18,13 +18,8 @@
             投稿<%= @posts.count %>件
             <%=link_to"いいね一覧",favorites_customer_path(@customer), class: "ml-3 text-body" %><i class="fas fa-heart" style="color: #e54747;"></i>
         </h4>
-        <h4 class="font-weight-bold">
-           <%= link_to customer_followings_path(@customer), class: "link text-body" do %>
-             フォロー中:<%= @customer.followings.count %>人
-           <% end %>
-           <%= link_to customer_followers_path(@customer),  class: "link text-body" do %>
-             フォロワー:<%= @customer.followers.count %>人
-           <% end %>
+        <h4 class="follow-count">
+           <%= render 'public/relationships/follow_count', customer: @customer %>
         </h4>
 
          <!--フォロー機能-->
@@ -87,24 +82,27 @@
     </div>
 
      <div class="row">
-        <h3 class="col-sm-12 text-center"><%= @customer.name %>さんの投稿一覧</h3>
+        <h3 class="col-sm-12 my-5 text-center">ー <%= @customer.name %>さんの投稿一覧 ー</h3>
      </div>
      <div class="row">
-         <div class="col-md-12 d-flex justify-content-center flex-wrap">
+         <div class="col-md-10 mx-auto d-flex justify-content-center flex-wrap">
           <% if @posts.present? %>
             <% @posts.each do |post| %>
               <div class="p-3">
                 <%= link_to post_path(post.id) do %>
-                  <%= image_tag post.image, size: "250x250" %>
+                  <%= image_tag post.image, size: "300x250"%>
                 <% end %>
               </div>
             <% end %>
+           </div>
           <% else %>
              <p class="pt-5">投稿がまだありません。</p>
           <% end %>
         </div>
      </div>
+     <div class="row">
+      <div class="col-md d-flex justify-content-center">
+        <%= paginate @posts %>
+      </div>
+    </div>
 </div>
-
-
-

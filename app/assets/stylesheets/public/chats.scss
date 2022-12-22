@@ -11,13 +11,13 @@
 
 #you {
   margin-bottom: 20px;
-  background: #ff1481;
+  background: #005FFF;
 }
 
 #you:before {
   content: "";
   border: 10px solid transparent;
-  border-right: 20px solid #ff1481;
+  border-right: 20px solid #005FFF;
   position: absolute;
   left: -20px;
   top: 50%;
@@ -27,13 +27,13 @@
 
 #me {
   margin-top: 20px;
-  background: #0096e5;
+  background: #33CC00	;
 }
 
 #me:after {
   content: "";
   border: 10px solid transparent;
-  border-left: 20px solid #0096e5;
+  border-left: 20px solid #33CC00	;
   position: absolute;
   right: -20px;
   top: 50%;
