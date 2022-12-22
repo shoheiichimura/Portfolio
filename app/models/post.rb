@@ -8,11 +8,13 @@ class Post < ApplicationRecord
   # バリデーション
    validates :title, presence: true
    validates :caption, presence: true, length: { maximum: 200 }
+   validates :image, presence: true
+
   # いいね機能
     def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)
     end
-    
+
   # <-------いいね通知-------->
   def create_notification_favorite!(current_customer)
   # すでに「いいね」されているか検索 「?」は「プレースホルダ」
@@ -31,7 +33,7 @@ class Post < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-    
+
     # <-----コメント通知----->
   def create_notification_comment!(current_customer, comment_id)
     # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
@@ -41,7 +43,7 @@ class Post < ApplicationRecord
  　  end
     # まだ誰もコメントしていない場合は、投稿者に通知を送る
     save_notification_comment!(current_customer, comment_id, customer_id) if temp_ids.blank?
-    
+
   end
 
   def save_notification_comment!(current_customer, comment_id, visited_id)
@@ -52,12 +54,12 @@ class Post < ApplicationRecord
       visited_id: visited_id,
       action: 'comment'
     )
-    
+
     # 自分の投稿に対するコメントの場合は、通知済みとする
      if notification.visitor_id == notification.visited_id
       notification.checked = true
      end
     notification.save if notification.valid?
   end
-    
+
 end

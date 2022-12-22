@@ -1,5 +1,5 @@
 class Public::RelationshipsController < ApplicationController
-   #before_action :ensure_guest_user, only: [:create]
+   before_action :ensure_guest_user, only: [:create]
    before_action :authenticate_customer!
 
   # フォローするとき
@@ -30,8 +30,8 @@ class Public::RelationshipsController < ApplicationController
    private
   
   def ensure_guest_user
-    if @customer.name == "guestuser"
-      redirect_to customer_path(current_customer) , alart: 'ゲストユーザーはフォローできません。'
+    if current_customer.name == "guestuser"
+       redirect_to request.referer, alert: 'ゲストユーザーはフォローできません。'
     end
   end
 

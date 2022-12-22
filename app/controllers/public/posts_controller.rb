@@ -1,7 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :ensure_guest_user, only: [:create]
   before_action :authenticate_customer!
-  
+
   def new
     @post = Post.new
     @posts = Post.page(params[:page]).per(8).order('created_at DESC')
@@ -11,17 +11,19 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
     if @post.save
-      redirect_to post_path(@post.id), notice: '投稿完了しました！'
+      flash[:notice] = "投稿完了しました！"
+      redirect_to post_path(@post.id)
     else
-      redirect_to request.referer
+      @posts = Post.page(params[:page]).per(8).order('created_at DESC')
+      render "new"
     end
   end
-  
+
   def index
     @q = Post.page(params[:page]).per(8).order('created_at DESC').ransack(params[:q])
     @posts = @q.result(distinct: true)
     @count = @posts.total_count
-    
+
   end
 
   def show
@@ -37,17 +39,17 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.customer_id = current_customer.id
     if @post.update(post_params)
-      flash[:notice] = "更新しました！"
+      flash[:notice] = "投稿を更新しました！"
       redirect_to new_post_path
     else
-      redirect_to request.referer
+      render "edit"
     end
   end
-  
+
   def destroy
     @post = Post.find(params[:id])
      if @post.destroy
-      flash[:notice] = "削除完了しました！"
+      flash[:notice] = "投稿削除完了しました！"
       redirect_to new_post_path
      else
       redirect_to request.referer
@@ -58,10 +60,11 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title,:caption,:image)
   end
-  
+
   def ensure_guest_user
      if current_customer.name == "guestuser"
-       redirect_to request.referer , alart: 'ゲストユーザーは投稿できません。'
+       flash[:alert] = "ゲストユーザーは投稿できません。"
+       redirect_to request.referer
      end
   end
 end

@@ -7,21 +7,20 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
-  # devise_scope :admin do
-  #   root "admin/sessions#new" => "admin#sessons"
-  # end
-  
-  namespace :admin do
-     resources :customers, only: [:index,:show,:edit,:update,:destroy]
-  end
-
-
-
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
+  
+  # devise_scope :admin do
+  #   root "admin#sessions#new"
+  # end
+
+  namespace :admin do
+     resources :customers, only: [:index,:show,:edit,:update,:destroy]
+  end
+
 
   # ゲストログイン用
   devise_scope :customer do

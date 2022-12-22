@@ -130,3 +130,7 @@
            name: "名前"
            introduction: "自己紹介"
            profile_image: "プロフィール画像"
+         post:
+           title: "タイトル"
+           caption: "本文"
+           image: "画像"

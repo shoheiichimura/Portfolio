@@ -21,7 +21,7 @@ class Public::FavoritesController < ApplicationController
   
   def ensure_guest_user
      if current_customer.name == "guestuser"
-       redirect_to request.referer , alart: 'ゲストユーザーはいいねできません。'
+       redirect_to request.referer, alert: 'ゲストユーザーはいいねできません。'
      end
   end
 end

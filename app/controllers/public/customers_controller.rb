@@ -10,7 +10,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @posts = @customer.posts.page(params[:page])
+    @posts = @customer.posts.page(params[:page]).per(4).order('created_at DESC')
   end
 
   def edit
@@ -36,7 +36,7 @@ class Public::CustomersController < ApplicationController
       redirect_to customer_path(current_customer) , alert: 'ゲストユーザーは退会できません。'
     elsif  @customer.update(is_deleted: true)
     reset_session
-    redirect_to root_path
+    redirect_to root_path, notice: '退会完了いたしました。'
     else
       redirect_to request.referer
     end

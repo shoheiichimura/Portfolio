@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2022_12_15_040618) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.text "comment", default: "", null: false
+    t.text "comment", null: false
     t.integer "customer_id"
     t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2022_12_15_040618) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "name", default: "", null: false
-    t.text "introduction", default: "", null: false
+    t.text "introduction", null: false
     t.integer "sex", default: 0, null: false
     t.integer "active_area", default: 0, null: false
     t.integer "history", default: 0, null: false
@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 2022_12_15_040618) do
   create_table "posts", force: :cascade do |t|
     t.integer "customer_id"
     t.string "title", default: "", null: false
-    t.text "caption", default: "", null: false
+    t.text "caption", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

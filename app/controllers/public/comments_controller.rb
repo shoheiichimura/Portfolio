@@ -15,8 +15,8 @@ class Public::CommentsController < ApplicationController
    end
 
    def destroy
+     @post = Post.find(params[:post_id])
      Comment.find(params[:id]).destroy
-     redirect_to post_path(params[:post_id])
    end
 
    private
@@ -27,7 +27,7 @@ class Public::CommentsController < ApplicationController
    
    def ensure_guest_user
      if current_customer.name == "guestuser"
-       redirect_to request.referer , alart: 'ゲストユーザーはコメントできません。'
+       redirect_to request.referer, alert: 'ゲストユーザーはコメントできません。'
      end
    end
 end

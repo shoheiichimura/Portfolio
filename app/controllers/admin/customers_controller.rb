@@ -14,6 +14,7 @@ class Admin::CustomersController < ApplicationController
   end
 
   def update
+    # byebug
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
     redirect_to admin_customer_path, notice: "更新が完了しました"
@@ -31,7 +32,7 @@ class Admin::CustomersController < ApplicationController
   private
 
   def customer_params
-  params.require(:customer).permit(:name,:introduction, :email,:sex,:profile_image,:active_area,:history,:objective,:frequency,:heart,:traning_style)
+  params.require(:customer).permit(:name,:introduction, :email,:sex,:profile_image,:active_area,:history,:objective,:frequency,:heart,:traning_style, :is_deleted)
   end
 
 
