@@ -3,33 +3,32 @@
 
 <div class="container">
   <div class="row alert alert-info">
-    <div class="col-md-8 mx-auto my-auto text-left h4">
+    <div class="col-md-6 offset-2 mx-auto my-auto text-left h4">
       <%= link_to customer_path(visitor) do %>
         <% image_tag visitor.profile_image, size: '30x30',class: "rounded-circle" %>
+      <% end %>
+      <%= link_to customer_path(visitor),class: "text-info" do %>
+        <%= visitor.name %>
+      <% end %>さんが
+      <% case notification.action %>
+        <% when 'dm' then %>
+         あなたに<%= link_to "DM", chat_path(notification.visitor_id)  %>を送りました
+          <h5 style = "padding-left:50px">メッセージ内容:
+           <%= truncate(notification.chat.message, length: 10, omission: '... (一部表示)') %>
+        <% when 'follow' then %>
+           あなたをフォローしました
+       <% when 'favorite' then %>
+         <%= link_to 'あなたの投稿', post_path(notification.post_id), class: "text-success" %>にいいねをしました
+       <% when 'comment' then %>
+          <% if notification.post.customer_id == visited.id %>
+            <%= link_to 'あなたの投稿', post_path(notification.post_id), class: "text-success" %>にコメントしました
+          <% else %>
+            <%= notification.post.customer.name %>さんの投稿にコメントしました
           <% end %>
-          <%= link_to customer_path(visitor),class: "text-info" do %>
-            <%= visitor.name %>
-          <% end %>さんが
-              <% case notification.action %>
-               <% when 'dm' then %>
-               あなたに<%= link_to "DM", chat_path(notification.visitor_id)  %>を送りました
-                 <p class"text-black-50">メッセージ内容:
-                    <%= truncate(notification.chat.message, length: 10, omission: '... (一部表示)') %>
-               <% when 'follow' then %>
-                   あなたをフォローしました
-               <% when 'favorite' then %>
-                 <%= link_to 'あなたの投稿', post_path(notification.post_id), class: "text-success" %>にいいねをしました
-               <% when 'comment' then %>
-                  <% if notification.post.customer_id == visited.id %>
-                    <%= link_to 'あなたの投稿', post_path(notification.post_id), class: "text-success" %>にコメントしました
-                  <% else %>
-                    <%= notification.post.customer.name %>さんの投稿にコメントしました
-                  <% end %>
-                <% end %>
-              <span class='mr-5 text-black-50 h5'><%= time_ago_in_words(notification.created_at).upcase %>前</span>
-              </p>
-            </div>
-            <div class="col-md-2 text-left my-auto h4"><%= link_to "既読にする", notification_path(notification), class: "btn btn-primary btn-lg", method: :patch %></div>
-
-  </div>
+        <% end %>
+        <span class='mr-5 text-black-50 h5'><%= time_ago_in_words(notification.created_at).upcase %>前</span>
+         </h5>
+        </div>
+      <div class="col-md-4 text-center text-left my-auto h4"><%= link_to "既読にする", notification_path(notification), class: "btn btn-primary btn-lg", method: :patch %></div>
+   </div>
 </div>

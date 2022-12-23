@@ -47,14 +47,18 @@
 
   <div class="row">
      <div class="col-md-8 mx-auto center-block　offset-md-3 d-flex justify-content-center flex-wrap">
-            <% @posts.each do |post| %>
+        <% @posts.each do |post| %>
             <div class="new-image p-3">
              <%=link_to post_path(post.id) do %>
-             <%= image_tag post.image, size: "250x200",class: "border border-5 border-info" %>
+             <%= image_tag post.image, size: "250x200",class: "border border-5" %>
              <% end %>
            </div>
-          <% end %>
-        </div>
-      </div>
-
+        <% end %>
+     </div>
+  </div>
+  <div class="row">
+    <div class="col-md d-flex justify-content-center ">
+      <%= paginate @posts %>
+    </div>
+  </div>
 </div>
