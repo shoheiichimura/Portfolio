@@ -8,11 +8,11 @@
     </div>
   </div>
   <div class="row mt-5">
-    <div class="col-sm-10 mx-auto d-flex justify-content-center flex-wrap">
+    <div class="col-sm-8 mx-auto d-flex justify-content-center flex-wrap">
       <% if @results.present? %>
        <% @results.each do |customer| %>
          <%= link_to customer_path(customer) do %>
-         <%= image_tag customer.profile_image, :size =>'350x300', class: "m-3" %>
+         <%= image_tag customer.profile_image, :size =>'250x200', class: "m-3 customer-image" %>
         <% end %>
        <% end %>
      <% end %>

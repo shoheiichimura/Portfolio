@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+// 会員一覧画像
+.customer-image {
+ box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+ border-radius: 25px;
+}
+
 // フォローボタン
 .btn-follow:link,
 .btn-follow:visited {
@@ -49,3 +55,27 @@
  height: 715px;
 }
 
+
+// 会員詳細の投稿一覧のタイトル
+.head-border {
+    display: flex;
+    align-items: center;
+}
+ 
+.head-border:before,
+.head-border:after {
+    content: "";
+    height: 2px;
+    flex-grow: 1;
+    background-color: #666;
+}
+ 
+.head-border:before {
+    margin-right: 1rem;
+    background: linear-gradient(-90deg, #666, transparent);
+}
+ 
+.head-border:after {
+    margin-left: 1rem;
+    background: linear-gradient(90deg, #666, transparent);
+}

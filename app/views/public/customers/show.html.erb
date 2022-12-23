@@ -5,7 +5,7 @@
   <div class="row pb-3 justify-content-center align-items-center">
      <div class="col-lg-3 text-center">
         <div class="rounded-circle">
-            <%= image_tag @customer.profile_image, :size =>'370x350', class: "rounded-circle" %>
+            <%= image_tag @customer.profile_image, :size =>'370x350', class: "rounded-circle image" %>
         </div>
         <h3 class="font-weight-bold pt-3 ">
           <%= @customer.name %>
@@ -23,7 +23,7 @@
         </h4>
 
          <!--フォロー機能-->
-         <div class="follow-btn">
+         <div class="follow-btn my-3">
             <%= render 'public/relationships/follow_btn', customer: @customer %>
          </div>
 
@@ -80,7 +80,8 @@
     </div>
 
      <div class="row">
-        <h3 class="col-sm-12 my-5 text-center">ー <%= @customer.name %>さんの投稿一覧 ー</h3>
+        <h2 class="col-sm-8 my-5 mx-auto text-center head-border">
+          <%= @customer.name %>さんの投稿一覧</h2>
      </div>
      <div class="row">
          <div class="col-md-10 mx-auto d-flex justify-content-center flex-wrap">
@@ -88,7 +89,7 @@
             <% @posts.each do |post| %>
               <div class="new-image p-3">
                 <%= link_to post_path(post.id) do %>
-                  <%= image_tag post.image, size: "300x250",class: "border border-5 border-info"%>
+                  <%= image_tag post.image, size: "300x250",class: "image"%>
                 <% end %>
               </div>
             <% end %>

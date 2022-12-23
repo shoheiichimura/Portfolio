@@ -50,7 +50,7 @@
         <% @posts.each do |post| %>
             <div class="new-image p-3">
              <%=link_to post_path(post.id) do %>
-             <%= image_tag post.image, size: "250x200",class: "border border-5" %>
+             <%= image_tag post.image, size: "250x200",class: "image" %>
              <% end %>
            </div>
         <% end %>

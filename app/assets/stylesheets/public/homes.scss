@@ -2,24 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-// ここからログインボタン
-*,
-*:before,
-*:after {
-  -webkit-box-sizing: inherit;
-  box-sizing: inherit;
-}
-
-html {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  font-size: 62.5%;
-}
-
-/* 背景用*/
-body {
-  padding: 30px;
-}
+// ======ログインボタン=======
 
 .btn-top,
 a.btn-top,
@@ -85,14 +68,13 @@ a.btn-border-shadow--color2:before {
   box-shadow: 3px 3px 0 #73cfe6;
 }
 
-// ここからトップページ
+// =========トップページ=========
 .top-height {
   height: 660px;
 }
 
 .top {
 	color: #000;
-	border-bottom: solid 2px #73cfe6;
 	padding: 10px 0;
 	font-weight: 900;
 	font-size: 70px!important;
@@ -103,7 +85,7 @@ a.btn-border-shadow--color2:before {
 }
 
 
-// アバウトページレイアウト
+// =========アバウトページレイアウト======
 
 .adout-text {
   font-family: 'Shippori Mincho', serif;
@@ -116,18 +98,13 @@ a.btn-border-shadow--color2:before {
   line-height: 1.4;
   -webkit-box-reflect: below -10px -webkit-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0) 10%,rgba(0, 0, 0, 0.3));
   font-weight: bold;
-// 	line-height:0.95em;
-// 	color: #FFF;
-// 	text-shadow: 0 0 0.2em rgba(0,0,0,1);
 }
 
 .blockquote {
   font-size: 30px;
 }
 
-
-
-// aboutスライドショー
+// ===aboutスライドショー====
 .c{
   height: 550px;
   width: 100%;

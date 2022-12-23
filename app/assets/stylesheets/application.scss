@@ -23,9 +23,16 @@ body {
   padding:0;
 }
 
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+
 h1 {
+  position: relative;
 	color: #000;
-	border-bottom: solid 2px #73cfe6;
 	padding: 10px 0;
 	font-weight: 900 !important;
 	font-size: 40px !important;
@@ -38,6 +45,19 @@ h1:first-letter {
 	font-size: 60px;
 }
 
+h1:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  content: '';
+  border-radius: 3px;
+  background-image: -webkit-gradient(linear, right top, left top, from(#2af598), to(#009efd));
+  background-image: -webkit-linear-gradient(right, #2af598 0%, #009efd 100%);
+  background-image: linear-gradient(to left, #2af598 0%, #009efd 100%);
+}
+
 // .navbar {
 //   background-color: #000;
 // }
@@ -48,10 +68,22 @@ footer {
 
 /*背景画像*/
 main {
-  background: radial-gradient(ellipse at center, rgba(255,255,255,0.5) 40%,rgba(255,255,255,0.8) 60%,rgba(255,255,255,1) 100%),url(portfolio/back_image.jpg);
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.5) 40%,rgba(255,255,255,0.8) 60%,rgba(255,255,255,1) 100%),url(back_image.jpg);
   background-size: cover;
   background-position: top center;
 }
+
+
+// 投稿画像のシャドウ
+.image {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+// 入力フォームのラベル
+.control-label {
+  font-weight: bold;
+}
+
 
 
 /*グーグルフォント*/
@@ -60,8 +92,6 @@ main {
 /*}*/
 
 /*========= ヘッダーメニュー ===============*/
-
-
 #nav{
   background:#000;
   color:#fff;
@@ -255,7 +285,7 @@ main {
 }
 
 
-// ヘッダーのロゴ
+// ヘッダーのロゴ=======
 .header-logo{
   font-size:2rem;
   text-align: center;
@@ -301,4 +331,5 @@ main {
 .link:hover::before{
   width: 100%;
 }
+
 
