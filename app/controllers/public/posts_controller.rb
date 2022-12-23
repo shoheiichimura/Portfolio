@@ -3,7 +3,7 @@ class Public::PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @posts = Post.page(params[:page]).per(8).order('created_at DESC')
+    @posts = current_customer.posts.page(params[:page]).per(8).order('created_at DESC')
   end
 
   def create
