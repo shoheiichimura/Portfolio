@@ -176,4 +176,25 @@ a.btn-border-shadow--color2:before {
   color:#fff;
   transform: translate(-50%, -50%);
   font-weight: 900;
+	line-height:0.95em;
+	text-shadow: 0 0 0.2em rgba(0,0,0,1);
 }
+
+.element {
+  /* 最初は非表示 */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(30px);
+  transition: opacity 1s, visibility 1s, transform 1s;
+}
+/* フェードイン時に入るクラス */
+.is-fadein {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  // transform: translateY(-100px);
+}
+
+
+
+

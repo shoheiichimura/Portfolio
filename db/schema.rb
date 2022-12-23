@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2022_12_15_040618) do
   create_table "chats", force: :cascade do |t|
     t.integer "customer_id"
     t.integer "chat_room_id"
-    t.text "message"
+    t.text "message", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

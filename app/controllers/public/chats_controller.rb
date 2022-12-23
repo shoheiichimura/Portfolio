@@ -33,11 +33,17 @@ class Public::ChatsController < ApplicationController
     # 本引数を２つ持たせてcreate_notification_dmメソッドを実行
     @chat_room.create_notification_dm!(current_customer, @chat.id)
   end
+  
+  def destroy
+    @chat = Chat.find(params[:id])
+    @chat.destroy
+    flash[:notice] = "削除が完了しました！"
+  end
 
   private
 
   def chat_params
-    params.require(:chat).permit(:message, :chat_room_id, :chat_image)
+    params.require(:chat).permit(:message, :chat_room_id)
   end
 
   def reject_non_related

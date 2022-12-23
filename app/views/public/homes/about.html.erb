@@ -14,14 +14,14 @@
     </div>
 
     <!--スライドショー-->
-<div class="row">
+<div class="row ">
 <div class="col-md-9 mx-auto">
   <div class="box">
     <div class="slider">
-      <div class="b"><%= image_tag 'portfolio/slide.jpg', class: 'c' %></div>
-      <div class="b"><%= image_tag 'portfolio/slide1.jpg', class: 'c' %></div>
-      <div class="b"><%= image_tag 'portfolio/slide2.jpg', class: 'c' %></div>
-      <div class="b"><%= image_tag 'portfolio/slide3.jpg', class: 'c' %></div>
+      <div class="b"><%= image_tag 'slide.jpg', class: 'c' %></div>
+      <div class="b"><%= image_tag 'slide1.jpg', class: 'c' %></div>
+      <div class="b"><%= image_tag 'slide2.jpg', class: 'c' %></div>
+      <div class="b"><%= image_tag 'slide3.jpg', class: 'c' %></div>
     </div>
     <div class="slider_logo">
       <p>Traning_friend</p>
@@ -32,16 +32,16 @@
 
     <!--スライドショー-->
 
-    <div class="row border-top">
-        <div class="adout-text col-md text-center my-5">
+    <div class="row border-top element">
+        <div class="adout-text col text-center my-5">
             <h2 class="line">継続する人は殆どいない</h2>
         </div>
     </div>
-    <div class="row ">
-        <div class="col-md-6 text-right">
-            <%= image_tag 'portfolio/About1.jpg', size: '550x350' %>
+    <div class="row element">
+        <div class="col-lg-6 text-center text-right">
+            <%= image_tag 'About1.jpg', size: '550x350' %>
         </div>
-        <div class="adout-text col-md-6 offset-1 mx-auto my-auto h4">
+        <div class="adout-text col-sm-8 col-lg-6 mx-auto my-auto h4">
                 <p>世間では、筋トレは継続することが難しいと言われており、</p></br>
                 <p>筋トレを始めて1年後も継続している人は僅か4%しかおらず、</p></br>
                 <p>続けられる人はほんの一握りです。</p></br>
@@ -51,16 +51,16 @@
         </div>
     </div>
 
-     <div class="row border-top mt-5">
-        <div class="adout-text col-md text-center my-5">
+     <div class="row border-top mt-5 element">
+        <div class="adout-text col text-center my-5">
             <h2 class="line">継続できないのは当たり前</h2>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-6 text-right">
-            <%= image_tag 'portfolio/About2.jpg', size: '550x350' %>
+    <div class="row element">
+        <div class="col-lg-6 text-center text-right">
+            <%= image_tag 'About2.jpg', size: '550x350' %>
         </div>
-        <div class="adout-text col-md-6 offset-1 mx-auto my-auto h4">
+        <div class="adout-text col-sm-8 col-lg-6  mx-auto my-auto h4">
             <p>そもそも、人間の脳は安定を好み、変化を嫌うように作られています。</p></br>
             <p>今の慣れ親しんだ生活を続けていれば、</p></br>
             <p>「死」という最悪の結果からは逃れることができると思っているからです。</p></br>
@@ -72,16 +72,16 @@
         </div>
     </div>
 
-     <div class="row border-top mt-5">
-        <div class="adout-text col-md text-center my-5">
+     <div class="row border-top mt-5 element">
+        <div class="adout-text col text-center my-5">
             <h2 class="line">辞める理由ではなく、続ける理由を見つけよう</h2>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-6 text-right">
-            <%= image_tag 'portfolio/About3.jpg', size: '550x350' %>
+    <div class="row element">
+        <div class="col-lg-6 text-center text-right">
+            <%= image_tag 'About3.jpg', size: '550x350' %>
         </div>
-        <div class="adout-text col-md-6 offset-1 mx-auto my-auto h4">
+        <div class="adout-text col-sm-8 col-lg-6  mx-auto my-auto h4">
             <p>継続していく上で大切なことは、</p></br>
             <p>「筋トレは何の工夫もなければ継続できないのは当たり前」だと認めること。</p></br>
             <p>そして、筋トレを継続する為には工夫が必要だと言うことです。</p></br>
@@ -95,6 +95,7 @@
     </div>
 </div>
 
+
 <script>
     $(function() {
       $('.slider').slick({
@@ -104,5 +105,16 @@
         fade: true,    // fedeオン
         speed: 500,   // 画像切り替えにかかる時間（ミリ秒）
       });
+   $(window).scroll(function () {
+    const windowHeight = $(window).height();
+    const scroll = $(window).scrollTop();
+
+    $('.element').each(function () {
+      const targetPosition = $(this).offset().top;
+      if (scroll > targetPosition - windowHeight + 100) {
+        $(this).addClass("is-fadein");
+      }
     });
+  });
+});
 </script>

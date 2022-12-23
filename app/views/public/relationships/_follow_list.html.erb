@@ -7,8 +7,8 @@
            <tbody>
              <tr>
                <th>
-                 <%= link_to customer_path(customer), class: "text-info" do %>
                    <%= image_tag customer.profile_image, :size =>'50x50', class: "rounded-circle" %>
+                   <%= link_to customer_path(customer), class: "link" do %>
                    <%= customer.name %>
                  <% end %>
                </th>
