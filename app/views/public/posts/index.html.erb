@@ -28,11 +28,11 @@
        <% if  @posts.present? %>
             <% @posts.each do |post| %>
              <%=link_to  post_path(post.id) do %>
-             <div class="card m-2 border border-5 border-info" style="width: 30rem;">
+             <div class="card m-2 border border-5 shadow " style="width: 30rem; border-radius: 10px;">
                <%= image_tag post.image, size: '278x190',class: "m-3" %>
                 <div class="card-body text-center">
                  <h5 class="card-title text-body">
-                   <strong><%= post.title %></strong>
+                   <strong><%= post.title%></strong>
                  </h5>
                  </div>
              </div>

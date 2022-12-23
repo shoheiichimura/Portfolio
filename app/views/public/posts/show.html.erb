@@ -3,11 +3,11 @@
     <h1 class="col-sm-5 my-5 mx-auto text-center">Details</h1>
   </div>
 
-    <div class=" col-10 card mx-auto rounded-3 shadow p-3 mb-5 bg-body rounded" style="width: 100rem;">
-       <h4 class="card-header text-info">
+    <div class=" col-10 card mx-auto shadow p-3 mb-5 bg-body" style="width: 100rem; border-radius: 10px;">
+       <h4 class="card-header">
          <div class="row">
            <div class="col-6">
-             <strong><%= link_to customer_path(@post.customer) do %><%= @post.customer.name %><% end %></strong>
+             <strong class="link"><%= link_to customer_path(@post.customer) do %><%= @post.customer.name %><% end %></strong>
            </div>
            <div class="col-6 text-right">
              <% if @post.customer == current_customer %>

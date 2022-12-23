@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw'
 
     resources :chat_rooms, only: [:index]
-    resources :chats, only: [:show, :create]
+    resources :chats, only: [:show, :create, :destroy]
     resources :customers do
       member do
         get :favorites

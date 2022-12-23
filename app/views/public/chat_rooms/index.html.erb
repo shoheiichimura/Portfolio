@@ -12,15 +12,15 @@
          <% @another_user_rooms.each do |e| %>
            <tr>
              <th>
-               <%= link_to chat_path(e.customer.id) do %>
+               <%= link_to customer_path(e.customer.id) do %>
                 <%= image_tag e.customer.profile_image, :size =>'50x50', class: "rounded-circle" %>
                <% end %>
              </th>
              <td style="vertical-align: middle;">
-               <%= link_to chat_path(e.customer.id), class: "text-info" do %><%= e.customer.name %><% end %>
+               <%= e.customer.name %>
              </td>
              <td style="vertical-align: middle;">
-               <%= e.chat_room.chats.order('created_at DESC').first.message %>
+               <%= link_to chat_path(e.customer.id), class: "link" do %><%= e.chat_room.chats.order('created_at DESC').first.message %><% end %>
              </td>
            </tr>
          <% end %>
