@@ -1,13 +1,12 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
 
-<div class="container">
-  <div class="row alert alert-info">
-    <div class="col-md-6 offset-2 mx-auto my-auto text-left h4">
+  <div class="row alert alert-info mt-3">
+    <div class="col-md-6 offset-2 mx-auto my-auto text-left mt-3 h4">
       <%= link_to customer_path(visitor) do %>
         <% image_tag visitor.profile_image, size: '30x30',class: "rounded-circle" %>
       <% end %>
-      <%= link_to customer_path(visitor),class: "text-info" do %>
+      <%= link_to customer_path(visitor),class: "link" do %>
         <%= visitor.name %>
       <% end %>さんが
       <% case notification.action %>
@@ -31,4 +30,4 @@
         </div>
       <div class="col-md-4 text-center text-left my-auto h4"><%= link_to "既読にする", notification_path(notification), class: "btn btn-primary btn-lg", method: :patch %></div>
    </div>
-</div>
+   

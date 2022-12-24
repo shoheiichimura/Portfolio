@@ -3,10 +3,7 @@ class Public::NotificationsController < ApplicationController
 
   def index
     #current_userの投稿に紐づいた通知一覧
-    @notifications = current_customer.passive_notifications.where(checked: false)
-#    @notifications.where(checked: false).each do |notification|
-#      notification.update(checked: true)
-#    end
+    @notifications = current_customer.passive_notifications.page(params[:page]).per(8).order('created_at DESC').where(checked: false)
   end
 
   def update

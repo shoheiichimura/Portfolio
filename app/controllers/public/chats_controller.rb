@@ -33,7 +33,7 @@ class Public::ChatsController < ApplicationController
     # 本引数を２つ持たせてcreate_notification_dmメソッドを実行
     @chat_room.create_notification_dm!(current_customer, @chat.id)
   end
-  
+
   def destroy
     @chat = Chat.find(params[:id])
     @chat.destroy

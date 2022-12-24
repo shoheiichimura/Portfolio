@@ -16,7 +16,7 @@
 
         <h4 class="font-weight-bold">
             投稿<%= @posts.count %>件
-            <%=link_to"いいね一覧",favorites_customer_path(@customer), class: "ml-3 text-body" %><i class="fas fa-heart" style="color: #e54747;"></i>
+            <%=link_to"いいね一覧",favorites_customer_path(@customer), class: "ml-3 link" %><i class="fas fa-heart" style="color: #e54747;"></i>
         </h4>
         <h4 class="follow-count">
            <%= render 'public/relationships/follow_count', customer: @customer %>
