@@ -1,3 +1,7 @@
+<div class="start">
+    <p><%= image_tag 'logo_transparent' %></p>
+</div>
+
 <div class="container py-3 top-height">
   <div class="row align-items-center">
     <div class="col-sm-12 mx-auto text-center">
@@ -27,3 +31,13 @@
   </div>
 </div>
 
+<script>
+$(function() {
+	setTimeout(function(){
+		$('.start p').fadeIn(1600);
+	},500); //0.5秒後にロゴをフェードイン!
+	setTimeout(function(){
+		$('.start').fadeOut(500);
+	},2500); //2.5秒後にロゴ含め真っ白背景をフェードアウト！
+});
+</script>

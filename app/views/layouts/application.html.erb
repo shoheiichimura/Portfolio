@@ -9,11 +9,16 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://rawgit.com/kimmobrunfeldt/progressbar.js/master/dist/progressbar.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   </head>
   <body>
+    <div id="splash">
+      <div id="splash_text"></div>
+    </div>
      <header>
         <%= render "layouts/header" %>
     </header>
@@ -25,6 +30,38 @@
          <p class="alert text-center alert alert-danger"><%= alert %></p>
        <% end %>
        <%= yield %>
+       <script>
+        //テキストのカウントアップ+バーの設定
+        var bar = new ProgressBar.Line(splash_text, {//id名を指定
+          easing: 'easeInOut',//アニメーション効果linear、easeIn、easeOut、easeInOutが指定可能
+          duration: 800,//時間指定(1000＝1秒)
+          strokeWidth: 0.2,//進捗ゲージの太さ
+          color: '#000',//進捗ゲージのカラー
+          trailWidth: 0.2,//ゲージベースの線の太さ
+          trailColor: '#bbb',//ゲージベースの線のカラー
+          text: {//テキストの形状を直接指定       
+            style: {//天地中央に配置
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              padding: '0',
+              margin: '-30px 0 0 0',//バーより上に配置
+              transform:'translate(-50%,-50%)',
+              'font-size':'1rem',
+              color: '#fff',
+            },
+            autoStyleContainer: false //自動付与のスタイルを切る
+          },
+          step: function(state, bar) {
+            bar.setText(Math.round(bar.value() * 100) + ' %'); //テキストの数値
+          }
+        });
+        
+        //アニメーションスタート
+        bar.animate(1.0, function () {//バーを描画する割合を指定します 1.0 なら100%まで描画します
+          $("#splash").delay(500).fadeOut(800);//アニメーションが終わったら#splashエリアをフェードアウト
+        });  
+       </script>
     </main>
     <footer>
      <%= render "layouts/footer" %>
