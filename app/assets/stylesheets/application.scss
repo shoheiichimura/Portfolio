@@ -20,6 +20,7 @@
   box-sizing: border-box;
 }
 body {
+  // display: none;
   padding:0;
 }
 
@@ -290,7 +291,6 @@ main {
   font-size:2rem;
   text-align: center;
   text-transform: uppercase;
-  padding: 20px;
 }
 
 // ＝＝＝＝リンク＝＝＝＝
@@ -331,5 +331,32 @@ main {
 .link:hover::before{
   width: 100%;
 }
+
+/*========= LoadingのためのCSS ===============*/
+
+/* Loading背景画面設定　*/
+
+#splash {
+    /*fixedで全面に固定*/
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background:#999;
+  text-align:center;
+  color:#fff;
+}
+
+/* Loadingバー中央配置　*/
+#splash_text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+    z-index: 999;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+}
+
 
 

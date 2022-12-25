@@ -1,5 +1,5 @@
      <h2 class="header-logo">
-      <%= link_to root_path do %>Logo<% end %>
+      <%= link_to root_path do %><%= image_tag "header_logo",size: "330x60" %><% end %>
       </h2>
       <nav id="nav">
        <ul>
@@ -11,8 +11,8 @@
           <ul>
            <li><%= link_to customer_path(current_customer), class: "a" do %>マイページ<i class="fas fa-user mx-1"></i><% end %></li>
            <li><%= link_to customers_path, class: "a" do %>会員一覧<i class="fas fa-users mx-1"></i><% end %></li>
-           <li><%= link_to customer_followings_path(current_customer), class: "a" do %>フォロー一覧<% end %></li>
-           <li><%= link_to customer_followers_path(current_customer), class: "a" do %>フォロワー一覧<% end %></li>
+           <li><%= link_to customer_followings_path(current_customer), class: "a" do %>フォロー<i class="far fa-thumbs-up mx-1"></i><% end %></li>
+           <li><%= link_to customer_followers_path(current_customer), class: "a" do %>フォロワー<i class="far fa-thumbs-up mx-1"></i><% end %></li>
           </ul>
          </li>
          <li class="has-child">

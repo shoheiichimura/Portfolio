@@ -127,7 +127,7 @@
         </div>
 
           <div class="actions col-12 text-center">
-           <%= f.submit "更新", class: 'btn btn-sm btn-success control-submit mr-5 mb-3' %>
-           <%= link_to "削除",  admin_customer_path(@customer), class: 'btn btn-sm btn-danger control-submit mr-5 mb-3', method: :delete, "data-confirm" => "本当に削除しますか？" %>
+           <%= f.submit "更新", class: 'btn btn-success control-submit mr-5 mb-3' %>
+           <%= link_to "削除",  admin_customer_path(@customer), class: 'btn  btn-danger control-submit mr-5 mb-3', method: :delete, "data-confirm" => "本当に削除しますか？" %>
          </div>
          <% end %>

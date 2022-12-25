@@ -89,7 +89,6 @@ a.btn-border-shadow--color2:before {
 
 .adout-text {
   font-family: 'Shippori Mincho', serif;
-  font-weight: bold;
 }
 
 .line{
@@ -157,6 +156,7 @@ a.btn-border-shadow--color2:before {
 	text-shadow: 0 0 0.2em rgba(0,0,0,1);
 }
 
+// =====フェードイン======
 .element {
   /* 最初は非表示 */
   opacity: 0;
@@ -172,6 +172,27 @@ a.btn-border-shadow--color2:before {
   // transform: translateY(-100px);
 }
 
+// トップページを開いた問のエフェクト=======
+.start {
+	background: #000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 9000;
+}
+.start p {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	display: none;
+	z-index: 9999;
+}
 
-
+.start img {
+  width: 600px;
+  height: 600px;
+}
 

@@ -37,7 +37,6 @@ class Public::ChatsController < ApplicationController
   def destroy
     @chat = Chat.find(params[:id])
     @chat.destroy
-    flash[:notice] = "削除が完了しました！"
   end
 
   private

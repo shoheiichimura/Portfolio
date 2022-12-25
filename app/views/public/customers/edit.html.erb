@@ -4,7 +4,7 @@
   </div>
   <div class="row">
     <div class="col offset-1 text-center">
-      <%= image_tag @customer.profile_image, size: "350x300" %>
+      <%= image_tag @customer.profile_image, size: "350x300", class: "image" %>
     </div>
   </div>
 
@@ -128,6 +128,6 @@
 
           <div class="actions col-12 text-center">
            <%= f.submit "更新する", class: 'btn btn-success control-submit mr-5 mb-3' %>
-           <%= link_to "退会する", confirm_path, class: 'btn btn-outline-danger control-submit mr-5 mb-3' %>
+           <%= link_to "退会する", confirm_path, class: 'btn btn-danger control-submit mr-5 mb-3' %>
          </div>
          <%end %>
