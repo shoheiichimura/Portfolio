@@ -13,10 +13,10 @@
 
 # =======管理者情報======
 
-# Admin.create!(
-#   email: 'a@a',
-#   password: 'adminadmin',
-#   )
+Admin.create!(
+  email: 'a@a',
+  password: 'adminadmin',
+  )
 
 
 

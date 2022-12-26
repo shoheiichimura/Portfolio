@@ -1,13 +1,9 @@
 <% if post.favorited_by?(current_customer) %>
- <span class="ml-3">
    <%= link_to post_favorites_path(post), method: :delete, remote: true do %>
      <i class="fas fa-heart unlike-btn"></i>
    <% end %>
- </span>
 <% else %>
- <span class="ml-3">
    <%= link_to post_favorites_path(post), method: :post, remote: true do %>
      <i class="far fa-heart like-btn"></i>
    <% end %>
- </span>
 <% end %>
