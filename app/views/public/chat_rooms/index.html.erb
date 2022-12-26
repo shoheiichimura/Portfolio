@@ -6,12 +6,12 @@
    <div class="col-sm-5 mx-auto">
     <table class="table table-hover mt-5 text-center h3">
       <tbody>
-       <% if @chat.exists? %>
+       <% if @last_message.present? %>
          <% @another_user_rooms.each do |e| %>
            <tr>
              <th>
                <%= link_to customer_path(e.customer.id) do %>
-                <%= image_tag e.customer.profile_image, :size =>'50x50', class: "rounded-circle" %>
+                <%= image_tag e.customer.profile_image, size: '50x50', class: "rounded-circle" %>
                <% end %>
              </th>
              <td style="vertical-align: middle;">

@@ -1,37 +1,37 @@
-<div class="container py-5">
+<div class="container py-5" id="login">
   <div class="row">
-    <h1 class="col-md-8 mx-auto text-center font-weight-bold">管理者Log in</h1>
+    <h1 class="col-md-8 mx-auto text-center font-weight-bold admin">管理者Log in</h1>
   </div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
    <div class="mt-5">
     <div class="form-group">
-          <div class="row">
-            <div class="col-md-5 text-left text-md-right">
+          <div class="row mb-3">
+            <div class="col-md-6 text-left text-md-right h4">
               <%= f.label :email, 'メールアドレス', class: "control-label" %>
             </div>
-            <div class="col-md-7">
-              <%= f.email_field :email, :placeholder => "sample@example.com", class: 'form-control col-7' %>
+            <div class="col-md-6">
+              <%= f.email_field :email, :placeholder => "sample@example.com", class: 'form-control col-3' %>
             </div>
           </div>
         </div>
 
     <div class="form-group">
-         <div class="row">
-           <div class="col-md-5 text-left text-md-right">
+         <div class="row mb-3">
+           <div class="col-md-6 text-left text-md-right h4">
             <%= f.label :password, "パスワード６文字以上", class: "control-label" %>
             <% if @minimum_password_length %>
             <em><% @minimum_password_length %></em>
             <% end %>
            </div>
-           <div class="col-md-7">
-            <%= f.password_field :password, class: 'form-control col-7' %>
+           <div class="col-md-6">
+            <%= f.password_field :password, class: 'form-control col-3' %>
           </div>
         </div>
        </div>
-     <div class="actions col-12 text-center">
-    <%= f.submit "Log in", class: 'btn btn-sm btn-success control-submit mr-5 mb-3' %>
+     <div class="actions col-md-6 offset-6 text-left">
+    <%= f.submit "Log in", class: 'btn btn btn-info control-submit mr-5 mb-3' %>
   </div>
 <% end %>
 

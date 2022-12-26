@@ -1,4 +1,4 @@
- <div class="container notification">
+ <div class="container pt-5 notification">
     <div class="row">
       <div class="col-md-8 mx-auto text-center">
         <h1>Notification</h1>
@@ -9,7 +9,7 @@
      <% if @notifications.exists? %>
         <%= render @notifications %>
      <% else %>
-    <div class="row">
+    <div class="row mt-5">
        <div class="col-md text-center">
          <h3>通知はありません</h3>
        </div>

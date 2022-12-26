@@ -11,10 +11,10 @@ class Public::ChatRoomsController < ApplicationController
      end
      # 自分のchat_room_idでcustomer_idが自分じゃないのを取得
      @another_user_rooms = UserRoom.where(chat_room_id: my_room_id).where('customer_id != ?', current_customer.id)
-     @chat = current_customer.chats
-     if @chat.exists?
-     # トークの最後のメッセージを取得
-     @last_message = Chat.find_by(chat_room_id: @another_user_rooms.last.chat_room_id).message
+    # 取得してきたデータがあるかどうか
+     if @another_user_rooms.present?
+    # # トークの最後のメッセージを取得
+     @last_message = Chat.find_by(chat_room_id: @another_user_rooms.last.chat_room_id)
      end
   end
 
