@@ -66,17 +66,17 @@
 
 #==========会員に紐付いた投稿=================
 
-ActiveRecord::Base.transaction do
-  Customer.all.each_with_index do |customer, i|
-    post = customer.posts.new(
-      title: 'タイトル',
-      caption: 'テキストテキストテキストテキストテキストテキストテキストテキストテキスト'
-                  )
-    post.image.attach(io: File.open(Rails.root.join("./db/fixtures/sample-post#{i}.jpg")),
-                  filename: 'sample-post1.jpg')
-    break if i == 20
-      post.save!
-  end
-end
+# ActiveRecord::Base.transaction do
+#   Customer.all.each_with_index do |customer, i|
+#     post = customer.posts.new(
+#       title: 'タイトル',
+#       caption: 'テキストテキストテキストテキストテキストテキストテキストテキストテキスト'
+#                   )
+#     post.image.attach(io: File.open(Rails.root.join("./db/fixtures/sample-post#{i}.jpg")),
+#                   filename: 'sample-post1.jpg')
+#     break if i == 20
+#       post.save!
+#   end
+# end
 
 

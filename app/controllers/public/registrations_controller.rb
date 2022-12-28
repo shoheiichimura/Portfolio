@@ -8,7 +8,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
    def after_sign_in_path_for(resource)
      if current_customer
-       flash[:notice] = "登録完了しました"
+       flash[:notice] = "会員登録完了しました"
        customer_path(current_customer)
      end
    end

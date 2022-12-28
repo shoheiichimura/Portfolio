@@ -4,7 +4,7 @@ class Public::CustomersController < ApplicationController
    before_action :authenticate_customer!
 
   def index
-    @q = Customer.page(params[:page]).per(12).order('created_at DESC').ransack(params[:q]) # 検索オブジェクトを生成
+    @q = Customer.page(params[:page]).per(16).order('created_at DESC').ransack(params[:q]) # 検索オブジェクトを生成
     @results = @q.result
   end
 
@@ -51,7 +51,7 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-  params.require(:customer).permit(:name,:introduction, :email,:sex,:profile_image,:active_area,:objective,:frequency,:heart,:traning_style)
+  params.require(:customer).permit(:name,:introduction, :email,:sex,:profile_image,:active_area,:history,:objective,:frequency,:heart,:traning_style)
   end
 
   def search_customer

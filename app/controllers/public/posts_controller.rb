@@ -3,7 +3,7 @@ class Public::PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @posts = current_customer.posts.page(params[:page]).per(8).order('created_at DESC')
+    @posts = current_customer.posts.page(params[:page]).per(4).order('created_at DESC')
   end
 
   def create
@@ -13,7 +13,7 @@ class Public::PostsController < ApplicationController
       flash[:notice] = "投稿完了しました！"
       redirect_to post_path(@post.id)
     else
-      @posts = Post.page(params[:page]).per(8).order('created_at DESC')
+      @posts = Post.page(params[:page]).per(4).order('created_at DESC')
       render "new"
     end
   end
@@ -39,7 +39,7 @@ class Public::PostsController < ApplicationController
     @post.customer_id = current_customer.id
     if @post.update(post_params)
       flash[:notice] = "投稿を更新しました！"
-      redirect_to new_post_path
+      redirect_to post_path(@post)
     else
       render "edit"
     end

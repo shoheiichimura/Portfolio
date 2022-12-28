@@ -8,7 +8,7 @@
         <span class="text-black-50"><small>
           <i class="far fa-clock clock-icon"></i><%= time_ago_in_words(comment.created_at) %>前
         </small></span>
-       <% if comment.customer == current_customer %>
+       <% if comment.customer == current_customer || post.customer == current_customer %>
          <%= link_to post_comment_path(post, comment), method: :delete, remote: true,"data-confirm" => "本当に削除しますか？" do %>
              <i class="fas fa-trash-alt text-black-50"></i>
          <% end %>

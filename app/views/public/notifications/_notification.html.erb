@@ -16,12 +16,12 @@
           <h5 style = "padding-left:50px">メッセージ内容:
            <%= truncate(notification.chat.message, length: 10, omission: '... (一部表示)') %>
         <% when 'follow' then %>
-           あなたをフォローしました
+           あなたをフォロー<i class="far fa-thumbs-up"></i>しました
        <% when 'favorite' then %>
-         <%= link_to 'あなたの投稿', post_path(notification.post_id), class: "text-success" %>にいいねをしました
+         <%= link_to 'あなたの投稿', post_path(notification.post_id), class: "text-success" %>にいいね<i class="fas fa-heart" style="color: #e54747;"></i>をしました
        <% when 'comment' then %>
           <% if notification.post.customer_id == visited.id %>
-            <%= link_to 'あなたの投稿', post_path(notification.post_id), class: "text-success" %>にコメントしました
+            <%= link_to 'あなたの投稿', post_path(notification.post_id), class: "text-success" %>にコメント<i class="fas fa-comment"></i>しました
           <% else %>
             <%= notification.post.customer.name %>さんの投稿にコメントしました
           <% end %>
