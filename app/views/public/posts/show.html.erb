@@ -12,8 +12,15 @@
            <div class="col-6 text-right">
              <% if @post.customer == current_customer %>
                <%= link_to edit_post_path(@post) do %>
-                <i class="fas fa-cog fa-lg mr-3" style="color: black;"></i>
+                 <i class="fas fa-cog fa-lg mr-3" style="color: black;"></i>
                <% end %>
+                <!--自分の詳細ページでなければ、通報ボタンを表示させる-->
+            <% else %>
+          <div align="right">
+              <%= link_to new_customer_report_path(@customer), class: "btn btn-danger report-btn ml-1" do %>
+                通報する<i class="fas fa-exclamation-triangle mx-1"></i>
+            <% end %>
+          </div>
              <% end %>
            </div>
          </div>

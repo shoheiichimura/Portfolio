@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
      resources :customers, only: [:index,:show,:edit,:update,:destroy]
+     resources :reports, only: [:index, :show, :update]
   end
 
 
@@ -32,10 +33,11 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about', as: 'about'
     get 'customers/confirm' => "customers#confirm", as: 'confirm'
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw'
-
     resources :chat_rooms, only: [:index]
     resources :chats, only: [:show, :create, :destroy]
+    
     resources :customers do
+      resources :reports, only: [:new, :create]
       member do
         get :favorites
       end

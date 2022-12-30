@@ -8,10 +8,10 @@
     <div class="mt-5">
       <div class="form-group h3">
          <div class="row">
-           <div class="col-md-6 text-left text-md-right mb-3">
-             <%= f.label :email, 'メールアドレス', class: "control-label" %>
+           <div class="col-md-5 text-left text-md-right mb-3">
+             <%= f.label :email, 'メールアドレス', class: "control-label" %><span class="indispensable">*</span>
            </div>
-           <div class="col-md-6">
+           <div class="col-md-7">
              <%= f.text_field :email, autofocus: true, :placeholder => "sample@example.com", class: 'form-control col-5' %>
            </div>
          </div>
@@ -19,17 +19,17 @@
       </div>
       <div class="form-group h3">
          <div class="row">
-           <div class="col-md-6 text-left text-md-right">
-            <%= f.label :password, "パスワード", class: "control-label" %>
+           <div class="col-md-5 text-left text-md-right">
+            <%= f.label :password, "パスワード", class: "control-label" %><span class="indispensable">*</span>
            </div>
-           <div class="col-md-6">
+           <div class="col-md-7">
             <%= f.password_field :password, autocomplete: "current-password", class: 'form-control col-5' %>
           </div>
         </div>
        </div>
        <div class="form-grouph3">
          <div class="row">
-           <div class="col-md-6 offset-6 mb-3">
+           <div class="col-md-7 offset-5 mb-3">
             <% if devise_mapping.rememberable? %>
              <%= f.check_box :remember_me %>
              <%= f.label :remember_me %>
@@ -38,14 +38,14 @@
            </div>
           </div>
        <div class="row">
-        <div class="actions col-6 offset-6 mb-3">
-           <%= f.submit "ログイン", class: 'btn btn btn-info control-submit mr-5 mb-3' %>
+        <div class="actions mx-auto mb-3">
+           <%= f.submit "ログインする", class: 'btn btn btn-info control-submit mr-5 mb-3' %>
         </div>
       </div>
       <% end %>
       <div class="row">
-          <div class="col-6 offset-6 pr-0 text-center text-md-left font-weight-bold h4">新規登録は
-           <%= link_to "こちら", new_customer_registration_path, class: "link" %>
+          <div class="col-7 offset-5 pr-0 text-center text-md-left font-weight-bold h5">新規登録は
+           <%= link_to "こちら", new_customer_registration_path, class: "link" %>から行えます。
           </div>
       </div>
   </div>
