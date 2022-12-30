@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   namespace :admin do
      resources :customers, only: [:index,:show,:edit,:update,:destroy]
      resources :reports, only: [:index, :show, :update]
+     resources :posts, only: [:index, :show,:edit,:update,:destroy]
   end
 
 

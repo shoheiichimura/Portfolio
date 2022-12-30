@@ -16,12 +16,12 @@
                <% end %>
                 <!--自分の詳細ページでなければ、通報ボタンを表示させる-->
             <% else %>
-          <div align="right">
-              <%= link_to new_customer_report_path(@customer), class: "btn btn-danger report-btn ml-1" do %>
-                通報する<i class="fas fa-exclamation-triangle mx-1"></i>
+               <div align="right">
+                 <%= link_to new_customer_report_path(@customer), class: "btn btn-danger report-btn ml-1" do %>
+                   通報する<i class="fas fa-exclamation-triangle mx-1"></i>
+                 <% end %>
+               </div>
             <% end %>
-          </div>
-             <% end %>
            </div>
          </div>
 

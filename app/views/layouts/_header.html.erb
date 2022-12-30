@@ -63,6 +63,14 @@
          </ul>
         </li>
         <li class="has-child">
+          <%= link_to admin_posts_path, class:  "a" do %>
+          <i class="fas fa-camera fa-2x mx-3"></i>
+         <% end %>
+         <ul>
+           <li><%= link_to admin_posts_path,class: "a" do %>投稿一覧<i class="fas fa-camera mx-1"></i><% end %></li>
+         </ul>
+        </li>
+        <li class="has-child">
           <%= link_to admin_reports_path, class:  "a" do %>
           <i class="fas fa-exclamation-triangle fa-2x mx-3"></i>
          <% end %>

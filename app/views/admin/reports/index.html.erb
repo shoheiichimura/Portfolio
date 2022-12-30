@@ -18,10 +18,10 @@
           <% @reports.each do |report| %>
             <tr>
               <td scope="row">
-                <%= link_to report.id, admin_report_path(report),class: "link" %>
+                <%= report.id %>
               </td>
               <td style="vertical-align: middle;">
-                <%= report.reported.name %>
+                <%= link_to report.reported.name, admin_report_path(report),class: "link" %><%=  %>
               </td>
               <td style="vertical-align: middle;">
                 <%= report.reporter.name %>
