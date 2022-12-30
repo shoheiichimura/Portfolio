@@ -8,7 +8,7 @@
      <div class="form-group ">
       <div class="row">
        <div class="col-md-5 text-right my-auto h3" style="align-items: center;">
-          <%= f.label :title, "Title",class: "control-label" %>
+          <%= f.label :title, "Title",class: "control-label" %><span class="indispensable">*</span>
         </div>
         <div class="col-sm-7">
           <%= f.text_field :title, autofocus: true, :placeholder => "Title",class: 'form-control col-5' %>
@@ -19,7 +19,7 @@
     <div class="form-grap m-3">
       <div class="row">
        <div class="col-md-5 text-right my-auto h3" style="align-items: center;">
-          <%= f.label :caption, "Caption", class: "control-label" %>
+          <%= f.label :caption, "Caption", class: "control-label" %><span class="indispensable">*</span>
         </div>
         <div class="col-sm-7 h4">
           <%= f.text_area :caption, :placeholder => "Caption",class: 'form-control col-5', rows: "4" %>
@@ -30,7 +30,7 @@
     <div class="form-grap">
       <div class="row">
         <div class="col-md-5 text-right my-auto h3">
-          <%= f.label :image, "image", class: "control-label" %>
+          <%= f.label :image, "image", class: "control-label" %><span class="indispensable">*</span>
         </div>
         <div class="col-sm-7 h4">
          <%= f.file_field :image, accept: "image/*",class: "form-comtrol" %>

@@ -1,6 +1,6 @@
 <div class="container py-5" id="login">
   <div class="row">
-    <h1 class="col-md-8 mx-auto text-center font-weight-bold admin">管理者Log in</h1>
+    <h1 class="col-md-8 mx-auto text-center font-weight-bold admin">Admin Log in</h1>
   </div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -9,10 +9,10 @@
     <div class="form-group">
           <div class="row mb-3">
             <div class="col-md-6 text-left text-md-right h4">
-              <%= f.label :email, 'メールアドレス', class: "control-label" %>
+              <%= f.label :email, 'メールアドレス', class: "control-label" %><span class="indispensable">*</span>
             </div>
             <div class="col-md-6">
-              <%= f.email_field :email, :placeholder => "sample@example.com", class: 'form-control col-3' %>
+              <%= f.email_field :email, autofocus: true, :placeholder => "sample@example.com", class: 'form-control col-3' %>
             </div>
           </div>
         </div>
@@ -20,7 +20,7 @@
     <div class="form-group">
          <div class="row mb-3">
            <div class="col-md-6 text-left text-md-right h4">
-            <%= f.label :password, "パスワード６文字以上", class: "control-label" %>
+            <%= f.label :password, "パスワード６文字以上", class: "control-label" %><span class="indispensable">*</span>
             <% if @minimum_password_length %>
             <em><% @minimum_password_length %></em>
             <% end %>

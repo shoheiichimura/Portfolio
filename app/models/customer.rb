@@ -14,7 +14,9 @@ class Customer < ApplicationRecord
   validates :heart, presence: true
   validates :traning_style, presence: true
   validates :profile_image, presence: true
- 
+  
+  has_many :reports, class_name: "Report", foreign_key: "reporter_id", dependent: :destroy
+  has_many :reverse_of_reports, class_name: "Report", foreign_key: "reported_id", dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy

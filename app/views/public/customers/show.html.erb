@@ -2,6 +2,8 @@
   <div class="row">
     <h1 class="col-sm-5 my-5 mx-auto text-center">User</h1>
   </div>
+
+
   <div class="row pb-3 justify-content-center align-items-center">
      <div class="col-lg-3 text-center">
         <div class="rounded-circle">
@@ -28,7 +30,6 @@
          <div class="follow-btn my-3">
             <%= render 'public/relationships/follow_btn', customer: @customer %>
          </div>
-
      </div>
 
 
@@ -78,6 +79,14 @@
             </tr>
           </tbody>
         </table>
+        <!--自分の詳細ページでなければ、通報ボタンを表示させる-->
+          <div align="right">
+            <% if @customer != current_customer %>
+              <%= link_to new_customer_report_path(@customer), class: "btn btn-danger report-btn ml-1" do %>
+                通報する<i class="fas fa-exclamation-triangle mx-1"></i>
+              <% end %>
+            <% end %>
+          </div>
       </div>
     </div>
 

@@ -1,0 +1,39 @@
+<div class="contaner py-5">
+  <div class="row">
+    <h1 class="col-sm-5 my-5 mx-auto text-center">Report</h1>
+  </div>
+
+  <%= form_with model:[@customer, @report] do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
+     <div class="mt-5">
+        <div class="form-group h3">
+          <div class="row">
+           <div class="col-md-5 text-left text-md-right mb-3 my-auto">
+             <%= f.label :reason, '通報理由', class: "control-label" %><span class="indispensable">*</span>
+           </div>
+           <div class="col-md-7">
+             <%= f.text_area :reason,rows: '3', autofocus: true, :placeholder => "通報理由", class: 'form-control col-5' %>
+           </div>
+         </div>
+       </div>
+    </div>
+    <div class="mt-5">
+        <div class="form-group h3">
+          <div class="row">
+           <div class="col-md-5 text-left text-md-right mb-3">
+             <%= f.label :url, 'URL(任意)', class: "control-label" %>
+           </div>
+           <div class="col-md-7">
+             <%= f.text_field :url, :placeholder => "URL", class: 'form-control col-5' %>
+           </div>
+         </div>
+       </div>
+    </div>
+    <div class="row">
+        <div class="actions col-6 offset-6 mb-3">
+           <%= f.submit "通報する", class: 'btn btn btn-danger control-submit mr-5 mb-3' %>
+        </div>
+    </div>
+  <% end %>
+ </div>
+     

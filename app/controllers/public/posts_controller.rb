@@ -22,12 +22,14 @@ class Public::PostsController < ApplicationController
     @q = Post.page(params[:page]).per(16).order('created_at DESC').ransack(params[:q])
     @posts = @q.result(distinct: true)
     @count = @posts.total_count
-
   end
 
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
+    #新しい通報の箱を用意
+    @report = Report.new
+    @customer = @post.customer.id
   end
 
   def edit
