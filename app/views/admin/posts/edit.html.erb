@@ -1,0 +1,55 @@
+<div class="contaner py-5">
+  <div class="row">
+    <h1 class="col-sm-5 my-5 mx-auto text-center">Editing</h1>
+  </div>
+  <div class="row">
+    <di class="col text-center my-5">
+      <%= image_tag @post.image, size: "400x300", class: "image" %>
+    </di>
+  </div>
+
+  <%= form_with model: @post, url: admin_post_path, method: :patch do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
+      <div class="form-group ">
+      <div class="row">
+       <div class="col-md-5 text-right my-auto h3" style="align-items: center;">
+          <%= f.label :title, "Title",class: "control-label" %>
+        </div>
+        <div class="col-sm-7">
+          <%= f.text_field :title, autofocus: true, :placeholder => "Title",class: 'form-control col-5' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-grap m-3">
+      <div class="row">
+       <div class="col-md-5 text-right my-auto h3" style="align-items: center;">
+          <%= f.label :caption, "Caption", class: "control-label" %>
+        </div>
+        <div class="col-sm-7 h4">
+          <%= f.text_area :caption, :placeholder => "Caption",class: 'form-control col-5', rows: "4" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-grap">
+      <div class="row">
+        <div class="col-md-5 text-right my-auto h3">
+          <%= f.label :image, "image", class: "control-label" %>
+        </div>
+        <div class="col-sm-7 h4">
+         <%= f.file_field :image, accept: "image/*",class: "form-comtrol" %>
+        </div>
+     </div>
+    </div>
+
+    <div class="row m-3">
+      <div class="offset-5 col-md-7">
+         <%= f.submit "更新", class: 'btn btn-lg btn-success control-submit mr-5 mb-3 h3' %>
+         <%= link_to "削除", admin_post_path(@post),class: "btn btn-lg btn-danger mr-5 mb-3 h3", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      </div>
+    </div>
+
+   <% end %>
+
+   </div>

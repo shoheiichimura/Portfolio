@@ -1,0 +1,38 @@
+<div class="contaner py-5">
+  <div class="row">
+    <h1 class="col-sm-5 my-5 mx-auto text-center">Report details</h1>
+  </div>
+  
+    <div class=" col-10 card mx-auto shadow p-3 mb-5 bg-body" style="width: 100rem; border-radius: 10px;">
+       <h4 class="card-header">
+         <div class="row">
+           <div class="col-6">
+             <strong class="link"><%= link_to admin_customer_path(@post.customer) do %><%= @post.customer.name %><% end %></strong>
+           </div>
+           <div class="col-6 text-right">
+             <%= link_to edit_admin_post_path(@post) do %>
+               <i class="fas fa-cog fa-lg mr-3" style="color: black;"></i>
+             <% end %>
+          </div>
+        </div>
+       </h4>
+       
+       <%= image_tag @post.image %>
+       <div class="card-body ">
+           <div class="card-title h2 text-center"><strong><%= @post.title %></strong></div>
+         </div>
+         <div class="col-10">
+           <p class="card-text h4 my-5"><%= @post.caption %></p>
+         </div>
+
+         <!--ここからコメント-->
+         <div id="comments_area">
+           <%= render 'public/comments/post_comments', post: @post %>
+         </div>
+    </div>
+    <div class="row">
+      <div class="col text-center my-5">
+        <%= link_to "投稿一覧へ戻る",admin_posts_path, class: "btn btn-dark" %>
+      </div>
+    </div>
+</div>

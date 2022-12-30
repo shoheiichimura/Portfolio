@@ -1,44 +1,47 @@
 <div class="container py-5">
  <div class="row">
-  <div class="col-sm-8 mx-auto text-center">
-   <h1 class="m-4 font-weight-bold">Users</h1>
+   <h1 class="col-sm-5 my-5 mx-auto text-center">Users</h1>
   </div>
-   <table class="table text-center table-secondary table-hover h4">
-    <thead class="thead-dark">
-      <tr class="table-dark">
-        <th scope="col">会員ID</th>
-        <th scope="col">氏名</th>
-        <th scope="col">メールアドレス</th>
-        <th scope="col">ステータス</th>
-      </tr>
-    </thead>
-
-    <tbody>
-     <% @customers.each do |customer| %>
-     <tr>
-      <th scope="row"><%= customer.id %></th>
-      <td>
-        <%= link_to admin_customer_path(customer),class: "link" do %>
-        <strong><%= customer.name %></strong>
-        <% end %>
-      </td>
-      <td><%= customer.email %></td>
-      <td>
-        <% if customer.is_deleted %>
-         <p class="text-danger"><strong>退会済</strong></p>
-         <% else %>
-         <p class="text-success"><strong>有効</strong></p>
-         <% end %>
-        </td>
+  
+  <div class="row">
+   <div class="col-md-10 mx-auto">
+     <table class="table text-center table-secondary table-hover h4">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">会員ID</th>
+          <th scope="col">氏名</th>
+          <th scope="col">メールアドレス</th>
+          <th scope="col">ステータス</th>
         </tr>
-       <% end %>
-     </tbody>
-   </table>
+      </thead>
+
+      <tbody>
+       <% @customers.each do |customer| %>
+        <tr>
+         <th style="vertical-align: middle;" scope="row"><%= customer.id %></th>
+         <td>
+           <%= link_to admin_customer_path(customer),class: "link" do %>
+           <strong><%= customer.name %></strong>
+           <% end %>
+         </td>
+         <td style="vertical-align: middle;"><%= customer.email %></td>
+         <td style="vertical-align: middle;">
+           <% if customer.is_deleted %>
+             <p class="text-danger"><strong>退会済</strong></p>
+           <% else %>
+             <p class="text-success"><strong>有効</strong></p>
+           <% end %>
+          </td>
+          </tr>
+        <% end %>
+       </tbody>
+     </table>
+   </div>
   </div>
   <div class="row">
       <div class="col-md d-flex justify-content-center">
         <%= paginate @customers %>
       </div>
   </div>
-</div> 
+</div>
 
