@@ -3,7 +3,7 @@
 ## サイト概要
 ### サイトテーマ
 「筋トレ挫折を一人でも無くす」為に、同じ志を持つ筋トレ仲間を気軽に探して、</br>
-繋がれる筋トレ特化型マッチングアプリ
+繋がれる筋トレ特化型SNSアプリ
 
 ### テーマを選んだ理由
 コロナ禍の影響で日本全体で「健康意識」が高まり、筋トレを始める人が急激に増えています。</br>
@@ -37,7 +37,7 @@
 - 筋トレでもっと高みに行きたい時
 
 ## 設計書
-- 要件定義書
+- 要件定義書<
 https://docs.google.com/document/d/1pMqNlvcEvw0LRuZYFGfgefTyVb55hjxHL02BMGSN9Ek/edit
 - ER図</br>
 https://app.diagrams.net/#G1jZzZXCMLVesHGhafBMUNhGSSxC8YN3fL
