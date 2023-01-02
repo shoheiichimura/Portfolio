@@ -4,7 +4,7 @@
   </div>
 
 　<%= form_with model: @customer, url: customer_session_path do |f| %>
-   <%= render "public/shared/error_messages", resource: resource %>
+   <%= render 'layouts/error_messages', model: f.object %>
     <div class="mt-5">
       <div class="form-group h3">
          <div class="row">

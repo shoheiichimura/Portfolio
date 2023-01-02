@@ -50,6 +50,7 @@
          <% end %>
          <ul>
           <li><%= link_to destroy_customer_session_path, class: "a", method: :delete do %>ログアウト<i class="fas fa-sign-out-alt mx-1"></i><% end %></li>
+          <li><%= link_to new_contact_path(current_customer), class: "a" do %>お問合せ<i class="fas fa-sign-out-alt mx-1"></i><% end %></li>
          </ul>
         </li>
          <% elsif admin_signed_in? %>
