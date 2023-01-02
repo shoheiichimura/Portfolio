@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'contacts/new'
+    get 'contacts/index'
+  end
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
@@ -36,7 +40,6 @@ Rails.application.routes.draw do
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw'
     resources :chat_rooms, only: [:index]
     resources :chats, only: [:show, :create, :destroy]
-    
     resources :customers do
       resources :reports, only: [:new, :create]
       member do
@@ -51,6 +54,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
     resources :notifications, only: [:index,:update]
+    resources :contacts, only: [:new, :create]
   end
 
 end

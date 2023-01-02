@@ -1,0 +1,39 @@
+<div class="contaner py-5">
+  <div class="row">
+    <h1 class="col-sm-5 my-5 mx-auto text-center">Contact</h1>
+  </div>
+
+  <%= form_with model: @contact do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+     <div class="mt-5">
+        <div class="form-group h4">
+          <div class="row">
+            <div class="col-md-5 text-left text-md-right my-auto">
+              <%= f.label :name, '名前', class: "control-label" %><span class="indispensable">*</span>
+            </div>
+            <div class="col-md-7">
+              <%= f.text_field :name, autofocus: true, :placeholder => "名前", class: 'form-control col-5' %>
+            </div>
+          </div>
+        </div>
+       </div>
+
+      <div class="mt-5">
+         <div class="form-group h4">
+            <div class="row">
+              <div class="col-md-5 text-left text-md-right mb-3 my-auto">
+                <%= f.label :content, 'お問い合わせ内容', class: "control-label" %><span class="indispensable">*</span>
+              </div>
+              <div class="col-md-7">
+                <%= f.text_area :content,rows: "4", autofocus: true, :placeholder => 'お問合せ内容を入力してください', class: 'form-control col-5' %>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col text-center mt-3">
+          <%= f.submit "送信する", class: "btn btn-primary" %>
+        </div>
+      </div>
+  <% end %>
+</div>
