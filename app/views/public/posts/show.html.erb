@@ -33,7 +33,12 @@
            <div class="favorite-btn col-1">
              <%= render "public/favorites/favorite-btn", post: @post %>
            </div>
-           <div class="col-11 card-title h2 text-center" style="right:45px"><strong><%= @post.title %></strong></div>
+           <div class="col-9 card-title h2 text-center" style="left:40px">
+             <strong><%= @post.title %></strong>
+           </div>
+           <h5 class="col-2 text-right">
+           <%= @post.created_at.strftime('%Y/%m/%d') %>
+           </h5>
          </div>
          <div class="col-10">
            <p class="card-text h4 my-5"><%= @post.caption %></p>
@@ -50,11 +55,11 @@
            <%= render 'public/comments/form', post: @post, comment: @comment %>
         </div>
       </div>
-      
+
       <div class="row">
         <div class="col text-center">
            <%= link_to "投稿一覧へ戻る",posts_path, class: "btn btn-dark" %>
         </div>
       </div>
-     
+
     </div>

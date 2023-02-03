@@ -26,19 +26,20 @@
    <div class="row">
      <div class="col-sm-10 mx-auto d-flex justify-content-center flex-wrap">
        <% if  @posts.present? %>
-            <% @posts.each do |post| %>
-             <%=link_to  post_path(post.id) do %>
-             <div class="card m-2 shadow " style="width: 30rem; border-radius: 10px;">
-               <%= image_tag post.image, size: '278x190',class: "m-3" %>
-                <div class="card-body text-center">
-                 <h5 class="card-title text-body">
-                   <strong><%= post.title %></strong>
-                 </h5>
+          <% @posts.each do |post| %>
+            <%=link_to  post_path(post.id) do %>
+              <div class="card m-2 shadow " style="width: 30rem; border-radius: 10px;">
+                <%= image_tag post.image, size: '278x190',class: "m-3" %>
+                 <div class="card-body text-center">
+                  <h5 class="card-title text-body">
+                    <strong><%= post.title %></strong>
+                  </h5>
+                  <p class="text-body"><%= post.created_at.strftime('%Y/%m/%d') %></p>
                  </div>
-             </div>
-             <% end %>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
+       <% end %>
       </div>
     </div>
     <div class="row">
