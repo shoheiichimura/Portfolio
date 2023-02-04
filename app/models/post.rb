@@ -7,7 +7,7 @@ class Post < ApplicationRecord
    has_many :notifications, dependent: :destroy
   # バリデーション
    validates :title, presence: true
-   validates :caption, presence: true, length: { maximum: 200 }
+   validates :caption, presence: true, length: { maximum: 300 }
    validates :image, presence: true
 
   # いいね機能

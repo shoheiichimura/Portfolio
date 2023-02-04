@@ -1,5 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_customer!
+  before_action :correct_post,only: [:edit]
+  
 
   def new
     @post = Post.new
@@ -58,8 +60,16 @@ class Public::PostsController < ApplicationController
   end
 
   private
+  
   def post_params
     params.require(:post).permit(:title,:caption,:image)
   end
-
+  
+  def correct_post
+    @post = Post.find(params[:id])
+    unless @post.customer == current_customer
+      redirect_to posts_path
+    end
+  end
+  
 end
